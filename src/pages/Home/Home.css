@@ -1,0 +1,24 @@
+.divHomeList{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.divHomeListItens {
+    background-color: white;
+    color: black;
+    margin: 10px;
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+    cursor:pointer;
+}
+
+.divHomeListItensText{
+    position: relative;
+    top: 55px;
+    left: 5px;
+    font-weight: 700;
+}
