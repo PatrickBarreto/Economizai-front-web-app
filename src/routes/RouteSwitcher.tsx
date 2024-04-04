@@ -3,8 +3,10 @@ import Base from '../pages/Base/Base';
 import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
 import Products from '../pages/Products/Products';
+import TestComponente from '../pages/testComponent';
 
 const RouteSwitcher:React.FC = () => {
+    
     return (
         <Router>
             <Routes>
@@ -12,13 +14,10 @@ const RouteSwitcher:React.FC = () => {
                     path="/login" 
                     element={<Base 
                                 page={Login} 
-                                propsPage={[
-                                    {key:"title", value:"Olá, faça seu login"}
-                                ]}
                                 typePage='public'
                                 headerShow={true}
                                 footerShow={true}
-                            />
+                            /> 
                         }
                 />
 
@@ -26,9 +25,6 @@ const RouteSwitcher:React.FC = () => {
                     path="/home" 
                     element={<Base 
                                 page={Home} 
-                                propsPage={[
-                                    {key:"title", value:"Seja bem vindo"}
-                                ]}
                                 typePage='loged'
                                 headerShow={true}
                                 footerShow={false}
@@ -40,9 +36,17 @@ const RouteSwitcher:React.FC = () => {
                     path="/products" 
                     element={<Base 
                                 page={Products} 
-                                propsPage={[
-                                    {key:"title", value:"Seja bem vindo"}
-                                ]}
+                                typePage='loged'
+                                headerShow={true}
+                                footerShow={true}
+                            />
+                        }
+                />
+
+                <Route  
+                    path="/testeComponent" 
+                    element={<Base 
+                                page={TestComponente} 
                                 typePage='loged'
                                 headerShow={true}
                                 footerShow={true}

@@ -5,5 +5,6 @@ import './index.css'
 //<React.StrictMode></React.StrictMode>
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+    //Preciso adicionar o <React.StrictMode></React.StrictMode> antes do build. Removi por conta da dupla request.
     <App />,
 )

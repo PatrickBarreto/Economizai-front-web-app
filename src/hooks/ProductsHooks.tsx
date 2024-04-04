@@ -1,5 +1,4 @@
-import { render } from 'react-dom';
-import { ApiConectionData } from '../config/interfaceApiConection';
+import { ApiConectionData } from '../config/Interfaces/ApiConection';
 import { ApiConection } from '../hooks/ApiConection';
 
 
@@ -7,7 +6,7 @@ import { ApiConection } from '../hooks/ApiConection';
 
 export async function createProduct(data:any) {
 
-    const bodyData = {
+    const requestBody = {
         name: data.name,
         type: data.type,
         volume: data.volume,
@@ -22,7 +21,7 @@ export async function createProduct(data:any) {
             "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
             "Authorization":localStorage.getItem('Authorization') ?? ''
         },
-        body: JSON.stringify(bodyData)
+        body: JSON.stringify(requestBody)
     }
 
     const result:any = await ApiConection(apiData);
@@ -54,7 +53,7 @@ export async function findProdutcs() {
 }
 
 
-export async function findSpecificProduct(searchValue:string) {
+export async function findSpecificProduct(searchValue:string):Promise<any>{
     const apiData:ApiConectionData = {
         method:'GET',
         uri:'/product/'+searchValue,
@@ -79,7 +78,7 @@ export async function findSpecificProduct(searchValue:string) {
 export async function updateProduct(data:any) {
 
 
-    const bodyData = {
+    const requestBody = {
         id: data.id,
         name: data.name,
         type: data.type,
@@ -89,13 +88,13 @@ export async function updateProduct(data:any) {
 
     const apiData:ApiConectionData = {
         method:'PUT',
-        uri:'/product/'+bodyData.id,
+        uri:'/product/'+requestBody.id,
         headers:{
             "Content-Type":"application/json",
             "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
             "Authorization":localStorage.getItem('Authorization') ?? ''
         },
-        body:JSON.stringify(bodyData)
+        body:JSON.stringify(requestBody)
     }
 
     const result:any = await ApiConection(apiData);
