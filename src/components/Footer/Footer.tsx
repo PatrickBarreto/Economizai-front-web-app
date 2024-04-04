@@ -5,7 +5,7 @@ import { baseContext } from '../../pages/Base/Base';
 
 const Footer:React.FC<headerFooterComponent> = (props) => {
     
-    const menu = useContext(baseContext)[0];
+    const menu:Array<any> = useContext(baseContext)[0];
 
     const {image={path:"src/assets/react.svg", alt:"logo"}} = props;
 

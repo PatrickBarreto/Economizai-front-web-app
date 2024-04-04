@@ -6,8 +6,8 @@ import { baseContext } from '../../pages/Base/Base';
 
 const Header:React.FC<headerFooterComponent> = (props) => {
     
-    const menu = useContext(baseContext)[0];
-    
+    const menu:Array<any> = useContext(baseContext)[0];
+ 
     const {image={path:"src/assets/react.svg", alt:"logo"}} = props;
 
     return (
@@ -17,9 +17,12 @@ const Header:React.FC<headerFooterComponent> = (props) => {
             </div>
             <div id="menu">
                 <ul>
-                    {menu.map((item, index)=>{
-                        return <li className="itemMenu" key={index}><a href={item.link}>{item.label}</a></li>
-                    })}
+                    {   
+                        menu.map((item, index)=>{
+                            return <li className="itemMenu" key={index}><a href={item.link}>{item.label}</a></li>    
+                            }
+                        )
+                    }
                 </ul>
             </div>
         </div>
