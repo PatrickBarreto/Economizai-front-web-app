@@ -5,3 +5,9 @@ export interface ApiConectionData {
     body?: string;
     queryStrings?: string;
 }
+
+export interface ApiRetun {
+    headers:Headers,
+    body:any,
+    status:number
+}

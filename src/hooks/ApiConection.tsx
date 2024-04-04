@@ -1,5 +1,5 @@
 import React from 'react';
-import { ApiConectionData } from '../config/interfaceApiConection';
+import { ApiConectionData, ApiRetun } from '../config/interfaceApiConection';
 
 
 export async function ApiConection(props:ApiConectionData) {
@@ -9,12 +9,19 @@ export async function ApiConection(props:ApiConectionData) {
     try{
         const response = await fetch(import.meta.env.VITE_BASE_API+props.uri+queryString, props);
         
+        
         if(!response.ok) {
             validadeHttpErrorStatus(response);
         }
 
-        const result = await response.json();
+        const body = await response.json();
 
+        const result:ApiRetun = {
+                headers: response.headers,
+                body: body,
+                status: response.status
+            };
+    
         return result;
 
     } catch (error) {
@@ -25,7 +32,8 @@ export async function ApiConection(props:ApiConectionData) {
 
 function validadeHttpErrorStatus(response:Response){
     switch(response.status){
-        case 404: return [{status:response.status}];
+        case 404: return {status:response.status};
+        case 400: return {status:response.status};
     }
     throw new Error("HTTP error! status:"+response.status);
 }

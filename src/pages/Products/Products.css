@@ -1,5 +1,10 @@
 #divProductSearch{
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 25px;
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 #produtcForm{
@@ -19,11 +24,11 @@
 
 #searchIcon :first-child{
     position: relative;
-    bottom: 4px;
+    bottom: 5px;
 }
 
 #searchInput{
-    width: 100%;
+    width: 300px;
     height: 100%;
     border-radius: 0px 10px 10px 0px;
     border: 0px;
@@ -45,14 +50,14 @@
     padding: 1px;
 }
 
-#productImage{
+.productImage{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100%;
 }
-#productImage :first-child{
+.productImage :first-child{
     width: 80%;
     height: 80%;
 }
@@ -68,6 +73,7 @@
     color: black;
     padding: 10px;
     width: 100%;
+    justify-content: space-between;
 }
 
 .productName{
@@ -80,5 +86,60 @@
 }
 
 .idProduct{
-    display: none;;
+    display: none;
+}
+
+.productImage{
+    width: 15%;
+}
+.productDetails{
+    width: 70%;
+}
+
+.actionButtons{
+    display: flex;
+    flex-direction:column;
+    justify-content: right;
+}
+
+.actionButtons a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 30px;
+    margin-top: 5px;
+    color:black;
+    font-size: larger;
+}
+
+
+#divFormCreateProduct, #divFormEditProduct{
+    background-color: rgba(0, 0, 0, 0.77);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin-top:150px;
+    position: fixed;
+    z-index: 1;
+    color:black;
+}
+
+.createProduct, .editProduct{
+    background-color: white;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    border: 1px solid rgb(175, 175, 175);
+    box-shadow: 10px 15px  50px black;
+    z-index: 2;
+}
+
+.createProduct #buttonSubmit{
+    font-size: medium;
+    width: 130px;
+    height: 40px;
+    margin-top: 50px;
 }

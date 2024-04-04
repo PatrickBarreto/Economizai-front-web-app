@@ -8,8 +8,7 @@ import { specificPageProps } from '../../config/interfacePageProps';
 import { ApiConectionData } from '../../config/interfaceApiConection';
 
 
-const Login:React.FC<specificPageProps> = (props) => {  
-  
+const Login:React.FC<specificPageProps> = (props) => {    
   const navigate = useNavigate();
   const {register, handleSubmit } = useForm();
   const [formData, setFormData] = useState('');
@@ -29,8 +28,9 @@ const Login:React.FC<specificPageProps> = (props) => {
 
       try {
         const responseApi = await ApiConection(apiData);
-        if(responseApi[1].success == true){
-          localStorage.setItem('Authorization',responseApi[0].get('Authorization'));
+
+        if(responseApi.body.success == true){
+          localStorage.setItem('Authorization',responseApi.headers.get('Authorization') ?? '');
           navigate('/home');
         }else{
           console.error('login refused');
