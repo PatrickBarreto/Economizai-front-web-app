@@ -1,8 +1,9 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import Header from '../../components/Header/Header.tsx';
 import Footer from '../../components/Footer/Footer.tsx';
 import {menuLinks, menuLinksLoged} from '../../config/menuLinks.tsx';
 import './Base.css'
+import { BaseContext, BaseContextPage } from '../../config/contexts.tsx';
 
 interface basePageProps {
     page: JSX.ElementType;
@@ -10,9 +11,6 @@ interface basePageProps {
     headerShow?:boolean;
     footerShow?:boolean;
 }
-
-export const baseContext = createContext([]);
-export const baseContextPage = createContext([]);
 
 const Base:React.FC<basePageProps> = (props) => {
     const [links, setLinks] = useState([{label: '', link: ''}]);
@@ -27,23 +25,23 @@ const Base:React.FC<basePageProps> = (props) => {
 
     return (
         <>
-            <baseContext.Provider value={[links]}>
+            <BaseContext.Provider value={[links]}>
                 <header>
                     { props.headerShow && <Header /> }
                 </header>
-            </ baseContext.Provider>
+            </ BaseContext.Provider>
 
-            <baseContextPage.Provider value={[props]}>
+            <BaseContextPage.Provider value={[props]}>
                 <main>
                     <props.page/>
                 </main>
-            </baseContextPage.Provider>
+            </BaseContextPage.Provider>
             
-            <baseContext.Provider value={[links]}>
+            <BaseContext.Provider value={[links]}>
                 <footer>
                     { props.footerShow && <Footer /> }
                 </footer>
-            </ baseContext.Provider>
+            </ BaseContext.Provider>
         </>
     );
 };

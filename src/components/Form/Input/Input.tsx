@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { Inputs } from "../../../config/Interfaces/FormData";
-import { FormContext } from "../../../config/Contexts/FormContext";
-
+import { Inputs } from "../../../config/interfaces/FormData";
+import { FormContext } from "../../../config/contexts";
 
 const validateInputData = (input:Inputs):Inputs => {
 

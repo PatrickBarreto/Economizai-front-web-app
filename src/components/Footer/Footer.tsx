@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import "./Footer.css"
-import headerFooterComponent from '../../config/Interfaces/HeaderFooter';
-import { baseContext } from '../../pages/Base/Base';
+import headerFooterComponent from '../../config/interfaces/HeaderFooter';
+import { BaseContext } from '../../config/contexts';
+
 
 const Footer:React.FC<headerFooterComponent> = (props) => {
     
-    const menu:Array<any> = useContext(baseContext)[0];
+    const menu:Array<any> = useContext(BaseContext)[0];
 
     const {image={path:"src/assets/react.svg", alt:"logo"}} = props;
 
