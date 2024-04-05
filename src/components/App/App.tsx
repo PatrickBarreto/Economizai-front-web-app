@@ -2,7 +2,7 @@ import React from 'react';
 import RouteSwitcher from '../../routes/RouteSwitcher';
 
 const App:React.FC = () => {
-  return <RouteSwitcher></RouteSwitcher>
+  return <RouteSwitcher />
 };
 
 export default App;
