@@ -9,6 +9,8 @@ import { findSpecificProduct, findProdutcs, updateProduct,  deleteProduct, creat
 
 import Form  from '../../components/Form/Form.tsx';
 import Input from '../../components/Form/Input/Input.tsx';
+import { Item, List } from '../../components/List/List.tsx';
+import { SearchInput } from '../../components/Search/Search.tsx';
 
 
 
@@ -17,7 +19,6 @@ const Products:React.FC = () => {
     const [ showCreateForm, setShowCreateForm ] = useState(false);
     const [ showEditForm, setShowEditForm ] = useState(false);
     const [ createdProduct, setCreatedProduct ] = useState(0);
-    
     const [ productInputFormEdit, setProductInputFormEdit ] = useState({id:'',name:'',type:'',volume:'',unit_mensure:''});
 
 
@@ -56,7 +57,7 @@ const Products:React.FC = () => {
         setShowCreateForm(true);
     }
 
-    const HandleCreateProduct = async (data:any) => {
+    const handleCreateProduct = async (data:any) => {
         const returnApi = await createProduct(data)
         if(returnApi.status == 200){
             setCreatedProduct(createdProduct + 1);
@@ -105,15 +106,45 @@ const Products:React.FC = () => {
     }
 
 
+    interface Product {
+        id?:number,
+        name:string,
+        volume:string,
+        unit_mensure:string,
+    }
+    
+    const prepareItemList:any = (product) => {
+        return (
+            <>
+                <div className="productImage">
+                    <RiSearchLine/>
+                </div>
+                <div className="productDetails">
+                    <p className="idProduct">{product.id}</p>
+                    <p className="produtctName">{product.name}</p>
+                    <span className="fastInfo">{product.volume}{product.unit_mensure}</span>
+                </div>
+                <div className="actionButtons">
+                    <a onClick={()=>{prepareEditFormData(product.id)}}>
+                        <TbEdit />
+                    </a>
+                    <a onClick={()=>{handlerDeleteProduct(product.id)}}>
+                        <RiDeleteBack2Line />
+                    </a >
+                </div>
+            </>
+        );
+    }
 
     const toRender = searchResult;
     
 
     return (
         <>
+        
             {
                 showCreateForm && <div id="divFormCreateProduct">
-                    <Form className={"createProduct"} submitCallback={HandleCreateProduct}>
+                    <Form className={"createProduct"} submitCallback={handleCreateProduct}>
                         <Input 
                             label={{
                             className: "labelName",
@@ -228,56 +259,25 @@ const Products:React.FC = () => {
                 </div>
             }
 
-
-            <div id="divProductSearch">
-                <button type="submit" id="searchIcon">
-                    <RiSearchLine/>
-                </button>
-                <Form
-                    className={"produtcForm"}
-                    id={"produtcForm"}
-                    submitCallback={ handlerFindSpecificProduct}
-                >
-                    <Input 
-                        name={"searchProducts"}
-                        id={"searchInput"}
-                        type={"search"}
-                        placeholder={"Digite sua busca"}
-                    />
-                </Form>
-            </div>
+            <SearchInput submitCallback={handlerFindSpecificProduct}/>
             
             <div>
                 <a onClick={()=>{showCreateProductForm()}}><IoMdAdd/>Adicionar um novo produto</a>
             </div>
-            
+        
             <div id="divProductsList">
-                <ul id="productsList">
-                    {
-                        toRender.map((item:any, index:any)=>{
+                <List id={"productsList"}>
+                {
+                        toRender.map((product:any, index:any)=>{
                             return (
-                            <li key={index} className="product">
-                                <div className="productImage">
-                                    <RiSearchLine/>
-                                </div>
-                                <div className="productDetails">
-                                    <p className="idProduct">{item.id}</p>
-                                    <p className="produtctName">{item.name}</p>
-                                    <span className="fastInfo">{item.volume}{item.unit_mensure}</span>
-                                </div>
-                                <div className="actionButtons">
-                                    <a onClick={()=>{prepareEditFormData(item.id)}}>
-                                        <TbEdit />
-                                    </a>
-                                    <a onClick={()=>{handlerDeleteProduct(item.id)}}>
-                                        <RiDeleteBack2Line />
-                                    </a >
-                                </div>
-                            </li>
+                                <Item key={index} className={"product"}>
+                                    {prepareItemList(product)}
+                                </Item>
                             )
                         })
+                     
                     }
-                </ul>
+                </List>        
             </div>
         </>
     );

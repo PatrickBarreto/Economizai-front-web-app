@@ -1,0 +1,30 @@
+.divSearch {
+    width: fit-content;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.searchIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+}
+
+.searchIcon svg{
+    width: 45%;
+    height: 45%;
+}
+
+.seachFormInput{
+    width: 300px;
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
+    border: 0px;
+    padding: 2px 5px;
+    font-size: medium;
+}
