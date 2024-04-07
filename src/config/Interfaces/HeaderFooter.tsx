@@ -1,10 +1,6 @@
 export default interface headerFooterComponent {
-    image: {
+    image?: {
         path:string;
         alt:string;
-    },
-    menu: {
-        label: string;
-        link: string;
-    }[];
+    }
 }

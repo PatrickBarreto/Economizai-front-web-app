@@ -1,7 +1,5 @@
-interface menuItem {
-    label: string;
-    link: string;
-  }
+
+import { menuItem } from "./interfaces/MenuLinks";
 
 const menuLinksLoged:menuItem[] = [
     {label: "home", link: "/home"},
