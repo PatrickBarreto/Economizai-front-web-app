@@ -1,4 +1,5 @@
-import { ApiConectionData } from '../config/interfaces/ApiConection';
+import { ApiConectionData } from '../config/Interfaces/ApiConection';
+import { Product } from '../config/Interfaces/SystemEntities/Products';
 import { ApiConection } from '../hooks/ApiConection';
 
 
@@ -78,7 +79,7 @@ export async function findSpecificProduct(id:number):Promise<any>{
 export async function updateProduct(data:any) {
 
 
-    const requestBody = {
+    const requestBody:Product = {
         id: data.id,
         name: data.name,
         type: data.type,

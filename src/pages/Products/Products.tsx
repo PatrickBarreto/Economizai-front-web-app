@@ -5,7 +5,7 @@ import { TbEdit } from "react-icons/tb";
 import { IoMdAdd } from "react-icons/io";
 import './Products.css';
 
-import { findSpecificProduct, findProdutcs, updateProduct,  deleteProduct, createProduct } from '../../hooks/ProductsHooks';
+import { findSpecificProduct, updateProduct,  deleteProduct, createProduct } from '../../hooks/ProductsHooks';
 import { handleSetSearchResultState } from '../../hooks/ProductsHooks';
 
 import Form  from '../../components/Form/Form.tsx';
@@ -13,7 +13,7 @@ import Input from '../../components/Form/Input/Input.tsx';
 import { Item, List } from '../../components/List/List.tsx';
 import { SearchInput } from '../../components/Search/Search.tsx';
 
-import { Product } from '../../config/interfaces/SystemEntities/Peoducts.tsx';
+import { Product } from '../../config/Interfaces/SystemEntities/Products';
 
 
 const Products:React.FC = () => {
