@@ -1,28 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import "./Footer.css"
-import headerFooterComponent from '../../../config/interfaces/HeaderFooter';
-import { BaseContext } from '../../../config/contexts';
+import Footer from '../../../config/Interfaces/Footer';
+import { FooterContext } from '../../../config/contexts';
 
-
-const Footer:React.FC<headerFooterComponent> = (props) => {
-    
-    const menu:Array<any> = useContext(BaseContext)[0];
-
-    const {image={path:"src/assets/react.svg", alt:"logo"}} = props;
+const Footer:React.FC<Footer> = ({ children }) => {
 
     return (
-        <div className="divFooter">
-            <div id="image">
-                <img src={image.path} alt={image.alt}/>
-            </div>
-            <div id="menu">
-                <ul>
-                    {menu.map((item, index)=>{
-                        return <li className="itemMenu" key={index}><a href={item.link}>{item.label}</a></li>
-                    })}
-                </ul>
-            </div>
-        </div>
+        <FooterContext.Provider value={[[{}]]}>
+            <footer>
+                { children }
+            </footer>
+        </FooterContext.Provider >
     )
 }
 

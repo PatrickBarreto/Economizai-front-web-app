@@ -14,6 +14,11 @@ import { Item, List } from '../../components/Resources/List/List.tsx';
 import { SearchInput } from '../../components/Resources/Search/Search.tsx';
 
 import { Product } from '../../config/Interfaces/SystemEntities/Products';
+import Header from '../../components/Structure/Header/Header.tsx';
+import { PublicHeader } from '../../components/Templates/Header/PublicHeader.tsx';
+import { Main } from '../../components/Structure/Main/Main.tsx';
+import Footer from '../../components/Structure/Footer/Footer.tsx';
+import { PublicFooter } from '../../components/Templates/Footer/PublicFooter.tsx';
 
 
 const Products:React.FC = () => {
@@ -124,140 +129,146 @@ const Products:React.FC = () => {
 
     return (
         <>
+            <Header>
+                <PublicHeader/>
+            </Header>
+            <Main>
+                <SearchInput submitCallback={handlerFindSpecificProduct}/>
+                
+                { showCreateForm && <div id="divFormCreateProduct">
+                        <Form className={"createProduct"} submitCallback={handleCreateProduct}>
+                            <Input 
+                                label={{
+                                className: "labelName",
+                                value: "Nome do produto"
+                                }}
+                                name={ "name"}
+                                type={ "text"}
+                                placeholder={ "Nome do produto"}
+                                required={true}
+                            />
         
-            { showCreateForm && <div id="divFormCreateProduct">
-                    <Form className={"createProduct"} submitCallback={handleCreateProduct}>
-                        <Input 
-                            label={{
-                            className: "labelName",
-                            value: "Nome do produto"
-                            }}
-                            name={ "name"}
-                            type={ "text"}
-                            placeholder={ "Nome do produto"}
-                            required={true}
-                        />
-    
 
-                        <Input 
-                            label={{
-                                className: "labelType",
-                                value: "Tipo do produto"
-                            }}
-                            className={"typeProduct"}
-                            name={ "type"}
-                            type={ "text"}
-                            required={ true}
-                        />
+                            <Input 
+                                label={{
+                                    className: "labelType",
+                                    value: "Tipo do produto"
+                                }}
+                                className={"typeProduct"}
+                                name={ "type"}
+                                type={ "text"}
+                                required={ true}
+                            />
 
-                        <Input 
-                            label={{
-                                className: "labelVolume",
-                                value: "Quantidade"
-                            }}
-                            name={"volume"}
-                            type={"text"}
-                            placeholder={"Quantidade"}
-                            required={true}
-                        />
+                            <Input 
+                                label={{
+                                    className: "labelVolume",
+                                    value: "Quantidade"
+                                }}
+                                name={"volume"}
+                                type={"text"}
+                                placeholder={"Quantidade"}
+                                required={true}
+                            />
 
-                        <Input label={{
-                            className: "labelUnitMensure",
-                            value: "Unidade de medida"
-                            }}
-                            name={"unitMensure"}
-                            type={"text"}
-                            placeholder={"unidade de medida"}
-                            required={true}
-                        />
+                            <Input label={{
+                                className: "labelUnitMensure",
+                                value: "Unidade de medida"
+                                }}
+                                name={"unitMensure"}
+                                type={"text"}
+                                placeholder={"unidade de medida"}
+                                required={true}
+                            />
 
-                        <Input
-                            id={"buttonSubmit"}
-                            name={"buttonSubmit"}
-                            type={"submit"}
-                            value={"Criar Produto"}
-                        />
-                    </Form>
+                            <Input
+                                id={"buttonSubmit"}
+                                name={"buttonSubmit"}
+                                type={"submit"}
+                                value={"Criar Produto"}
+                            />
+                        </Form>
                 </div> }
 
-            { showEditForm && <div id="divFormEditProduct">
-                    <Form className={"editProduct"} submitCallback={handlerUpdateProduct}>
-                        <Input 
-                            className={"hiddenElement"}
-                            name={ "id"}
-                            type={ "text"}
-                            value={productInputFormEdit.id}
-                        />
+                { showEditForm && <div id="divFormEditProduct">
+                        <Form className={"editProduct"} submitCallback={handlerUpdateProduct}>
+                            <Input 
+                                className={"hiddenElement"}
+                                name={ "id"}
+                                type={ "text"}
+                                value={productInputFormEdit.id}
+                            />
 
-                        <Input 
-                            label={{
-                            className: "labelName",
-                            value: "Nome do produto"
-                            }}
-                            name={ "name"}
-                            type={ "text"}
-                            placeholder={productInputFormEdit.name}
-                        />
+                            <Input 
+                                label={{
+                                className: "labelName",
+                                value: "Nome do produto"
+                                }}
+                                name={ "name"}
+                                type={ "text"}
+                                placeholder={productInputFormEdit.name}
+                            />
 
-                        <Input 
-                            label={{
-                                className: "labelType",
-                                value: "Tipo do produto"
-                            }}
-                            className={"typeProduct"}
-                            name={ "type"}
-                            type={ "text"}
-                            placeholder={productInputFormEdit.type}
-                        />
+                            <Input 
+                                label={{
+                                    className: "labelType",
+                                    value: "Tipo do produto"
+                                }}
+                                className={"typeProduct"}
+                                name={ "type"}
+                                type={ "text"}
+                                placeholder={productInputFormEdit.type}
+                            />
 
-                        <Input 
-                            label={{
-                                className: "labelVolume",
-                                value: "Quantidade"
-                            }}
-                            name={"volume"}
-                            type={"text"}
-                            placeholder={productInputFormEdit.volume}
-                        />
+                            <Input 
+                                label={{
+                                    className: "labelVolume",
+                                    value: "Quantidade"
+                                }}
+                                name={"volume"}
+                                type={"text"}
+                                placeholder={productInputFormEdit.volume}
+                            />
 
-                        <Input label={{
-                            className: "labelUnitMensure",
-                            value: "Unidade de medida"
-                            }}
-                            name={"unitMensure"}
-                            type={"text"}
-                            placeholder={productInputFormEdit.unit_mensure}
-                        />
+                            <Input label={{
+                                className: "labelUnitMensure",
+                                value: "Unidade de medida"
+                                }}
+                                name={"unitMensure"}
+                                type={"text"}
+                                placeholder={productInputFormEdit.unit_mensure}
+                            />
 
-                        <Input
-                            id={"buttonSubmit"}
-                            name={"buttonSubmit"}
-                            type={"submit"}
-                            value={"Editar Produto"}
-                        />
-                    </Form>
+                            <Input
+                                id={"buttonSubmit"}
+                                name={"buttonSubmit"}
+                                type={"submit"}
+                                value={"Editar Produto"}
+                            />
+                        </Form>
                 </div>}
 
-            <SearchInput submitCallback={handlerFindSpecificProduct}/>
+                <div>
+                    <a onClick={()=>{showCreateProductForm()}}><IoMdAdd/>Adicionar um novo produto</a>
+                </div>
             
-            <div>
-                <a onClick={()=>{showCreateProductForm()}}><IoMdAdd/>Adicionar um novo produto</a>
-            </div>
-        
-            <div id="divProductsList">
-                <List id={"productsList"}>
-                {
-                        toRender.map((product:any, index:any)=>{
-                            return (
-                                <Item key={index} className={"product"}>
-                                    {prepareItemList(product)}
-                                </Item>
-                            )
-                        })
-                     
-                    }
-                </List>        
-            </div>
+                <div id="divProductsList">
+                    <List id={"productsList"}>
+                    {
+                            toRender.map((product:any, index:any)=>{
+                                return (
+                                    <Item key={index} className={"product"}>
+                                        {prepareItemList(product)}
+                                    </Item>
+                                )
+                            })
+                        }
+                    </List>        
+                </div>
+            </Main>
+            <Footer>
+                <PublicFooter/>
+            </Footer>
         </>
     );
 }

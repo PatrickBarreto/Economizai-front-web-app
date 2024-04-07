@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
+import Header from '../../components/Structure/Header/Header';
+import { PublicHeader } from '../../components/Templates/Header/PublicHeader';
+import { Main } from '../../components/Structure/Main/Main';
+import { PublicFooter } from '../../components/Templates/Footer/PublicFooter';
+import Footer from '../../components/Structure/Footer/Footer';
 
 
 const Home:React.FC = () => {
@@ -20,23 +25,33 @@ const Home:React.FC = () => {
     
 
     return (
-        <div className="homePage">
-            <div className="divTitle">
-                <h1>Home</h1>
-            </div>
+        <>
+            <Header>
+                <PublicHeader/>
+            </Header>
+            <Main>
+                <div className="homePage">
+                    <div className="divTitle">
+                        <h1>Home</h1>
+                    </div>
 
-            <div className='divHomeList'>
-                {routes.map((route, index)=>{
-                    return (
-                        <a key={index} data-value={route[1]} onClick={navigator}>
-                            <div className="divHomeListItens">
-                                <p className="divHomeListItensText">{route[0]}</p>
-                            </div>
-                        </a>
-                    );
-                })}
-            </div>
-        </div>
+                    <div className='divHomeList'>
+                        {routes.map((route, index)=>{
+                            return (
+                                <a key={index} data-value={route[1]} onClick={navigator}>
+                                    <div className="divHomeListItens">
+                                        <p className="divHomeListItensText">{route[0]}</p>
+                                    </div>
+                                </a>
+                            );
+                        })}
+                    </div>
+                </div>
+            </Main>
+            <Footer>
+                <PublicFooter />
+            </Footer>
+        </>
 
     );
 }
