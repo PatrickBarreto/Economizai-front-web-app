@@ -4,15 +4,10 @@ import Footer from '../../components/Footer/Footer.tsx';
 import {menuLinks, menuLinksLoged} from '../../config/menuLinks.tsx';
 import './Base.css'
 import { BaseContext, BaseContextPage } from '../../config/contexts.tsx';
+import { BasePage } from '../../config/interfaces/BasePage.tsx';
 
-interface basePageProps {
-    page: JSX.ElementType;
-    typePage:string;
-    headerShow?:boolean;
-    footerShow?:boolean;
-}
 
-const Base:React.FC<basePageProps> = (props) => {
+const Base:React.FC<BasePage> = (props) => {
     const [links, setLinks] = useState([{label: '', link: ''}]);
    
     useEffect(()=>{

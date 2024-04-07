@@ -6,12 +6,14 @@ import { IoMdAdd } from "react-icons/io";
 import './Products.css';
 
 import { findSpecificProduct, findProdutcs, updateProduct,  deleteProduct, createProduct } from '../../hooks/ProductsHooks';
+import { handleSetSearchResultState } from '../../hooks/ProductsHooks';
 
 import Form  from '../../components/Form/Form.tsx';
 import Input from '../../components/Form/Input/Input.tsx';
 import { Item, List } from '../../components/List/List.tsx';
 import { SearchInput } from '../../components/Search/Search.tsx';
 
+import { Product } from '../../config/interfaces/SystemEntities/Peoducts.tsx';
 
 
 const Products:React.FC = () => {
@@ -24,30 +26,24 @@ const Products:React.FC = () => {
 
     useEffect(()=>{
         const fetchData = async () =>{
-            const findedProducts:any = await findProdutcs();
-            if(findedProducts.status != 200){
-                return false
-            }
-            setSearchResult(findedProducts.body);
+            handleSetSearchResultState(setSearchResult);
         }
         fetchData()
     },[createdProduct]);
 
 
+
     const handlerFindSpecificProduct = async (data:any) => {
         if(data.searchProducts == ''){
-            const findedProducts:any = await findProdutcs();
-            setSearchResult(findedProducts.body);
+            await handleSetSearchResultState(setSearchResult);
             return;
         }
-
         let response:any = await findSpecificProduct(data.searchProducts)
 
         if(response){
             setSearchResult(response)
         }else{
-            const findedProducts:any = await findProdutcs();
-            setSearchResult(findedProducts.body);
+            await handleSetSearchResultState(setSearchResult);
             return alert('Ops, not found')
         }
     }
@@ -62,10 +58,7 @@ const Products:React.FC = () => {
         if(returnApi.status == 200){
             setCreatedProduct(createdProduct + 1);
         }
-
-        const findedProducts:any = await findProdutcs();
-        setSearchResult(findedProducts.body);
-        
+        await handleSetSearchResultState(setSearchResult)       
         setShowCreateForm(false)
     }
 
@@ -75,13 +68,11 @@ const Products:React.FC = () => {
         if(result.status == 404){
             return alert("Not found");
         }
-
-        const findedProducts:any = await findProdutcs();
-        setSearchResult(findedProducts.body);
+        await handleSetSearchResultState(setSearchResult);
         setShowEditForm(false);
     }
 
-    const prepareEditFormData = async (id:string) => {
+    const prepareEditFormData = async (id:number) => {
         const product = await findSpecificProduct(id);
         setProductInputFormEdit(product[0]);
         setShowEditForm(true);
@@ -105,15 +96,8 @@ const Products:React.FC = () => {
 
     }
 
+    const prepareItemList:React.FC<Product> = (product) => {
 
-    interface Product {
-        id?:number,
-        name:string,
-        volume:string,
-        unit_mensure:string,
-    }
-    
-    const prepareItemList:any = (product) => {
         return (
             <>
                 <div className="productImage">
@@ -125,7 +109,7 @@ const Products:React.FC = () => {
                     <span className="fastInfo">{product.volume}{product.unit_mensure}</span>
                 </div>
                 <div className="actionButtons">
-                    <a onClick={()=>{prepareEditFormData(product.id)}}>
+                    <a onClick={()=>{prepareEditFormData(product.id ? product.id : 0)}}>
                         <TbEdit />
                     </a>
                     <a onClick={()=>{handlerDeleteProduct(product.id)}}>
@@ -142,8 +126,7 @@ const Products:React.FC = () => {
     return (
         <>
         
-            {
-                showCreateForm && <div id="divFormCreateProduct">
+            { showCreateForm && <div id="divFormCreateProduct">
                     <Form className={"createProduct"} submitCallback={handleCreateProduct}>
                         <Input 
                             label={{
@@ -196,11 +179,9 @@ const Products:React.FC = () => {
                             value={"Criar Produto"}
                         />
                     </Form>
-                </div> 
-            }
+                </div> }
 
-            {
-                showEditForm && <div id="divFormEditProduct">
+            { showEditForm && <div id="divFormEditProduct">
                     <Form className={"editProduct"} submitCallback={handlerUpdateProduct}>
                         <Input 
                             className={"hiddenElement"}
@@ -256,8 +237,7 @@ const Products:React.FC = () => {
                             value={"Editar Produto"}
                         />
                     </Form>
-                </div>
-            }
+                </div>}
 
             <SearchInput submitCallback={handlerFindSpecificProduct}/>
             
