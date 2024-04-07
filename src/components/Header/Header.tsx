@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import "./Header.css"
 import headerFooterComponent from '../../config/interfaces/HeaderFooter';
 import { BaseContext } from '../../config/contexts';
+import { List, Item } from '../List/List';
 
 const Header:React.FC<headerFooterComponent> = (props) => {
 
@@ -15,14 +16,18 @@ const Header:React.FC<headerFooterComponent> = (props) => {
                 <img src={image.path} alt={image.alt}/>
             </div>
             <div id="menu">
-                <ul>
-                    {   
+                <List>
+                    { 
                         menu.map((item, index)=>{
-                            return <li className="itemMenu" key={index}><a href={item.link}>{item.label}</a></li>    
+                            return (
+                                <Item className="itemMenu" key={index}>
+                                    <a href={item.link}>{item.label}</a>
+                                </Item>
+                                )
                             }
                         )
                     }
-                </ul>
+                </List>
             </div>
         </div>
     )
