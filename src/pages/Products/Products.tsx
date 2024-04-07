@@ -23,7 +23,6 @@ const Products:React.FC = () => {
     const [ createdProduct, setCreatedProduct ] = useState(0);
     const [ productInputFormEdit, setProductInputFormEdit ] = useState({id:'',name:'',type:'',volume:'',unit_mensure:''});
 
-
     useEffect(()=>{
         const fetchData = async () =>{
             handleSetSearchResultState(setSearchResult);
@@ -31,19 +30,17 @@ const Products:React.FC = () => {
         fetchData()
     },[createdProduct]);
 
-
-
     const handlerFindSpecificProduct = async (data:any) => {
         if(data.searchProducts == ''){
             await handleSetSearchResultState(setSearchResult);
             return;
         }
+
         let response:any = await findSpecificProduct(data.searchProducts)
 
         if(response){
             setSearchResult(response)
         }else{
-            await handleSetSearchResultState(setSearchResult);
             return alert('Ops, not found')
         }
     }
@@ -85,7 +82,7 @@ const Products:React.FC = () => {
             return alert("This product have dependecies with categories, lists..");
         }
 
-        const findedProducts:any = await findProdutcs();
+        let findedProducts:any = await handleSetSearchResultState(setSearchResult);
       
         if(findedProducts == false){
             setSearchResult([]);
@@ -96,6 +93,11 @@ const Products:React.FC = () => {
 
     }
 
+
+    const toRender = searchResult;
+
+
+    //Component content
     const prepareItemList:React.FC<Product> = (product) => {
 
         return (
@@ -119,9 +121,6 @@ const Products:React.FC = () => {
             </>
         );
     }
-
-    const toRender = searchResult;
-    
 
     return (
         <>
