@@ -53,10 +53,10 @@ export async function findProdutcs() {
 }
 
 
-export async function findSpecificProduct(searchValue:string):Promise<any>{
+export async function findSpecificProduct(id:number):Promise<any>{
     const apiData:ApiConectionData = {
         method:'GET',
-        uri:'/product/'+searchValue,
+        uri:'/product/'+id,
         headers:{
             "Content-Type":"application/json",
             "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
@@ -120,5 +120,17 @@ export async function deleteProduct(id:any) {
 
     return result;
 }
+
+
+
+export async function handleSetSearchResultState(setSearchResult:Function){
+    const findedProducts:any = await findProdutcs();
+    if(findedProducts.status != 200){
+        return false
+    }
+    setSearchResult(findedProducts.body);
+    return
+}
+
 
 
