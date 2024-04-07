@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import "./Header.css"
-import headerFooterComponent from '../../config/interfaces/HeaderFooter';
-import { BaseContext } from '../../config/contexts';
-import { List, Item } from '../List/List';
+import headerFooterComponent from '../../../config/interfaces/HeaderFooter';
+import { BaseContext } from '../../../config/contexts';
+import { List, Item } from '../../Resources/List/List';
 
 const Header:React.FC<headerFooterComponent> = (props) => {
 

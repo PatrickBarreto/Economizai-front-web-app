@@ -8,10 +8,10 @@ import './Products.css';
 import { findSpecificProduct, updateProduct,  deleteProduct, createProduct } from '../../hooks/ProductsHooks';
 import { handleSetSearchResultState } from '../../hooks/ProductsHooks';
 
-import Form  from '../../components/Form/Form.tsx';
-import Input from '../../components/Form/Input/Input.tsx';
-import { Item, List } from '../../components/List/List.tsx';
-import { SearchInput } from '../../components/Search/Search.tsx';
+import Form  from '../../components/Resources/Form/Form.tsx';
+import Input from '../../components/Resources/Form/Input/Input.tsx';
+import { Item, List } from '../../components/Resources/List/List.tsx';
+import { SearchInput } from '../../components/Resources/Search/Search.tsx';
 
 import { Product } from '../../config/Interfaces/SystemEntities/Products';
 

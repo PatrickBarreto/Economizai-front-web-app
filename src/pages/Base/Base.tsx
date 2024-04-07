@@ -1,10 +1,10 @@
 import React, { useEffect, useState} from 'react';
-import Header from '../../components/Header/Header.tsx';
-import Footer from '../../components/Footer/Footer.tsx';
+import Header from '../../components/Structure/Header/Header.tsx';
+import Footer from '../../components/Structure/Footer/Footer.tsx';
 import {menuLinks, menuLinksLoged} from '../../config/menuLinks.tsx';
 import './Base.css'
 import { BaseContext, BaseContextPage } from '../../config/contexts.tsx';
-import { BasePage } from '../../config/interfaces/BasePage.tsx';
+import { BasePage } from '../../config/Interfaces/BasePage.tsx';
 
 
 const Base:React.FC<BasePage> = (props) => {

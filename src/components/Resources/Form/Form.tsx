@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Form as FormInterface } from '../../config/interfaces/FormData';
+import { Form as FormInterface } from '../../../config/interfaces/FormData';
 import './Form.css';
-import { FormContext } from '../../config/contexts';
+import { FormContext } from '../../../config/contexts';
 
 
 const Form:React.FC<FormInterface> = ({ children, className, submitCallback, id = '' }) => {

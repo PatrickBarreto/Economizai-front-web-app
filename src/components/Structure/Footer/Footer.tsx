@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import "./Footer.css"
-import headerFooterComponent from '../../config/interfaces/HeaderFooter';
-import { BaseContext } from '../../config/contexts';
+import headerFooterComponent from '../../../config/interfaces/HeaderFooter';
+import { BaseContext } from '../../../config/contexts';
 
 
 const Footer:React.FC<headerFooterComponent> = (props) => {

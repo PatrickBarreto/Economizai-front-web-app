@@ -2,8 +2,8 @@
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
 import { tryLogin } from '../../hooks/LoginHooks';
-import Form from '../../components/Form/Form';
-import Input from '../../components/Form/Input/Input.tsx';
+import Form from '../../components/Resources/Form/Form.tsx';
+import Input from '../../components/Resources/Form/Input/Input.tsx';
 import { Title } from '../../components/subComponents/Title.tsx';
 
 
