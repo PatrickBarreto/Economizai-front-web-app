@@ -14,13 +14,11 @@ const Form:React.FC<FormInterface> = ({ children, className, submitCallback, id 
     }
     
     return (
-        <div>
-            <form className={className} id={id} onSubmit={handleSubmit(executeSubmitCallback)}>
-                <FormContext.Provider value={register}>
-                    {children}
-                </FormContext.Provider>
-            </form>
-        </div>
+        <form className={className} id={id} onSubmit={handleSubmit(executeSubmitCallback)}>
+            <FormContext.Provider value={register}>
+                {children}
+            </FormContext.Provider>
+        </form>
     );
 }
 
