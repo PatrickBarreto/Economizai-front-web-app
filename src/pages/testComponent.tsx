@@ -1,5 +1,5 @@
-import Input from "../components/Form/Input/Input";
-import Form from "../components/Form/Form";
+import Input from "../components/Resources/Form/Input/Input";
+import Form from "../components/Resources/Form/Form";
 
 const TestComponente = () => {
 

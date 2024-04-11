@@ -1,5 +1,6 @@
-import { ApiConectionData } from '../config/interfaces/ApiConection';
-import { ApiConection } from '../hooks/ApiConection';
+import { ApiConectionData } from '../config/Interfaces/ApiConection';
+import { Product } from '../config/Interfaces/SystemEntities';
+import { ApiConection } from './ApiConection';
 
 
 
@@ -30,7 +31,6 @@ export async function createProduct(data:any) {
 }
 
 
-
 export async function findProdutcs() {
     const apiData:ApiConectionData = {
         method:'GET',
@@ -53,7 +53,7 @@ export async function findProdutcs() {
 }
 
 
-export async function findSpecificProduct(id:number):Promise<any>{
+export async function findSpecificProduct(id:number|string):Promise<any>{
     const apiData:ApiConectionData = {
         method:'GET',
         uri:'/product/'+id,
@@ -74,11 +74,10 @@ export async function findSpecificProduct(id:number):Promise<any>{
 }
 
 
-
 export async function updateProduct(data:any) {
 
 
-    const requestBody = {
+    const requestBody:Product = {
         id: data.id,
         name: data.name,
         type: data.type,
@@ -101,7 +100,6 @@ export async function updateProduct(data:any) {
 
     return result;
 }
-
 
 
 
@@ -129,7 +127,6 @@ export async function handleSetSearchResultState(setSearchResult:Function){
         return false
     }
     setSearchResult(findedProducts.body);
-    return
 }
 
 

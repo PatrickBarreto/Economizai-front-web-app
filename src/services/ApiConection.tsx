@@ -1,5 +1,4 @@
-import React from 'react';
-import { ApiConectionData, ApiRetun } from '../config/interfaces/ApiConection';
+import { ApiConectionData, ApiRetun } from '../config/Interfaces/ApiConection';
 
 
 export async function ApiConection(props:ApiConectionData) {

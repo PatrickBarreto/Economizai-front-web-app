@@ -1,5 +1,5 @@
 import { ApiConection } from './ApiConection';
-import { ApiConectionData } from '../config/interfaces/ApiConection';
+import { ApiConectionData } from '../config/Interfaces/ApiConection';
 
 export async function tryLogin(formData:any) {
 

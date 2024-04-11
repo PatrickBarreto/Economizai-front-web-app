@@ -1,10 +1,6 @@
+import { InterfaceComeBackButton } from "../../config/Interfaces/SubComponents";
 
-
-interface interfaceComeBackButton {
-    action: Function
-}
-
-export const ComeBackButton:React.FC<interfaceComeBackButton>= (props) => {
+export const ComeBackButton:React.FC<InterfaceComeBackButton>= (props) => {
 
     return (
         <button onClick={()=>{props.action()}}>

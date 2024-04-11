@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Inputs } from "../../../config/interfaces/FormData";
-import { FormContext } from "../../../config/contexts";
+import { Inputs } from "../../../../config/Interfaces/FormData";
+import { FormContext } from "../../../../config/contexts";
 
 const validateInputData = (input:Inputs):Inputs => {
 
@@ -32,6 +32,10 @@ const validateInputData = (input:Inputs):Inputs => {
 
     if(input.required === true){
         inputsOption.required = true;
+    }
+
+    if(input.autocomplete === false){
+        inputsOption.autoComplete = 'off';
     }
 
     return inputsOption;
