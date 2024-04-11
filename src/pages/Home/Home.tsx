@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import Header from '../../components/Structure/Header/Header';
-import { PublicHeader } from '../../components/Templates/Header/PublicHeader';
-import { Main } from '../../components/Structure/Main/Main';
-import { PublicFooter } from '../../components/Templates/Footer/PublicFooter';
-import Footer from '../../components/Structure/Footer/Footer';
-
+import { Header, Footer, Main } from '../../components/Structure/Structure.tsx';
+import { HeaderTemplate } from '../../templates/Header/Header.tsx';
+import { PublicFooter } from '../../templates/Footer/PublicFooter.tsx';
 
 const Home:React.FC = () => {
     const navigate = useNavigate();
@@ -27,7 +24,7 @@ const Home:React.FC = () => {
     return (
         <>
             <Header>
-                <PublicHeader/>
+                <HeaderTemplate />
             </Header>
             <Main>
                 <div className="homePage">

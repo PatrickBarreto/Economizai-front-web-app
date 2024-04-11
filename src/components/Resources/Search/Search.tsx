@@ -3,7 +3,7 @@ import { RiSearchLine } from "react-icons/ri";
 import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
 import './Search.css'
-import { Search } from "../../../config/interfaces/Search";
+import { Search } from "../../../config/Interfaces/Search";
 
 export const SearchInput:React.FC<Search> = ({submitCallback}) => {
     return (

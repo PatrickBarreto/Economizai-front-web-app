@@ -1,26 +1,25 @@
 
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
-import { tryLogin } from '../../hooks/LoginHooks';
+import { tryLogin } from '../../services/Login.tsx';
 
 import Form from '../../components/Resources/Form/Form.tsx';
 import Input from '../../components/Resources/Form/Input/Input.tsx';
 
 import { Title } from '../../components/SubComponents/Title.tsx';
 
-import { Main } from '../../components/Structure/Main/Main.tsx';
-import Header from '../../components/Structure/Header/Header.tsx';
-import Footer from '../../components/Structure/Footer/Footer.tsx';
+import { Header, Main, Footer } from '../../components/Structure/Structure.tsx';
 
-import { PublicHeader } from '../../components/Templates/Header/PublicHeader.tsx';
-import { PublicFooter } from '../../components/Templates/Footer/PublicFooter.tsx';
+import { HeaderTemplate } from '../../templates/Header/Header.tsx';
+import { PublicFooter } from '../../templates/Footer/PublicFooter.tsx';
 
 
 
 const Login:React.FC = () => {    
-  const navigate = useNavigate();
+  
+  const handlerTyLogin = async (data:any) => {
+    const navigate = useNavigate();
 
-  const loginValidator = async (data:any) => {
     const response:any = await tryLogin(data);
     if(response === true){
       navigate('/home');
@@ -30,14 +29,14 @@ const Login:React.FC = () => {
   return (
     <>
       <Header>
-          <PublicHeader />
+          <HeaderTemplate />
       </Header>
       <Main>
         <div className="loginPage">
           <Title text="Olá, seja bem vindo"/>
           <Form 
             className={"loginForm"}
-            submitCallback={loginValidator}
+            submitCallback={handlerTyLogin}
           >
             <Input 
               label={ {
@@ -57,6 +56,7 @@ const Login:React.FC = () => {
               }}
               type={ "password"}
               name={ "password"}
+              autocomplete={ false }
               readonly={ false}
               required={ true}
             />

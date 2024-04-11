@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Form as FormInterface } from '../../../config/interfaces/FormData';
+import { Form as FormInterface } from '../../../config/Interfaces/FormData';
 import './Form.css';
 import { FormContext } from '../../../config/contexts';
 

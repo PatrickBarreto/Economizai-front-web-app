@@ -1,16 +1,12 @@
-import { useContext } from "react";
-import { menuLinks } from "../../../config/menuLinks";
-import { Item, List } from "../../Resources/List/List";
-import { HeaderContext } from "../../../config/contexts";
-
-const image= {path:"src/assets/react.svg", alt:"logo"};
+import { menuLinks } from "../../config/menuLinks";
+import { Item, List } from "../../components/Resources/List/List";
+import './PublicFooter.css'
 
 
-export const PublicHeader = () => {
-    const headerContext = useContext(HeaderContext);
-    console.log(headerContext);
+export const PublicFooter = () => {
+    const image= {path:"src/assets/react.svg", alt:"logo"};
     return (
-        <div className='divHeader'>
+        <div className='divFooter'>
             <div id="image">
                 <img src={image.path} alt={image.alt}/>
             </div>

@@ -21,6 +21,7 @@ export interface Inputs {
     readonly?: boolean,
     required?: boolean,
     contentTag?: any
+    autocomplete?:boolean,
     hidden?: boolean
 };
 
