@@ -8,7 +8,7 @@ const menuLinksLoged:menuItem[] = [
 
 const menuLinks:menuItem[] = [
   {label: "Login", link: "/login"},
-  {label: "Criar conta", link: "/create-account"}
+  {label: "Criar conta", link: "/createAccount"}
 ];
 
 export {menuLinks, menuLinksLoged};
