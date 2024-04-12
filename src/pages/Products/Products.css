@@ -88,32 +88,3 @@
     font-size: larger;
 }
 
-
-#divFormCreateProduct, #divFormEditProduct{
-    background-color: rgba(0, 0, 0, 0.77);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    z-index: 1;
-    color:black;
-}
-
-.createProduct, .editProduct{
-    background-color: white;
-    width: 400px;
-    height: 500px;
-    border-radius: 15px;
-    border: 1px solid rgb(175, 175, 175);
-    box-shadow: 10px 15px  50px black;
-    z-index: 2;
-}
-
-.createProduct #buttonSubmit{
-    font-size: medium;
-    width: 130px;
-    height: 40px;
-    margin-top: 50px;
-}

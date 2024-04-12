@@ -100,7 +100,7 @@ const Products:React.FC = () => {
             { showCreateForm && <ProductCreateForm action={handleCreateProduct}/> }
             { showEditForm && <ProductEditForm action={handlerUpdateProduct} product={productInputFormEdit}/> }    
             <Header>
-                <HeaderTemplate/>
+                <HeaderTemplate type={'logged'}/>
             </Header>
             <Main>
                 <SearchInput submitCallback={handlerFindSpecificProduct}/>
