@@ -1,5 +1,8 @@
+import { Modal } from "../../components/Modal/Modal";
 import Form from "../../components/Resources/Form/Form";
 import Input from "../../components/Resources/Form/Input/Input";
+import { Title } from "../../components/SubComponents/Title";
+import { SubTitle } from "../../components/SubComponents/subTitle";
 import { Product } from "../../config/Interfaces/SystemEntities";
 
 
@@ -11,13 +14,15 @@ interface ProductForm {
 
 export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
     return (
-        <div id="divFormEditProduct"> 
+        <Modal>
+            <Title content={"Editar produto"}/>
+            <SubTitle content={"Id:"+product?.id}/>
             <Form className={"editProduct"} submitCallback={action}>
                 <Input 
                     className={"hiddenElement"}
                     name={ "id"}
                     type={ "text"}
-                    value={product.id}
+                    value={product?.id}
                 />
 
                 <Input 
@@ -27,7 +32,7 @@ export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
                     }}
                     name={ "name"}
                     type={ "text"}
-                    placeholder={product.name}
+                    placeholder={product?.name}
                 />
 
                 <Input 
@@ -38,7 +43,7 @@ export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
                     className={"typeProduct"}
                     name={ "type"}
                     type={ "text"}
-                    placeholder={product.type}
+                    placeholder={product?.type}
                 />
 
                 <Input 
@@ -48,7 +53,7 @@ export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
                     }}
                     name={"volume"}
                     type={"text"}
-                    placeholder={product.volume}
+                    placeholder={product?.volume}
                 />
 
                 <Input label={{
@@ -57,7 +62,7 @@ export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
                     }}
                     name={"unitMensure"}
                     type={"text"}
-                    placeholder={product.unit_mensure}
+                    placeholder={product?.unit_mensure}
                 />
 
                 <Input
@@ -67,7 +72,8 @@ export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
                     value={"Editar Produto"}
                 />
             </Form>
-        </div>
+        </Modal>
+
     );
 }
 
@@ -75,7 +81,8 @@ export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
 export const ProductCreateForm:React.FC<ProductForm> = ({ action }) => {
 
     return (
-        <div id="divFormCreateProduct">
+        <Modal>
+            <Title content={"Criar novo produto"}/>
             <Form className={"createProduct"} submitCallback={action}>
                 <Input 
                     label={{
@@ -128,6 +135,6 @@ export const ProductCreateForm:React.FC<ProductForm> = ({ action }) => {
                     value={"Criar Produto"}
                 />
             </Form>
-        </div>
+        </Modal>
     );
 }
