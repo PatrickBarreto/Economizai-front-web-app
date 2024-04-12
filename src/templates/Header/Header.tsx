@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { menuLinks, menuLinksLoged } from "../../config/menuLinks";
 import { Item, List } from "../../components/Resources/List/List";
 import './PublicHeader.css'
@@ -5,11 +6,16 @@ import './PublicHeader.css'
 
 
 
+
+
+
 export const HeaderTemplate:any = ({type = 'public'}) => {
     const image= {path:"src/assets/react.svg", alt:"logo"};
-
+    const navigate = useNavigate();
+    
+    
     let item:{}[] = [];
-
+    
     switch(type){
         case 'public' : item = menuLinks
         break;
@@ -20,7 +26,7 @@ export const HeaderTemplate:any = ({type = 'public'}) => {
 
     return (
         <div className='divHeader'>
-            <div id="image">
+            <div id="image" onClick={()=>{navigate('/')}}>
                 <img src={image.path} alt={image.alt}/>
             </div>
             <div id="menu">
