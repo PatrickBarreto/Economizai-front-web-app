@@ -16,9 +16,9 @@ import { PublicFooter } from '../../templates/Footer/PublicFooter.tsx';
 
 
 const Login:React.FC = () => {    
+  const navigate = useNavigate();
   
   const handlerTyLogin = async (data:any) => {
-    const navigate = useNavigate();
 
     const response:any = await tryLogin(data);
     if(response === true){
@@ -33,7 +33,7 @@ const Login:React.FC = () => {
       </Header>
       <Main>
         <div className="loginPage">
-          <Title text="Olá, seja bem vindo"/>
+          <Title content="Olá, seja bem vindo"/>
           <Form 
             className={"loginForm"}
             submitCallback={handlerTyLogin}

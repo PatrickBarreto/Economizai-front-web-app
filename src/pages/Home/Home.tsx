@@ -24,7 +24,7 @@ const Home:React.FC = () => {
     return (
         <>
             <Header>
-                <HeaderTemplate />
+                <HeaderTemplate type={'logged'}/>
             </Header>
             <Main>
                 <div className="homePage">
