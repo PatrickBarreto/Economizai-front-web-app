@@ -1,10 +1,10 @@
 import React from 'react';
 import { TextInterface } from '../../config/Interfaces/SubComponents';
 
-export const Title:React.FC<TextInterface> = ({ content, fontSize = '35px' }) => {
+export const SubTitle:React.FC<TextInterface> = ({ content, fontSize = '25px' }) => {
     return (
         <div className="divTitle">
-            <h1 style={{fontSize:fontSize}}>{content}</h1>
+            <h2 style={{fontSize:fontSize}}>{content}</h2>
         </div>
     );
 }
