@@ -26,3 +26,4 @@ dist-ssr
 package-lock.json
 .env
 Notes-About-System.txt
+src/components/testComponent.tsx
