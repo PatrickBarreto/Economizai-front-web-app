@@ -2,7 +2,7 @@ import { Modal } from "../../components/Modal/Modal";
 import Form from "../../components/Resources/Form/Form";
 import Input from "../../components/Resources/Form/Input/Input";
 import { Title } from "../../components/SubComponents/Title";
-import { SubTitle } from "../../components/SubComponents/subTitle";
+import { SubTitle } from "../../components/SubComponents/SubTitle";
 import { Product } from "../../config/Interfaces/SystemEntities";
 
 
