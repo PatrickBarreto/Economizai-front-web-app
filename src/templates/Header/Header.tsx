@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { menuLinks, menuLinksLoged } from "../../config/menuLinks";
 import { Item, List } from "../../components/Resources/List/List";
-import './PublicHeader.css'
+import './Header.css'
 
 
 
