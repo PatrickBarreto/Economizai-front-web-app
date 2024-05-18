@@ -59,6 +59,7 @@ export const CreareAcccount:React.FC<any> = () => {
                         }}
                         name={"password"}
                         type={"password"}
+                        autocomplete={false}
                         required={true}
                     />
                     <Input 
