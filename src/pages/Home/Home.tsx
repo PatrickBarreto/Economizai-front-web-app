@@ -14,10 +14,10 @@ const Home:React.FC = () => {
     }
 
     const routes = [
-                        ['Home','/home'], 
                         ['Listas', '/shopping-list'], 
                         ['Produtos', '/products'], 
-                        ['Marcas', '/brands']
+                        ['Marcas', '/brands'],
+                        ['Categorias', '/categories']
                     ];
     
 
