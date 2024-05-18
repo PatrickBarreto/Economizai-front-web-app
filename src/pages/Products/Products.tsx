@@ -13,10 +13,11 @@ import { SearchInput }              from '../../components/Resources/Search/Sear
 import { Header, Footer, Main}      from '../../components/Structure/Structure.tsx';
 import { Link }                     from '../../components/SubComponents/Link.tsx';
 
-import { ProductCreateForm, ProductEditForm } from '../../templates/Form/ProductForms.tsx';
+import { ProductCreateForm, ProductEditForm } from './ProductForms.tsx';
 import { HeaderTemplate }                       from '../../templates/Header/Header.tsx';
 import { PublicFooter }                       from '../../templates/Footer/PublicFooter.tsx';
-import { ProductList }                        from '../../templates/List/ProductList.tsx';
+import { ProductList }                        from './ProductList.tsx';
+import { Title } from '../../components/SubComponents/Title.tsx';
 
 
 const Products:React.FC = () => {
@@ -103,6 +104,7 @@ const Products:React.FC = () => {
                 <HeaderTemplate type={'logged'}/>
             </Header>
             <Main>
+                <Title content='Produtos'/>
                 <SearchInput submitCallback={handlerFindSpecificProduct}/>
                 <Link action={showCreateProductForm} icon={<IoMdAdd/>} text="Adicionar um novo Produto"/>
                 <ProductList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDeleteProduct}/>
