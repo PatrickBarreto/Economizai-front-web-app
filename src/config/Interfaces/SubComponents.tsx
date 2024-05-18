@@ -1,5 +1,7 @@
-export interface InterfaceComeBackButton {
-    action: Function
+export interface ButtonInterface {
+    action: Function,
+    content: string,
+    buttonClassName?: string
 }
 
 export interface TextInterface {
