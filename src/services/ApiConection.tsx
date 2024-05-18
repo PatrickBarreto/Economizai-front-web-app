@@ -8,7 +8,6 @@ export async function ApiConection(props:ApiConectionData) {
     try{
         const response = await fetch(import.meta.env.VITE_BASE_API+props.uri+queryString, props);
         
-        
         if(!response.ok) {
             validadeHttpErrorStatus(response);
         }
@@ -27,6 +26,31 @@ export async function ApiConection(props:ApiConectionData) {
         throw new Error("HTTP error! status:"+error);
     }
 }
+
+
+export async function callApi(method:string, uri:string, requestBody:Object = {}){
+
+    const apiData:ApiConectionData = {
+        method: method,
+        uri: uri,
+        headers:{
+            "Content-Type":"application/json",
+            "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
+            "Authorization":localStorage.getItem('Authorization') ?? ''
+        },
+        body: JSON.stringify(requestBody)
+    }
+        
+    if(method == 'GET' || method == 'HEAD'){
+        delete apiData.body;
+    }
+
+    const result:ApiRetun = await ApiConection(apiData);
+
+
+    return result;
+}
+
 
 
 function validadeHttpErrorStatus(response:Response){
