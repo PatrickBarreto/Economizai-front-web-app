@@ -14,8 +14,8 @@ import { Header, Footer, Main}      from '../../components/Structure/Structure.t
 import { Link }                     from '../../components/SubComponents/Link.tsx';
 
 import { ProductCreateForm, ProductEditForm } from './ProductForms.tsx';
-import { HeaderTemplate }                       from '../../templates/Header/Header.tsx';
-import { PublicFooter }                       from '../../templates/Footer/PublicFooter.tsx';
+import { HeaderTemplate, PrivateHeader }                       from '../../templates/Headers/Headers.tsx';
+import { PrivateFooter, PublicFooter }                       from '../../templates/Footers/Footers.tsx';
 import { ProductList }                        from './ProductList.tsx';
 import { Title } from '../../components/SubComponents/Title.tsx';
 
@@ -101,7 +101,7 @@ const Products:React.FC = () => {
             { showCreateForm && <ProductCreateForm action={handleCreateProduct}/> }
             { showEditForm && <ProductEditForm action={handlerUpdateProduct} product={productInputFormEdit}/> }    
             <Header>
-                <HeaderTemplate type={'logged'}/>
+                <PrivateHeader/>
             </Header>
             <Main>
                 <Title content='Produtos'/>
@@ -110,7 +110,7 @@ const Products:React.FC = () => {
                 <ProductList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDeleteProduct}/>
             </Main>
             <Footer>
-                <PublicFooter/>
+                <PrivateFooter/>
             </Footer>
         </>
     );

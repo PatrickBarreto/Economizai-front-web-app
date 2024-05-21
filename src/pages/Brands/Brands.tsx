@@ -10,8 +10,8 @@ import { Header, Footer, Main}      from '../../components/Structure/Structure.t
 import { Link }                     from '../../components/SubComponents/Link.tsx';
 
 import { BrandCreateForm, BrandEditForm } from './BrandForms.tsx';
-import { HeaderTemplate }                       from '../../templates/Header/Header.tsx';
-import { PublicFooter }                       from '../../templates/Footer/PublicFooter.tsx';
+import { PrivateHeader }                  from '../../templates/Headers/Headers.tsx';
+import { PrivateFooter }                  from '../../templates/Footers/Footers.tsx';
 import { BrandList } from './BrandList.tsx';
 import { Title } from '../../components/SubComponents/Title.tsx';
 
@@ -101,7 +101,7 @@ const Brands:React.FC = () => {
             { showCreateForm && <BrandCreateForm action={handleCreate}/> }
             { showEditForm && <BrandEditForm action={handlerUpdate} brand={brandInputFormEdit}/> }
             <Header>
-                <HeaderTemplate type={'logged'}/>
+                <PrivateHeader/>
             </Header>
             <Main>
                 <Title content='Marcas'/>
@@ -110,7 +110,7 @@ const Brands:React.FC = () => {
                 <BrandList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
             </Main>
             <Footer>
-                <PublicFooter/>
+                <PrivateFooter/>
             </Footer>
         </>
     );

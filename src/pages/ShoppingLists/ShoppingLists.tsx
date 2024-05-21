@@ -10,8 +10,8 @@ import { Header, Footer, Main} from '../../components/Structure/Structure.tsx';
 import { Link } from '../../components/SubComponents/Link.tsx';
 
 import { ShoppingListsCreateForm, ShoppingListsEditForm } from './ShoppingListsForms.tsx';
-import { HeaderTemplate } from '../../templates/Header/Header.tsx';
-import { PublicFooter } from '../../templates/Footer/PublicFooter.tsx';
+import { PrivateHeader } from '../../templates/Headers/Headers.tsx';
+import { PublicFooter } from '../../templates/Footers/Footers.tsx';
 import { ShoppingListsList } from './ShoppingListsList.tsx';
 import { Title } from '../../components/SubComponents/Title.tsx';
 
@@ -101,7 +101,7 @@ const ShoppingLists:React.FC = () => {
             { showCreateForm && <ShoppingListsCreateForm action={handleCreate}/> }
             { showEditForm && <ShoppingListsEditForm action={handlerUpdate} shoppingList={InputFormEdit}/> }
             <Header>
-                <HeaderTemplate type={'logged'}/>
+                <PrivateHeader/>
             </Header>
             <Main>
                 <Title content='Listas de Compras'/>

@@ -1,37 +1,39 @@
-.divHeader {
-    width: 100%;
-    height: 20%;
-    max-height: 100px;
+.publicFooter {
+    width: 100vw;
+    height: 300px;
     display:flex;
     justify-content: center;
     padding: 20px;
-    position: fixed;
-    top:0;
-    z-index:9999999999999999;
-    background-color: black;
 }
 
-#image {
+#footerImage {
     width: 50%;
     height: 50%;
-    cursor: pointer;
 }
 
-#image img {
+#footerImage img {
     margin: 10px;
 }
 
-#menu {
+#headerMenu {
     width: 50%;
     justify-content: center;
 }
 
-#menu ul {
+#footerMenu ul {
     display: flex;
     justify-content: right;
 }
 
-.itemMenu {
+.itemFooterMenu {
     list-style: none;
     margin-right : 30px;
+}
+
+.privateFooter {
+    width: 100vw;
+    height: 300px;
+    display:flex;
+    justify-content: center;
+    padding: 20px;
 }

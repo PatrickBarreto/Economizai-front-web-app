@@ -2,8 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import { Header, Footer, Main } from '../../components/Structure/Structure.tsx';
-import { HeaderTemplate } from '../../templates/Header/Header.tsx';
-import { PublicFooter } from '../../templates/Footer/PublicFooter.tsx';
+import { PrivateHeader } from '../../templates/Headers/Headers.tsx';
+import { PrivateFooter } from '../../templates/Footers/Footers.tsx';
 
 const Home:React.FC = () => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Home:React.FC = () => {
     return (
         <>
             <Header>
-                <HeaderTemplate type={'logged'}/>
+                <PrivateHeader/>
             </Header>
             <Main>
                 <div className="homePage">
@@ -46,7 +46,7 @@ const Home:React.FC = () => {
                 </div>
             </Main>
             <Footer>
-                <PublicFooter />
+                <PrivateFooter />
             </Footer>
         </>
 

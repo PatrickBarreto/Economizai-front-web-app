@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../components/SubComponents/Button';
-import "./ctaButton.css";
+import "./Buttons.css";
 import { ButtonInterface } from '../../config/Interfaces/SubComponents';
 
 export const CtaButton:React.FC<ButtonInterface> = ({action, content}) => {

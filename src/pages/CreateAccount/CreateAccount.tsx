@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer, Header, Main } from '../../components/Structure/Structure';
-import { HeaderTemplate } from '../../templates/Header/Header';
-import { PublicFooter } from '../../templates/Footer/PublicFooter';
+import { PublicHeader } from '../../templates/Headers/Headers';
+import { PublicFooter } from '../../templates/Footers/Footers';
 import Form from '../../components/Resources/Form/Form';
 import Input from '../../components/Resources/Form/Input/Input';
 import { Title } from '../../components/SubComponents/Title';
@@ -22,7 +22,7 @@ export const CreareAcccount:React.FC<any> = () => {
     return (
         <>
             <Header>
-                <HeaderTemplate/>
+                <PublicHeader/>
             </Header>
             <Main>
                 <Title content={"Criar Conta"} />

@@ -10,8 +10,8 @@ import { Title } from '../../components/SubComponents/Title.tsx';
 
 import { Header, Main, Footer } from '../../components/Structure/Structure.tsx';
 
-import { HeaderTemplate } from '../../templates/Header/Header.tsx';
-import { PublicFooter } from '../../templates/Footer/PublicFooter.tsx';
+import { PublicHeader } from '../../templates/Headers/Headers.tsx';
+import { PublicFooter } from '../../templates/Footers/Footers.tsx';
 
 
 
@@ -29,7 +29,7 @@ const Login:React.FC = () => {
   return (
     <>
       <Header>
-          <HeaderTemplate />
+          <PublicHeader />
       </Header>
       <Main>
         <div className="loginPage">

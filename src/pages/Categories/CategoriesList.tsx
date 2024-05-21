@@ -8,14 +8,14 @@ import { TbEdit } from "react-icons/tb";
 interface ProductList {
     content:Categories[],
     actionEdit:Function,
-    actionDelete:Function
+    actionDelete:Function,
+    detailActionOnClick?:Function
 
 }
 interface ProductItem {
     product:Categories,
     actionEdit:Function,
     actionDelete:Function
-
 }
 
 
@@ -44,14 +44,14 @@ const PrepareItemList:React.FC<ProductItem> = ({product, actionEdit, actionDelet
     );
 }
 
-export const CategoriesList:React.FC<ProductList> = ({ content, actionEdit, actionDelete }) => {
+export const CategoriesList:React.FC<ProductList> = ({ content, actionEdit, actionDelete, detailActionOnClick = ()=>{} }) => {
     return (
         <div id="divProductsList">
             <List id={"productsList"}>
             {
                 content.map((product:any, index:any)=>{
                     return (
-                        <Item key={index} className={"product"}>
+                        <Item key={index} className={"product"} actionOnClick={()=>{detailActionOnClick(product.id)}}>
                             <PrepareItemList product={product} actionEdit={actionEdit} actionDelete={actionDelete} />
                         </Item>
                     )

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { IoMdAdd } from "react-icons/io";
-import './Categories.css';
+
 
 import { create, findSpecific, update, remove, handleSetSearchResultState} from '../../services/Categories.tsx';
 
@@ -10,10 +10,12 @@ import { Header, Footer, Main} from '../../components/Structure/Structure.tsx';
 import { Link } from '../../components/SubComponents/Link.tsx';
 
 import { CategoriesCreateForm, CategoriesEditForm } from './CategoriesForms.tsx';
-import { HeaderTemplate } from '../../templates/Header/Header.tsx';
-import { PublicFooter } from '../../templates/Footer/PublicFooter.tsx';
-import { CategoriesList } from './CategoriesList.tsx';
+import { PrivateHeader } from '../../templates/Headers/Headers.tsx';
+import { PrivateFooter } from '../../templates/Footers/Footers.tsx';
 import { Title } from '../../components/SubComponents/Title.tsx';
+
+import { CategoriesList } from './CategoriesList.tsx';
+import './Categories.css';
 
 
 const Categories:React.FC = () => {
@@ -89,7 +91,6 @@ const Categories:React.FC = () => {
     }
 
 
-
     const handlerDelete = async (id:any) => {
         const result = await remove(id);
        
@@ -112,7 +113,7 @@ const Categories:React.FC = () => {
             { showCreateForm && <CategoriesCreateForm action={handleCreate}/> }
             { showEditForm && <CategoriesEditForm action={handlerUpdate} category={categoryInputFormEdit}/> }
             <Header>
-                <HeaderTemplate type={'logged'}/>
+                <PrivateHeader/>
             </Header>
             <Main>
                 <Title content='Categorias'/>
@@ -121,7 +122,7 @@ const Categories:React.FC = () => {
                 <CategoriesList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
             </Main>
             <Footer>
-                <PublicFooter/>
+                <PrivateFooter/>
             </Footer>
         </>
     );

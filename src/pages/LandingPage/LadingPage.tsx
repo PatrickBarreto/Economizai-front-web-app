@@ -1,10 +1,10 @@
 import React from 'react';
 import { Footer, Header, Main } from '../../components/Structure/Structure';
-import { HeaderTemplate } from '../../templates/Header/Header';
-import { PublicFooter } from '../../templates/Footer/PublicFooter';
+import { PublicHeader } from '../../templates/Headers/Headers';
+import { PublicFooter } from '../../templates/Footers/Footers';
 import { Title } from '../../components/SubComponents/Title';
 import { useNavigate } from 'react-router-dom';
-import { CtaButton } from '../../templates/Button/CtaButton';
+import { CtaButton } from '../../templates/Buttons/Buttons';
 
 export const LandingPage:React.FC<any> = () => {
 
@@ -14,7 +14,7 @@ export const LandingPage:React.FC<any> = () => {
     return (
         <>
             <Header>
-                <HeaderTemplate />
+                <PublicHeader />
             </Header>
             <Main >
                 <Title content="Economizaí" />
