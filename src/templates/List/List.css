@@ -1,0 +1,30 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 10px;
+    overflow-y: auto;
+    width: 80vw;
+    max-width: 500px;
+    max-height: 70vh;
+    border-radius: 15px;
+    padding: 1px;
+}
+
+.imageItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+}
+.imageItem :first-child{
+    top:20px;
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.idContent{
+    display: none;
+}
