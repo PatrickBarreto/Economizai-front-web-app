@@ -106,7 +106,7 @@ const Categories:React.FC = () => {
         }
     }
 
-    const toRender = searchResult;
+    const listContent = searchResult;
 
     return (    
         <>
@@ -119,7 +119,7 @@ const Categories:React.FC = () => {
                 <Title content='Categorias'/>
                 <SearchInput submitCallback={handlerFindSpecific}/>
                 <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Adicionar uma nova categoria"/>
-                <CategoriesList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
+                <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
             </Main>
             <Footer>
                 <PrivateFooter/>
