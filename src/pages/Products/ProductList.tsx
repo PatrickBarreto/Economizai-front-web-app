@@ -1,62 +1,28 @@
 import { Product } from "../../config/Interfaces/SystemEntities";
-import { List, Item } from "../../components/Resources/List/List";
 
-import { RiSearchLine, RiDeleteBack2Line } from "react-icons/ri";
-import { TbEdit } from "react-icons/tb";
+import { DefaultList, List, contentDefaultItem } from "../../templates/List/Lists";
 
-interface ProductList {
-    content:Product[],
-    actionEdit:Function,
-    actionDelete:Function
-
-}
-interface ProductItem {
-    product:Product,
-    actionEdit:Function,
-    actionDelete:Function
-
+interface ProductList extends List{
+    contents: Product[]
 }
 
 
-//Component content
-const PrepareItemList:React.FC<ProductItem> = ({product, actionEdit, actionDelete }) => {
+const setDefaultListItemPattern = (content:Array<Product>):Array<contentDefaultItem> => {
+    const listItens = content.map((item:any)=>{
+    return {
+        id:item.id,
+        title:item.name,
+        description:item.type,
+    }
+})
 
-    return (
-        <>
-            <div className="productImage">
-                <RiSearchLine/>
-            </div>
-            <div className="productDetails">
-                <p className="idProduct">{product.id}</p>
-                <p className="produtctName">{product.name}</p>
-                <span className="fastInfo">{product.volume}{product.unit_mensure}</span>
-            </div>
-            <div className="actionButtons">
-                <a onClick={()=>{actionEdit(product.id ? product.id : 0)}}>
-                    <TbEdit />
-                </a>
-                <a onClick={()=>{actionDelete(product.id)}}>
-                    <RiDeleteBack2Line />
-                </a >
-            </div>
-        </>
-    );
+return listItens;
 }
 
-export const ProductList:React.FC<ProductList> = ({ content, actionEdit, actionDelete }) => {
-    return (
-        <div id="divProductsList">
-            <List id={"productsList"}>
-            {
-                content.map((product:any, index:any)=>{
-                    return (
-                        <Item key={index} className={"product"}>
-                            <PrepareItemList product={product} actionEdit={actionEdit} actionDelete={actionDelete} />
-                        </Item>
-                    )
-                })
-            }
-            </List>        
-        </div>
-    );
+
+export const ProductList:React.FC<ProductList> = ({ contents, actionEdit = ()=>{}, actionDelete = ()=>{}, detailActionOnClick = ()=>{}}) => {
+    return <DefaultList contents={setDefaultListItemPattern(contents)} actionEdit={actionEdit} actionDelete={actionDelete} detailActionOnClick={detailActionOnClick} />
 }
+
+
+

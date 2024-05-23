@@ -107,7 +107,7 @@ const Products:React.FC = () => {
                 <Title content='Produtos'/>
                 <SearchInput submitCallback={handlerFindSpecificProduct}/>
                 <Link action={showCreateProductForm} icon={<IoMdAdd/>} text="Adicionar um novo Produto"/>
-                <ProductList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDeleteProduct}/>
+                <ProductList contents={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDeleteProduct}/>
             </Main>
             <Footer>
                 <PrivateFooter/>
