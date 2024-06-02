@@ -7,7 +7,9 @@ import { callApi } from './ApiConection';
 export async function create(data:any){
 
     const requestBody:Categories = {
-        name:data.name
+        name:data.name,
+        products:data.products,
+        brands:data.brands
     }
 
     const response:ApiRetun = await callApi('POST', '/category', requestBody);
@@ -40,11 +42,11 @@ export async function findSpecific(id:number|string):Promise<any>{
     return [response.body];
 }
 
-
 export async function update(data:any) {
-
     const requestBody:Categories = {
-        name:data.name
+        name:data.name,
+        products:data.products,
+        brands:data.brands
     }
 
     const response:ApiRetun = await callApi('PUT', '/category/'+data.id, requestBody);
