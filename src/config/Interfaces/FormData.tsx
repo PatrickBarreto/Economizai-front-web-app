@@ -14,6 +14,7 @@ export interface Inputs {
     }
     name: string,
     type?: string,
+    checked?: boolean,
     id?: string,
     className?: string,
     value?: any,
@@ -26,12 +27,24 @@ export interface Inputs {
 };
 
 export interface Select {
-        className: string, 
-        id?: string,
+    label?: {
+        className?:string,
+        value?:string
     }
+    className: string, 
+    id?: string,
+    name: string,
+    required?: boolean,
+    multiple?: boolean,
+    children: ReactNode
+}
 
 export interface SelectOption {
-        value: string, 
-        label: string, 
-        disabled: boolean
+    label?: {
+        className?:string,
+        value?:string
+    }
+    value?: number, 
+    disabled?: boolean
+    children: string
 }[]

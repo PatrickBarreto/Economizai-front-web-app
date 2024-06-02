@@ -1,63 +1,24 @@
-import { Categories } from "../../config/Interfaces/SystemEntities";
-import { List, Item } from "../../components/Resources/List/List";
+import { DefaultList, List, contentDefaultItem } from "../../templates/List/Lists";
+import { ShoppingList } from "../../config/Interfaces/SystemEntities";
 
-import { RiSearchLine, RiDeleteBack2Line } from "react-icons/ri";
-import { TbEdit } from "react-icons/tb";
-
-
-interface ProductList {
-    content:Categories[],
-    actionEdit:Function,
-    actionDelete:Function
-
-}
-interface ProductItem {
-    product:Categories,
-    actionEdit:Function,
-    actionDelete:Function
-
+interface ShoppingListList extends List{
+    contents: ShoppingList[]
 }
 
+const setDefaultListItemPattern = (content:Array<ShoppingList>):Array<contentDefaultItem> => {
+    const listItens = content.map((item:any)=>{
+        return {
+            id:item.id,
+            title:item.name,
+            description:item.type,
+        }
+    })
 
-//Component content
-const PrepareItemList:React.FC<ProductItem> = ({product, actionEdit, actionDelete }) => {
-
-    return (
-        <>
-            <div className="productImage">
-                <RiSearchLine/>
-            </div>
-            <div className="productDetails">
-                <p className="idProduct">{product.id}</p>
-                <p className="produtctName">{product.name}</p>
-                <span className="fastInfo">{product.volume}{product.unit_mensure}</span>
-            </div>
-            <div className="actionButtons">
-                <a onClick={()=>{actionEdit(product.id ? product.id : 0)}}>
-                    <TbEdit />
-                </a>
-                <a onClick={()=>{actionDelete(product.id)}}>
-                    <RiDeleteBack2Line />
-                </a >
-            </div>
-        </>
-    );
+    return listItens;
 }
 
-export const ShoppingListsList:React.FC<ProductList> = ({ content, actionEdit, actionDelete }) => {
-    return (
-        <div id="divProductsList">
-            <List id={"productsList"}>
-            {
-                content.map((product:any, index:any)=>{
-                    return (
-                        <Item key={index} className={"product"}>
-                            <PrepareItemList product={product} actionEdit={actionEdit} actionDelete={actionDelete} />
-                        </Item>
-                    )
-                })
-            }
-            </List>        
-        </div>
-    );
+
+
+export const ShoppingListsList:React.FC<ShoppingListList> = ({ contents, actionEdit = () => {}, actionDelete = () => {}, detailActionOnClick = ()=>{console.log('oi')} }) => {
+    return <DefaultList contents={setDefaultListItemPattern(contents)} actionEdit={actionEdit} actionDelete={actionDelete} detailActionOnClick={detailActionOnClick} />
 }

@@ -107,7 +107,7 @@ const ShoppingLists:React.FC = () => {
                 <Title content='Listas de Compras'/>
                 <SearchInput submitCallback={handlerFindSpecific}/>
                 <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Adicionar uma lista de compras"/>
-                <ShoppingListsList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
+                <ShoppingListsList contents={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
             </Main>
             <Footer>
                 <PublicFooter/>
