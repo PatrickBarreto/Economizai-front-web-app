@@ -9,6 +9,7 @@ export interface Product {
     type?:string,
     volume:string,
     unit_mensure:string,
+    productsCategory?:[]
 }
 
 export interface Brand {
@@ -19,7 +20,9 @@ export interface Brand {
 
 export interface Categories {
     id?:number|string,
-    name:string
+    name:string,
+    products:Product[],
+    brands:Brand[]
 }
 
 export interface CategoriesProducts {
