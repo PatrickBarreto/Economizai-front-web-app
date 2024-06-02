@@ -87,3 +87,11 @@
     color:black;
     font-size: larger;
 }
+
+#divCategoryProducts{
+    padding: 40px;
+}
+
+#divCategoryBrands{
+    padding: 40px;
+}

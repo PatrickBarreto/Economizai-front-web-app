@@ -84,8 +84,8 @@ const Categories:React.FC = () => {
 
     
     const prepareEditFormData = async (id:number|string) => {
-        const product = await findSpecific(id);
-        setCategoryInputFormEdit(product[0]);
+        const category = await findSpecific(id);
+        setCategoryInputFormEdit(category[0]);
         setShowCreateForm(false)
         setShowEditForm(true);
     }
@@ -119,7 +119,7 @@ const Categories:React.FC = () => {
                 <Title content='Categorias'/>
                 <SearchInput submitCallback={handlerFindSpecific}/>
                 <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Adicionar uma nova categoria"/>
-                <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
+                <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete} />
             </Main>
             <Footer>
                 <PrivateFooter/>
