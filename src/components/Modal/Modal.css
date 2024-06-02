@@ -9,5 +9,7 @@
     position: fixed;
     right: 0px;
     padding: 40px;
+    padding-top: 150px;
     z-index: 9999;
+    overflow: auto;
 }
