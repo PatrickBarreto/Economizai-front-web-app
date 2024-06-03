@@ -51,16 +51,11 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                     placeholder={category?.name}
                 />
 
-                <div>
+                <div className={"divCategoryBonds"}>
                     <h2> Products </h2>
+                    <div className={"divContentCategoryBonds"}>
                     {
                         category?.products.map((product, index:any)=>{
-                           
-                            let checked =  false;
-                            if(Array.isArray(product.productsCategory)){
-                                checked = product.productsCategory.includes(category.id.toString())
-                            }
-
                             return (
                                 <Checkbox 
                                     key={index}
@@ -69,18 +64,21 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                                         value: product.name
                                         }
                                     }
+                                    className={ 'checkboxCategoryBonds' }
                                     value={ product.id }
                                     name={ 'products' }
-                                    checked={ checked }
+                                    checked={ product.productsCategory == category.id }
                                 />
                             )
                             }
                         )
-                    }       
+                    }  
+                    </div>    
                 </div>
 
-                <div>
+                <div className={"divCategoryBonds"}>
                     <h2> Marcas </h2>
+                    <div className={"divContentCategoryBonds"}>
                     {
                         category?.brands.map((brand, index:any)=>{
                                 return (
@@ -91,6 +89,7 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                                             value: brand.name
                                             }
                                         }
+                                        className={ 'checkboxCategoryBonds' }
                                         value={ brand.id }
                                         name={ 'brands' }
                                         checked={ true }
@@ -99,7 +98,7 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                             }
                         )
                     }
-                    
+                    </div>
                 </div>
                     
                 <Input
@@ -145,8 +144,9 @@ export const CategoriesCreateForm:React.FC<CategoryForm> = ({ action }) => {
                     required={true}
                 />
 
-                <div id={"divCategoryProducts"}>
+                <div id={"divCategoryBonds"}>
                     <h3> Products </h3>
+                    <div className={"divContentCategoryBonds"}>
                     {
                         products && products.map((product, index:any)=>{
                             return (
@@ -163,11 +163,13 @@ export const CategoriesCreateForm:React.FC<CategoryForm> = ({ action }) => {
                                 />
                             )
                         })
-                    }       
+                    } 
+                    </div>      
                 </div>
 
-                <div id={"divCategoryBrands"}>
+                <div id={"divCategoryBonds"}>
                     <h3> Marcas </h3>
+                    <div className={"divContentCategoryBonds"}>
                     {
                         brands && brands.map((brand, index:any)=>{
                             return (
@@ -185,7 +187,7 @@ export const CategoriesCreateForm:React.FC<CategoryForm> = ({ action }) => {
                             )
                         })
                     }
-                    
+                    </div>
                 </div>
 
                 <Input

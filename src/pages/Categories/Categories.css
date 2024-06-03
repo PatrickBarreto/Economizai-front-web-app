@@ -88,10 +88,28 @@
     font-size: larger;
 }
 
-#divCategoryProducts{
+.divCategoryBonds{
     padding: 40px;
 }
 
-#divCategoryBrands{
-    padding: 40px;
+.divContentCategoryBonds{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.divCheckbox{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 100%;
+}
+
+.divCheckbox label{
+   width: 300px;
+}
+.divCheckbox input{
+   width: 20%;
 }
