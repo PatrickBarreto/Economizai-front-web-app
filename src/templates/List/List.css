@@ -9,6 +9,7 @@
     max-height: 70vh;
     border-radius: 15px;
     padding: 1px;
+    overflow: auto;
 }
 
 .imageItem{
