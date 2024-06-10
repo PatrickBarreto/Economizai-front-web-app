@@ -15,7 +15,8 @@ export interface Product {
 export interface Brand {
     id?:number|string,
     name:string,
-    type?:string
+    type?:string,
+    brandsCategory?:number
 }
 
 export interface Categories {
