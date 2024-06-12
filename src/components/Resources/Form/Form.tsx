@@ -16,7 +16,6 @@ const Form:React.FC<FormInterface> = ({ children, className, submitCallback, id 
     });
 
     const executeSubmitCallback = (data:zodSchema) =>{
-        debugger;
         return submitCallback(data);
     }
     
