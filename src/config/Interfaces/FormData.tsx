@@ -1,10 +1,12 @@
 import { ReactNode } from "react"
+import { ZodType } from "zod"
 
 export interface Form {
     className: string, 
     submitCallback: Function
     id?: string,
-    children: ReactNode
+    children: ReactNode,
+    zodObject: ZodType
 }
 
 export interface Inputs { 
