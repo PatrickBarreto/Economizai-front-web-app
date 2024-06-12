@@ -4,12 +4,12 @@ import Form from "../Form/Form";
 import Input from "../Form/Input/Input";
 import './Search.css'
 import { Search } from "../../../config/Interfaces/Search";
-import { array, number, string, z } from "zod";
+import { z } from "zod";
 
 export const SearchInput:React.FC<Search> = ({submitCallback}) => {
 
     const zodObjectSchema = z.object({
-        search: string()
+        searchProducts: z.string()
     });
     
 
