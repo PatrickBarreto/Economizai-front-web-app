@@ -25,15 +25,15 @@ const handleFind = async (finder:Function) => {
 }
    
 
+const categoryZodObject = z.object({
+    id: z.string(),
+    name: z.string(),
+    brands: z.array(z.string()),
+    products: z.array(z.string()),
+});
+
 
 export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) => { 
-
-    const categoryZodObject = z.object({
-        id: z.string(),
-        name: z.string(),
-        brands: z.array(z.string()),
-        products: z.array(z.string()),
-    });
     
 
     return (
