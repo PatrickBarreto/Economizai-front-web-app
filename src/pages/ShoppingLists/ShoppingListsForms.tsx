@@ -4,13 +4,25 @@ import Input from "../../components/Resources/Form/Input/Input";
 import { Title } from "../../components/SubComponents/Title";
 import { SubTitle } from "../../components/SubComponents/SubTitle";
 import { ShoppingList } from "../../config/Interfaces/SystemEntities";
+import { ShoppingListsListExecutions } from "./ShoppingListsListExecutions";
+import { z } from "zod";
 
 
 interface ShoppingListsForm {
     action: Function,
-    shoppingList?:ShoppingList
-
+    shoppingList:ShoppingList
 }
+const createShoppingListExecutionZodObject = z.object({
+    name:z.string(),
+    type:z.string(),
+});
+
+const editShoppingListExecutionZodObject = z.object({
+    id:z.number(),
+    name:z.string(),
+    type:z.string(),
+    executions:z.array(z.string()),
+});
 
 export const ShoppingListsEditForm:React.FC<ShoppingListsForm> = ({ action, shoppingList }) => {
     
@@ -18,7 +30,7 @@ export const ShoppingListsEditForm:React.FC<ShoppingListsForm> = ({ action, shop
         <Modal>
             <Title content={"Editar Lista de Compras"}/>
             <SubTitle content={"Id:"+shoppingList?.id}/>
-            <Form className={"editProduct"} submitCallback={action}>
+            <Form className={"editProduct"} submitCallback={action} zodObject={editShoppingListExecutionZodObject}>
                 
                 <Input 
                     className={"hiddenElement"}
@@ -44,8 +56,16 @@ export const ShoppingListsEditForm:React.FC<ShoppingListsForm> = ({ action, shop
                     }}
                     name={ "type"}
                     type={ "text"}
-                    placeholder={shoppingList?.name}
+                    placeholder={shoppingList?.type}
                 />
+
+
+                <div className={"divShoppingListExecutions"}>
+                    <h2> Execuções </h2>
+                    <div className={"divShoppingListExecutionsBonds"}>
+                        <ShoppingListsListExecutions contents={shoppingList.executions} />
+                    </div>
+                </div>
 
                 <Input
                     id={"buttonSubmit"}
@@ -61,11 +81,10 @@ export const ShoppingListsEditForm:React.FC<ShoppingListsForm> = ({ action, shop
 
 
 export const ShoppingListsCreateForm:React.FC<ShoppingListsForm> = ({ action }) => {
-
     return (
         <Modal>
             <Title content={"Criar Lista de Compras"}/>
-            <Form className={"createProduct"} submitCallback={action}>
+            <Form className={"createProduct"} submitCallback={action} zodObject={createShoppingListExecutionZodObject}>
                 <Input 
                     label={{
                         className: "labelName",

@@ -14,8 +14,8 @@ import { Header, Footer, Main}      from '../../components/Structure/Structure.t
 import { Link }                     from '../../components/SubComponents/Link.tsx';
 
 import { ProductCreateForm, ProductEditForm } from './ProductForms.tsx';
-import { HeaderTemplate, PrivateHeader }                       from '../../templates/Headers/Headers.tsx';
-import { PrivateFooter, PublicFooter }                       from '../../templates/Footers/Footers.tsx';
+import { PrivateHeader }                       from '../../templates/Headers/Headers.tsx';
+import { PrivateFooter }                       from '../../templates/Footers/Footers.tsx';
 import { ProductList }                        from './ProductList.tsx';
 import { Title } from '../../components/SubComponents/Title.tsx';
 

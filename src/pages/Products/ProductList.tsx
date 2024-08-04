@@ -1,6 +1,6 @@
 import { Product } from "../../config/Interfaces/SystemEntities";
 
-import { DefaultList, List, contentDefaultItem } from "../../templates/List/Lists";
+import { DefaultList, List, contentDefaultItem } from "../../templates/List/DefaultList/DeafaultLits";
 
 interface ProductList extends List{
     contents: Product[]

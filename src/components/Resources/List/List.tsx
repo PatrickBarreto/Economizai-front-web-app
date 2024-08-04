@@ -1,5 +1,5 @@
 import React from 'react';
-import { List as ListInterface, ItemList } from '../../../config/interfaces/List';
+import { ListInterface, ItemList } from "../../../config/Interfaces/List.tsx";
 import "./List.css";
 
 export const List:React.FC<ListInterface> = ({ children, className = '', id = ''}) => {

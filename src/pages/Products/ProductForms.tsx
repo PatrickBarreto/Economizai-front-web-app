@@ -4,6 +4,7 @@ import Input from "../../components/Resources/Form/Input/Input";
 import { Title } from "../../components/SubComponents/Title";
 import { SubTitle } from "../../components/SubComponents/SubTitle";
 import { Product } from "../../config/Interfaces/SystemEntities";
+import { z } from "zod";
 
 
 interface ProductForm {
@@ -12,12 +13,22 @@ interface ProductForm {
 
 }
 
+
+const productZodForm = z.object({
+    id:z.string().optional(),
+    name:z.string(),
+    type:z.string(),
+    volume:z.string(),
+    unitMensure:z.string(),
+});
+
+
 export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
     return (
         <Modal>
             <Title content={"Editar produto"}/>
             <SubTitle content={"Id:"+product?.id}/>
-            <Form className={"editProduct"} submitCallback={action}>
+            <Form className={"editProduct"} submitCallback={action} zodObject={productZodForm}>
                 <Input 
                     className={"hiddenElement"}
                     name={ "id"}
@@ -83,7 +94,7 @@ export const ProductCreateForm:React.FC<ProductForm> = ({ action }) => {
     return (
         <Modal>
             <Title content={"Criar novo produto"}/>
-            <Form className={"createProduct"} submitCallback={action}>
+            <Form className={"createProduct"} submitCallback={action} zodObject={productZodForm}>
                 <Input 
                     label={{
                     className: "labelName",

@@ -26,7 +26,7 @@ const handleFind = async (finder:Function) => {
    
 
 const categoryZodObject = z.object({
-    id: z.string(),
+    id: z.string().optional(),
     name: z.string(),
     brands: z.array(z.string()),
     products: z.array(z.string()),
@@ -65,7 +65,7 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                     <h2> Produtos </h2>
                     <div className={"divContentCategoryBonds"}>
                     {
-                        category?.products.map((product, index:any)=>{
+                        category?.products?.map((product, index:any)=>{
                             return (
                                 <Checkbox 
                                     key={index}
@@ -90,7 +90,7 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                     <h2> Marcas </h2>
                     <div className={"divContentCategoryBonds"}>
                     {
-                        category?.brands.map((brand, index:any)=>{
+                        category?.brands?.map((brand, index:any)=>{
                                 return (
                                     <Checkbox 
                                         key={index}
@@ -142,7 +142,7 @@ export const CategoriesCreateForm:React.FC<CategoryForm> = ({ action }) => {
     return (
         <Modal>
             <Title content={"Criar nova categoria"}/>
-            <Form className={"createProduct"} submitCallback={action}>
+            <Form className={"createProduct"} submitCallback={action} zodObject={ categoryZodObject }>
                 <Input 
                     label={{
                         className: "labelName",
