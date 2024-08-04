@@ -6,6 +6,7 @@ import Form from '../../components/Resources/Form/Form';
 import Input from '../../components/Resources/Form/Input/Input';
 import { Title } from '../../components/SubComponents/Title';
 import { createAccount } from '../../services/Account';
+import { z } from 'zod';
 
 
 const handleCreateAccount:any = async (data:any) => {
@@ -17,6 +18,13 @@ const handleCreateAccount:any = async (data:any) => {
     return alert('Conta criada');
 }
 
+const zodCreateAccountObject = z.object({
+    name: z.string(),
+    phone: z.string().max(12, "máximo 11 digitos"),
+    email: z.string(),
+    password: z.string()
+});
+
 
 export const CreareAcccount:React.FC<any> = () => {
     return (
@@ -26,7 +34,7 @@ export const CreareAcccount:React.FC<any> = () => {
             </Header>
             <Main>
                 <Title content={"Criar Conta"} />
-                <Form className={"formCreateAccount"} submitCallback={(data:Object)=>{handleCreateAccount(data)}}>
+                <Form className={"formCreateAccount"} submitCallback={(data:Object)=>{handleCreateAccount(data)}} zodObject={zodCreateAccountObject}>
                     <Input 
                         label={{
                             className:"nameInput",

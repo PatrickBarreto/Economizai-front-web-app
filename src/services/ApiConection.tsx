@@ -14,6 +14,7 @@ export async function ApiConection(props:ApiConectionData) {
 
         const body = await response.json();
 
+
         const result:ApiRetun = {
                 headers: response.headers,
                 body: body,

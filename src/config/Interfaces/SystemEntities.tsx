@@ -15,14 +15,15 @@ export interface Product {
 export interface Brand {
     id?:number|string,
     name:string,
-    type?:string
+    type?:string,
+    brandsCategory?:number
 }
 
 export interface Categories {
     id?:number|string,
     name:string,
-    products:Product[],
-    brands:Brand[]
+    products?:Product[],
+    brands?:Brand[]
 }
 
 export interface CategoriesProducts {
@@ -44,6 +45,11 @@ export interface ShoppingList {
     id?:number|string,
     name : string,
     type : string
+    executions : Array<ShoppingListExecutions>
+}
+
+export interface ShoppingListExecutions {
+    id  : number|string,
 }
 
 

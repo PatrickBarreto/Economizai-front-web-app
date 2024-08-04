@@ -9,6 +9,7 @@ import { findProdutcs } from "../../services/Products";
 import { findBrands } from "../../services/Brands";
 import { useEffect, useState } from "react";
 import { ApiRetun } from "../../config/Interfaces/ApiConection";
+import { z } from "zod";
 
 interface CategoryForm {
     action: Function,
@@ -24,14 +25,22 @@ const handleFind = async (finder:Function) => {
 }
    
 
+const categoryZodObject = z.object({
+    id: z.string().optional(),
+    name: z.string(),
+    brands: z.array(z.string()),
+    products: z.array(z.string()),
+});
+
 
 export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) => { 
+    
 
     return (
         <Modal>
             <Title content={"Editar Categoria"}/>
             <SubTitle content={"Id:"+category?.id}/>
-            <Form className={"editProduct"} submitCallback={action}>
+            <Form className={"editProduct"} submitCallback={action} zodObject={ categoryZodObject }>
                 
                 <Input 
                     className={"hiddenElement"}
@@ -39,23 +48,24 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                     type={ "text"}
                     value={category?.id}
                 />
-
-                <Input 
-                    label={{
-                        className: "labelName",
-                        value: "Nome da categoria"
-                        }
-                    }
-                    name={ "name"}
-                    type={ "text"}
-                    placeholder={category?.name}
-                />
+                
+                
+                <div className={"divCategorName"}>
+                    <h2> Nome </h2>
+                    <div className={"divContentCategorName"}>
+                        <Input 
+                            name={ "name"}
+                            type={ "text"}
+                            placeholder={category?.name}
+                        />
+                    </div>
+                </div> 
 
                 <div className={"divCategoryBonds"}>
-                    <h2> Products </h2>
+                    <h2> Produtos </h2>
                     <div className={"divContentCategoryBonds"}>
                     {
-                        category?.products.map((product, index:any)=>{
+                        category?.products?.map((product, index:any)=>{
                             return (
                                 <Checkbox 
                                     key={index}
@@ -80,7 +90,7 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                     <h2> Marcas </h2>
                     <div className={"divContentCategoryBonds"}>
                     {
-                        category?.brands.map((brand, index:any)=>{
+                        category?.brands?.map((brand, index:any)=>{
                                 return (
                                     <Checkbox 
                                         key={index}
@@ -92,7 +102,7 @@ export const CategoriesEditForm:React.FC<CategoryForm> = ({ action, category }) 
                                         className={ 'checkboxCategoryBonds' }
                                         value={ brand.id }
                                         name={ 'brands' }
-                                        checked={ true }
+                                        checked={ brand.brandsCategory == category.id }
                                     />
                                 )
                             }
@@ -132,7 +142,7 @@ export const CategoriesCreateForm:React.FC<CategoryForm> = ({ action }) => {
     return (
         <Modal>
             <Title content={"Criar nova categoria"}/>
-            <Form className={"createProduct"} submitCallback={action}>
+            <Form className={"createProduct"} submitCallback={action} zodObject={ categoryZodObject }>
                 <Input 
                     label={{
                         className: "labelName",

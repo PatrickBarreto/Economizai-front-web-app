@@ -8,7 +8,8 @@ export async function create(data:any){
 
     const requestBody:ShoppingList = {
         name:data.name,
-        type:data.type
+        type:data.type,
+        executions:[]
     }
 
     const response:ApiRetun = await callApi('POST', '/shopping-list/create', requestBody);
@@ -47,7 +48,8 @@ export async function update(data:any) {
     const requestBody:ShoppingList = {
         id:data.id,
         name:data.name,
-        type:data.type
+        type:data.type,
+        executions:data.executions
     }
 
     const response:ApiRetun = await callApi('PUT', '/shopping-list/'+data.id, requestBody);

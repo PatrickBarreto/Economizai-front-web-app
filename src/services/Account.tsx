@@ -1,7 +1,7 @@
 import { ApiConectionData } from "../config/Interfaces/ApiConection";
 import { ApiConection } from "./ApiConection";
 
-export async function createAccount(data:Object) {
+export async function createAccount(data:any) {
 
     const requestBody = {
         name:data.name,

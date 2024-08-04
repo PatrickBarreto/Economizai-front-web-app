@@ -1,4 +1,4 @@
-import { DefaultList, List, contentDefaultItem } from "../../templates/List/Lists";
+import { DefaultList, List, contentDefaultItem } from "../../templates/List/DefaultList/DeafaultLits";
 import { ShoppingList } from "../../config/Interfaces/SystemEntities";
 
 interface ShoppingListList extends List{

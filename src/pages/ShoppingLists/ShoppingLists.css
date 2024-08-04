@@ -88,3 +88,10 @@
     font-size: larger;
 }
 
+.divShoppingListExecutions{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    margin:20px; 
+}

@@ -4,6 +4,6 @@ main {
     justify-content: flex-start;
     align-items: center;
     width:100vw;
-    height: 100vh;
-    padding:200px 20px 0 20px;
+    min-height: 100vh;
+    padding:200px 20px 0px 20px;
 }

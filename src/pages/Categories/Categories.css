@@ -38,7 +38,6 @@
 }
 
 
-
 .product{
     display: flex;
     flex-direction: row;
@@ -89,10 +88,22 @@
 }
 
 .divCategoryBonds{
-    padding: 40px;
+    
 }
 
 .divContentCategoryBonds{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.divCategorName{
+    
+}
+
+.divContentCategorName{
     display: flex;
     flex-direction: column;
     justify-content: center;

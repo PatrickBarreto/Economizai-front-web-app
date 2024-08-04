@@ -63,8 +63,10 @@ const Categories:React.FC = () => {
 
     const handleCreate = async (data:any) => {
         const returnApi = await create(data)
-        if(returnApi.status == 200){
-            setCreatedCategory(createdCategory + 1);
+        if(returnApi != false){
+            if(returnApi.status == 200){
+                setCreatedCategory(createdCategory + 1);
+            }
         }
         await handleSetSearchResultState(setSearchResult)       
         setShowCreateForm(false)

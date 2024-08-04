@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Inputs } from "../../../../config/Interfaces/FormData";
+import React, { useContext, useState } from "react";
 import { FormContext } from "../../../../config/contexts";
 
-const validateInputData:any = (input) => {
+const validateInputData:any = (input:any) => {
   
     const inputsAtributes:any = {};
 

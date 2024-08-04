@@ -12,8 +12,13 @@ import { Header, Main, Footer } from '../../components/Structure/Structure.tsx';
 
 import { PublicHeader } from '../../templates/Headers/Headers.tsx';
 import { PublicFooter } from '../../templates/Footers/Footers.tsx';
+import { z } from 'zod';
 
 
+const zodLoginObject = z.object({
+  email: z.string().email("Informe um email válido"),
+  password: z.string()
+});
 
 const Login:React.FC = () => {    
   const navigate = useNavigate();
@@ -37,6 +42,7 @@ const Login:React.FC = () => {
           <Form 
             className={"loginForm"}
             submitCallback={handlerTyLogin}
+            zodObject={zodLoginObject}
           >
             <Input 
               label={ {

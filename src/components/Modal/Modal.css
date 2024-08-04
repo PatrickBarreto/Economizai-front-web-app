@@ -1,15 +1,16 @@
 .modalDiv{
     display: flex;
+    position: fixed;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: top;
+    justify-content:flex-start;
     background-color: rgba(0, 0, 0);
     width: 80vw;
-    height: 100vh;
-    position: fixed;
+    height: calc(100vh -  100px);
     right: 0px;
+    bottom:0px;
     padding: 40px;
-    padding-top: 150px;
+    padding-top: 100px;
     z-index: 9999;
     overflow: auto;
 }

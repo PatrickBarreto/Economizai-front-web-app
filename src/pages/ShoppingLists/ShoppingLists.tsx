@@ -21,7 +21,7 @@ const ShoppingLists:React.FC = () => {
     const [ showCreateForm, setShowCreateForm ] = useState(false);
     const [ showEditForm, setShowEditForm ] = useState(false);
     const [ createdShoppingList, setCreatedShoppingList ] = useState(0);
-    const [ InputFormEdit, setInputFormEdit ] = useState({id:'',name:'', type:''});
+    const [ InputFormData, setInputFormData ] = useState({id:'',name:'', type:'', executions:[]});
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -52,7 +52,7 @@ const ShoppingLists:React.FC = () => {
 
     const handleCreate = async (data:any) => {
         const returnApi = await create(data)
-        if(returnApi.status == 200){
+        if(returnApi && returnApi.status == 200){
             setCreatedShoppingList(createdShoppingList + 1);
         }
         await handleSetSearchResultState(setSearchResult)       
@@ -71,7 +71,7 @@ const ShoppingLists:React.FC = () => {
     //Passível de sair daqui e tornar algo abstrato
     const prepareEditFormData = async (id:number|string) => {
         const item = await findSpecific(id);
-        setInputFormEdit(item[0]);
+        setInputFormData(item[0]);
         setShowCreateForm(false)
         setShowEditForm(true);
     }
@@ -98,8 +98,8 @@ const ShoppingLists:React.FC = () => {
 
     return (    
         <>
-            { showCreateForm && <ShoppingListsCreateForm action={handleCreate}/> }
-            { showEditForm && <ShoppingListsEditForm action={handlerUpdate} shoppingList={InputFormEdit}/> }
+            { showCreateForm && <ShoppingListsCreateForm action={handleCreate} shoppingList={InputFormData}/> }
+            { showEditForm && <ShoppingListsEditForm action={handlerUpdate} shoppingList={InputFormData}/> }
             <Header>
                 <PrivateHeader/>
             </Header>
