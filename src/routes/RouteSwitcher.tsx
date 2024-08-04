@@ -8,7 +8,8 @@ import { CreareAcccount } from '../pages/CreateAccount/CreateAccount';
 import { LandingPage }    from '../pages/LandingPage/LadingPage';
 import Categories         from '../pages/Categories/Categories.tsx';
 import ShoppingLists      from '../pages/ShoppingLists/ShoppingLists.tsx';
-import { TestComponent }  from '../components/testComponent.tsx';
+//import { TestComponent }  from '../components/testComponent.tsx';
+//<Route  path="/testComponent" element={<TestComponent/>}/>
 
 const RouteSwitcher:React.FC = () => {
     
@@ -23,7 +24,6 @@ const RouteSwitcher:React.FC = () => {
                 <Route  path="/brands" element={<Brands/>}/>
                 <Route  path="/categories" element={<Categories/>}/>
                 <Route  path="/shopping-list" element={<ShoppingLists/>}/>
-                <Route  path="/testComponent" element={<TestComponent/>}/>
             </Routes>
         </Router>
     );
