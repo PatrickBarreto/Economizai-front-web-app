@@ -1,0 +1,31 @@
+.publicFooter, .privateFooter{
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 300px;
+  padding: 20px;
+  background-color: #0F7F49;
+}
+
+#footerImage {
+  display: flex;
+  justify-content: right;
+  width: 170px;
+  
+}
+
+#footerImage img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+#footerMenu ul {
+    display: flex;
+    justify-content: right;
+    gap: 20px
+}
+
+.itemFooterMenu {
+    list-style: none;
+}

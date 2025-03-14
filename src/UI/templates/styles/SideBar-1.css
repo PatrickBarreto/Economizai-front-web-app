@@ -1,0 +1,25 @@
+#sidebar-1-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: 100vh;
+  padding: 40px;
+  border-right: 1px solid black;
+}
+
+#sidebar-1-div-list-options {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  gap: 30px
+}
+
+#sidebar-1-div-list-options p {
+  font-size: 1rem;
+}
+
+#sidebar-1-div-list-options p a {
+ color: black;
+ text-decoration: none;
+}
