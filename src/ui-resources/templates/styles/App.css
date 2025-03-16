@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width:100vw;
+  padding:60px 20px 0px 20px;
+}
+
+.hiddenElement{
+  display: none;
+}
