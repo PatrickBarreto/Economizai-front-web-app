@@ -49,6 +49,7 @@ export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) =
               name={ "type"}
               type={ "text"}
               required={ true}
+              placeholder={brand?.type}
           />
 
           <InputComponent
