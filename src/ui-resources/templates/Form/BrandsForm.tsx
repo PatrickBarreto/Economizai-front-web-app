@@ -15,17 +15,11 @@ export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) =
     return (
       <FormComponent className={"createBrand"} submitCallback={action} zodObject={bandZodForm}>
 
-          {  brand ?
-                <InputComponent 
-                className={"hiddenElement"}
-                name={ "id"}
-                type={ "text"}
-                value={brand?.id}
-              />
-              :
-              <InputComponent 
+          { brand && <InputComponent 
               className={"hiddenElement"}
               name={ "id"}
+              type={ "text"}
+              value={brand?.id}
             />
           }
 
