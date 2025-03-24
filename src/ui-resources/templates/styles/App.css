@@ -11,7 +11,7 @@ body {
 
 main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   width:100vw;
   padding:60px 20px 0px 20px;
@@ -19,4 +19,13 @@ main {
 
 .hiddenElement{
   display: none;
+}
+
+.inline-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  gap: 10px
 }
