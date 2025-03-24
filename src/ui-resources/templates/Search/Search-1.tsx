@@ -4,7 +4,7 @@ import Form from "../../../ui-resources/components/Resources/Form/Form";
 import Input from "../../../ui-resources/components/Resources/Form/Input/Input";
 import { Search } from "../../../config/Interfaces/Search";
 import { z } from "zod";
-import '../styles/Search.css'
+import './Search.css'
 
 export const SearchInput:React.FC<Search> = ({submitCallback}) => {
 
