@@ -25,7 +25,7 @@ export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) =
 
           <InputComponent 
               label={{
-                className: "labelName",
+                className: "labelFormName",
                 value: "Nome da marca"
               }}
               name={ "name"}
@@ -39,7 +39,7 @@ export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) =
                   className: "labelType",
                   value: "Tipo da marca"
               }}
-              className={"typeProduct"}
+              className={"brandFormType"}
               name={ "type"}
               type={ "text"}
               required={ true}
