@@ -2,9 +2,9 @@ import React from "react";
 
 import { List, Item } from "../../../../ui-resources/components/Resources/List/List";
 
-import { RiSearchLine, RiDeleteBack2Line } from "react-icons/ri";
+import { RiDeleteBack2Line } from "react-icons/ri";
 import { TbEdit } from "react-icons/tb";
-import '../../styles/DefaultList.css'
+import '../../styles/List.css'
 
 //Exportar ao local apropriado
 
@@ -40,23 +40,26 @@ export interface DefaultItem {
 const DefaultListItem:React.FC<DefaultItem> = ({ content, actionEdit = ()=>{}, actionDelete  = ()=>{} }) => {
     return (
         <>
-            <div className="imageItem">
-                <RiSearchLine/>
-            </div>
-            <div className="content">
-                <p className="idContent">{content.id}</p>
+          <div className="itemDiv">
+            <div className="itemDetails">
+              <div className="itemDetailsContent">
                 { content.title && <p className="titleContent">{content.title}</p> }
                 { content.description && <p className="descriptionContent">{content.description}</p> }
+              </div>
             </div>
+          </div>
 
-            <div className="actionButtons">
-                <a onClick={()=>{actionEdit(content.id ? content.id : 0)}}>
-                    <TbEdit />
-                </a>
-                <a onClick={()=>{actionDelete(content.id)}}>
-                    <RiDeleteBack2Line />
-                </a>
+          <div className="itemActionButtonsDiv">
+            <div className="itemActionButtons">
+              <a onClick={()=>{actionEdit(content.id ? content.id : 0)}}>
+                <TbEdit />
+              </a>
+              <span>-</span>
+              <a onClick={()=>{actionDelete(content.id)}}>
+                <RiDeleteBack2Line />
+              </a >
             </div>
+          </div>
         </>
     );
 }
@@ -67,19 +70,17 @@ const DefaultListItem:React.FC<DefaultItem> = ({ content, actionEdit = ()=>{}, a
  */
 export const DefaultList:React.FC<DefaultListInterface> = ({ contents, actionEdit = ()=>{} , actionDelete = ()=>{} , detailActionOnClick = ()=>{} }) => {
     return (
-        <div id="divProductsList">
-            <List id={"productsList"}>
-            {
-                contents.map((product:any, index:any)=>{
-                    return (
-                        <Item key={index} className={"product"} actionOnClick={()=>{detailActionOnClick(product.id)}}>
-                            <DefaultListItem content={product} actionEdit={actionEdit} actionDelete={actionDelete} />
-                        </Item>
-                    )
-                })
-            }
-            </List>
-        </div>
+      <div className="listDiv">
+        <List className={"list"}>
+        {contents.map((content:any, index:any)=>{
+          return (
+            <Item key={index} className={"item"} actionOnClick={()=>{detailActionOnClick(content.id)}}>
+                <DefaultListItem content={content} actionEdit={actionEdit} actionDelete={actionDelete} />
+            </Item>
+          )
+        })}
+        </List>
+      </div>
     );
 }
 
@@ -89,26 +90,26 @@ export const DefaultList:React.FC<DefaultListInterface> = ({ contents, actionEdi
 /**
  * This will return an JSX with item content.
  */
-const ListEditItem:React.FC<DefaultItem> = ({ content, actionEdit = ()=>{}, actionDelete  = ()=>{} }) => {
-    return (
-        <>
-            <div className="content">
-                <p className="idContent">{content.id}</p>
-                { content.title && <p className="titleContent">{content.title}</p> }
-                { content.description && <p className="descriptionContent">{content.description}</p> }
-            </div>
+// const ListEditItem:React.FC<DefaultItem> = ({ content, actionEdit = ()=>{}, actionDelete  = ()=>{} }) => {
+//     return (
+//         <>
+//             <div className="content">
+//                 <p className="idContent">{content.id}</p>
+//                 { content.title && <p className="titleContent">{content.title}</p> }
+//                 { content.description && <p className="descriptionContent">{content.description}</p> }
+//             </div>
 
-            <div className="actionButtons">
-                <a onClick={()=>{actionEdit(content.id ? content.id : 0)}}>
-                    <TbEdit />
-                </a>
-                <a onClick={()=>{actionDelete(content.id)}}>
-                    <RiDeleteBack2Line />
-                </a>
-            </div>
-        </>
-    );
-}
+//             <div className="actionButtons">
+//                 <a onClick={()=>{actionEdit(content.id ? content.id : 0)}}>
+//                     <TbEdit />
+//                 </a>
+//                 <a onClick={()=>{actionDelete(content.id)}}>
+//                     <RiDeleteBack2Line />
+//                 </a>
+//             </div>
+//         </>
+//     );
+// }
 
 
 
