@@ -1,0 +1,17 @@
+#main-1-content-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 40px;
+  width: 100%;
+  overflow: scroll;
+}
+
+#main-1-content-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+}
