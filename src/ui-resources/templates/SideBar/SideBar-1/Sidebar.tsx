@@ -1,7 +1,7 @@
 import menu from './SidebarLinks.tsx'
-import '../../styles/SideBar-1.css'
 import { CiSettings } from "react-icons/ci";
 import { useLocation } from 'react-router-dom';
+import './SideBar-1.css'
 
 
 export const SideBar = () => {
