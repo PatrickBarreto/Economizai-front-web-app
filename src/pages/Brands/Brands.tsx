@@ -10,7 +10,7 @@ import { BrandCreateForm, BrandEditForm } from './BrandFormsModal.tsx';
 
 import { PrivateHeader } from '../../ui-resources/templates/Structure/Headers/Headers.tsx';
 import { SearchInput } from '../../ui-resources/templates/Search/Search-1';
-import MainTemplate1 from '../../ui-resources/templates/Structure/Main/Main-1/Main-1';
+import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
 
 import { BrandList } from '../../ui-resources/templates/List/BrandsList/BrandsList.tsx';
 
@@ -99,13 +99,13 @@ const Brands:React.FC = () => {
           { showCreateForm && <BrandCreateForm action={handleCreate}/> }
           { showEditForm && <BrandEditForm action={handlerUpdate} brand={brandInputFormEdit}/> }
           <PrivateHeader/>
-          <MainTemplate1>
+          <Main>
             <div className="inline-div">
               <SearchInput submitCallback={handlerFindSpecific}/>
               <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova marca"/>
             </div>
             <BrandList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
-          </MainTemplate1>
+          </Main>
         </>
     );
 }

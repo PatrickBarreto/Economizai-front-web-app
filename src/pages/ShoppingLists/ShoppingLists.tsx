@@ -2,37 +2,30 @@ import React, { useEffect, useState } from 'react';
 
 import { IoMdAdd } from "react-icons/io";
 
-import { create, findSpecific, update, remove, handleSetSearchResultState} from '../../services/Categories.tsx';
+import { create, findSpecific, update, remove, handleSetSearchResultState} from '../../services/ShoppingLists.tsx';
 
-import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
 import { Link } from '../../ui-resources/components/SubComponents/Link.tsx';
 
-import { CategoriesCreateForm, CategoriesEditForm } from './CategoriesForms.tsx';
-
+import { ShoppingListsCreateForm, ShoppingListsEditForm } from './ShoppingListsForms.tsx';
 import { PrivateHeader } from '../../ui-resources/templates/Structure/Headers/Headers.tsx';
-import { SearchInput } from '../../ui-resources/templates/Search/Search-1';
+import { ShoppingListsList } from './ShoppingListsList.tsx';
+import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
+import { SearchInput } from '../../ui-resources/templates/Search/Search-1.tsx';
 
-import { CategoriesList } from '../../ui-resources/templates/List/CategoryList/CategoriesList';
 
-
-const Categories:React.FC = () => {
+const ShoppingLists:React.FC = () => {
     const [ searchResult, setSearchResult ] = useState([]);
     const [ showCreateForm, setShowCreateForm ] = useState(false);
     const [ showEditForm, setShowEditForm ] = useState(false);
-    const [ createdCategory, setCreatedCategory ] = useState(0);
-    const [ categoryInputFormEdit, setCategoryInputFormEdit ] = useState({id:'',name:''});
-
-
+    const [ createdShoppingList, setCreatedShoppingList ] = useState(0);
+    const [ InputFormData, setInputFormData ] = useState({id:'',name:'', type:'', executions:[]});
 
     useEffect(()=>{
         const fetchData = async () => {
             handleSetSearchResultState(setSearchResult);
         }
         fetchData()
-    },[createdCategory]);
-
-
-
+    },[createdShoppingList]);
 
     const handlerFindSpecific = async (data:any) => {
         if(data.searchProducts == ''){
@@ -49,27 +42,19 @@ const Categories:React.FC = () => {
         }
     }
 
-
-
     const showCreateBrandForm = () => {
         setShowEditForm(false);
         setShowCreateForm(true);
     }
 
-
-
     const handleCreate = async (data:any) => {
         const returnApi = await create(data)
-        if(returnApi != false){
-            if(returnApi.status == 200){
-                setCreatedCategory(createdCategory + 1);
-            }
+        if(returnApi && returnApi.status == 200){
+            setCreatedShoppingList(createdShoppingList + 1);
         }
         await handleSetSearchResultState(setSearchResult)       
         setShowCreateForm(false)
     }
-
-
 
     const handlerUpdate = async (data:any) => {
         const result = await update(data);
@@ -80,14 +65,14 @@ const Categories:React.FC = () => {
         setShowEditForm(false);
     }
 
-
-    
+    //Passível de sair daqui e tornar algo abstrato
     const prepareEditFormData = async (id:number|string) => {
-        const category = await findSpecific(id);
-        setCategoryInputFormEdit(category[0]);
+        const item = await findSpecific(id);
+        setInputFormData(item[0]);
         setShowCreateForm(false)
         setShowEditForm(true);
     }
+
 
 
     const handlerDelete = async (id:any) => {
@@ -105,24 +90,23 @@ const Categories:React.FC = () => {
         }
     }
 
-    const listContent = searchResult;
 
-    console.log(listContent)
+    const toRender = searchResult;
+
     return (    
         <>
-            { showCreateForm && <CategoriesCreateForm action={handleCreate}/> }
-            { showEditForm && <CategoriesEditForm action={handlerUpdate} category={categoryInputFormEdit}/> }
-
-            <PrivateHeader/>
-            <Main>
-              <div className="inline-div">
-                <SearchInput submitCallback={handlerFindSpecific}/>
-                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova categoria"/>
-              </div>
-              <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete} />
-            </Main>
+          { showCreateForm && <ShoppingListsCreateForm action={handleCreate} shoppingList={InputFormData}/> }
+          { showEditForm && <ShoppingListsEditForm action={handlerUpdate} shoppingList={InputFormData}/> }
+          <PrivateHeader/>
+          <Main>
+            <div className="inline-div">
+              <SearchInput submitCallback={handlerFindSpecific}/>
+              <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova lista"/>
+            </div>
+            <ShoppingListsList contents={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
+          </Main>
         </>
     );
 }
 
-export default Categories
+export default ShoppingLists

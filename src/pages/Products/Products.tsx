@@ -15,7 +15,7 @@ import { ProductCreateForm, ProductEditForm } from './ProductForms.tsx';
 import { PrivateHeader } from '../../ui-resources/templates/Structure/Headers/Headers.tsx';
 import { ProductList } from '../../ui-resources/templates/List/ProductsList/ProductList';
 import { SearchInput } from '../../ui-resources/templates/Search/Search-1.tsx';
-import MainTemplate1 from '../../ui-resources/templates/Structure/Main/Main-1/Main-1.tsx';
+import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
 
 
 const Products:React.FC = () => {
@@ -98,13 +98,13 @@ const Products:React.FC = () => {
         { showCreateForm && <ProductCreateForm action={handleCreateProduct}/> }
         { showEditForm && <ProductEditForm action={handlerUpdateProduct} product={productInputFormEdit}/> }    
         <PrivateHeader/>
-        <MainTemplate1>
+        <Main>
           <div className="inline-div">
             <SearchInput submitCallback={handlerFindSpecificProduct}/>
             <Link action={showCreateProductForm} icon={<IoMdAdd/>} text="Novo Produto"/>
           </div>
           <ProductList contents={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDeleteProduct}/>
-        </MainTemplate1>
+        </Main>
       </>
     );
 }
