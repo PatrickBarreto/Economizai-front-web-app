@@ -1,6 +1,6 @@
 import { menuLinks, menuLinksLoged } from "../../../../config/Links";
 import { Item, List } from "../../../components/Resources/List/List";
-import '../../styles/Footers.css'
+import './Footers.css'
 
 
 export const PublicFooter = () => {

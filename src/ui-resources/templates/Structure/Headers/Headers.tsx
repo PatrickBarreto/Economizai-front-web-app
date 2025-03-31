@@ -1,6 +1,6 @@
 import { PublicHeader as PublicHeaderComponent, PrivateHeader as PrivateHeaderComponent} from '../../../components/Headers/Headers'
-import '../../../templates/styles/Headers.css';
 import { Header } from '../../../components/Structure/Structure';
+import './Headers.css';
 
 
 

@@ -4,7 +4,7 @@ import { List, Item } from "../../../../ui-resources/components/Resources/List/L
 
 import { RiDeleteBack2Line } from "react-icons/ri";
 import { TbEdit } from "react-icons/tb";
-import '../../styles/List.css'
+import '../List.css'
 
 //Exportar ao local apropriado
 
