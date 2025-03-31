@@ -1,0 +1,151 @@
+import { Modal } from "../../ui-resources/components/Modal/Modal";
+import Form from "../../ui-resources/components/Resources/Form/Form";
+import Input from "../../ui-resources/components/Resources/Form/Input/Input";
+import { Title } from "../../ui-resources/components/SubComponents/Title";
+import { SubTitle } from "../../ui-resources/components/SubComponents/SubTitle";
+import { Product } from "../../config/Interfaces/SystemEntities";
+import { z } from "zod";
+
+
+interface ProductForm {
+    action: Function,
+    product?:Product
+
+}
+
+
+const productZodForm = z.object({
+    id:z.string().optional(),
+    name:z.string(),
+    type:z.string(),
+    volume:z.string(),
+    unitMensure:z.string(),
+});
+
+
+export const ProductEditForm:React.FC<ProductForm> = ({ action, product }) => {
+    return (
+        <Modal>
+            <Title content={"Editar produto"}/>
+            <SubTitle content={"Id:"+product?.id}/>
+            <Form className={"editProduct"} submitCallback={action} zodObject={productZodForm}>
+                <Input 
+                    className={"hiddenElement"}
+                    name={ "id"}
+                    type={ "text"}
+                    value={product?.id}
+                />
+
+                <Input 
+                    label={{
+                    className: "labelName",
+                    value: "Nome do produto"
+                    }}
+                    name={ "name"}
+                    type={ "text"}
+                    placeholder={product?.name}
+                />
+
+                <Input 
+                    label={{
+                        className: "labelType",
+                        value: "Tipo do produto"
+                    }}
+                    className={"typeProduct"}
+                    name={ "type"}
+                    type={ "text"}
+                    placeholder={product?.type}
+                />
+
+                <Input 
+                    label={{
+                        className: "labelVolume",
+                        value: "Quantidade"
+                    }}
+                    name={"volume"}
+                    type={"text"}
+                    placeholder={product?.volume}
+                />
+
+                <Input label={{
+                    className: "labelUnitMensure",
+                    value: "Unidade de medida"
+                    }}
+                    name={"unitMensure"}
+                    type={"text"}
+                    placeholder={product?.unit_mensure}
+                />
+
+                <Input
+                    id={"buttonSubmit"}
+                    name={"buttonSubmit"}
+                    type={"submit"}
+                    value={"Editar Produto"}
+                />
+            </Form>
+        </Modal>
+
+    );
+}
+
+
+export const ProductCreateForm:React.FC<ProductForm> = ({ action }) => {
+
+    return (
+        <Modal>
+            <Title content={"Criar novo produto"}/>
+            <Form className={"createProduct"} submitCallback={action} zodObject={productZodForm}>
+                <Input 
+                    label={{
+                    className: "labelName",
+                    value: "Nome do produto"
+                    }}
+                    name={ "name"}
+                    type={ "text"}
+                    placeholder={ "Nome do produto"}
+                    required={true}
+                />
+
+
+                <Input 
+                    label={{
+                        className: "labelType",
+                        value: "Tipo do produto"
+                    }}
+                    className={"typeProduct"}
+                    name={ "type"}
+                    type={ "text"}
+                    required={ true}
+                />
+
+                <Input 
+                    label={{
+                        className: "labelVolume",
+                        value: "Quantidade"
+                    }}
+                    name={"volume"}
+                    type={"text"}
+                    placeholder={"Quantidade"}
+                    required={true}
+                />
+
+                <Input label={{
+                    className: "labelUnitMensure",
+                    value: "Unidade de medida"
+                    }}
+                    name={"unitMensure"}
+                    type={"text"}
+                    placeholder={"unidade de medida"}
+                    required={true}
+                />
+
+                <Input
+                    id={"buttonSubmit"}
+                    name={"buttonSubmit"}
+                    type={"submit"}
+                    value={"Criar Produto"}
+                />
+            </Form>
+        </Modal>
+    );
+}
