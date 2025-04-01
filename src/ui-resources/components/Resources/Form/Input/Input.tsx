@@ -27,13 +27,11 @@ const Input: React.FC<Inputs> = (input:Inputs) => {
     
     return (
         <>
-            <div className="divInputs">
-                <label className={input.label?.className} htmlFor={input.name}>{input.label?.value}</label>
-                <input 
-                    {...inputsAtributes}
-                    {...register(input.name)}
-                />
-            </div>
+          <label className={input.label?.className} htmlFor={input.name}>{input.label?.value}</label>
+          <input 
+              {...inputsAtributes}
+              {...register(input.name)}
+          />
         </>
     )
 
