@@ -9,8 +9,6 @@ import { Title } from '../../ui-resources/components/SubComponents/Title.tsx';
 import { Main3 as Main } from '../../ui-resources/templates/Structure/Main/Main';
 
 import { z } from 'zod';
-import { SubTitle } from '../../ui-resources/components/SubComponents/SubTitle.tsx';
-
 
 const zodLoginObject = z.object({
   email: z.string().email("Informe um email válido"),
