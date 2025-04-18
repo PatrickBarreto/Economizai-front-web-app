@@ -6,13 +6,11 @@ import { Search } from "../../../config/Interfaces/Search";
 import { z } from "zod";
 import './Search.css'
 
-export const SearchInput:React.FC<Search> = ({submitCallback}) => {
+export const SearchInput:React.FC<Search> = ({submitCallback, toFind}) => {
+    const zodObjectSchema = z.record(z.string());
 
-    const zodObjectSchema = z.object({
-        searchBrands: z.string()
-    });
+    const serchInputName = `search${toFind.charAt(0).toUpperCase()+toFind.slice(1)}`
     
-
     return (
       <>
         <div className="divSearch">
@@ -21,7 +19,7 @@ export const SearchInput:React.FC<Search> = ({submitCallback}) => {
           </div>
           <Form className={"seachForm"} submitCallback={ submitCallback } zodObject={ zodObjectSchema }>
               <Input 
-                  name={"searchBrands"}
+                  name={serchInputName}
                   className={"seachFormInput"}
                   type={"search"}
                   placeholder={"Digite sua busca"}
