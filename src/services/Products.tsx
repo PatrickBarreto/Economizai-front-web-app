@@ -1,9 +1,6 @@
-import { ApiConectionData } from '../config/Interfaces/ApiConection';
+import { ApiRequest } from '../config/Interfaces/ApiConection';
 import { Product } from '../config/Interfaces/SystemEntities';
 import { ApiConection } from './ApiConection';
-
-
-
 
 export async function createProduct(data:any) {
 
@@ -14,7 +11,7 @@ export async function createProduct(data:any) {
         unit_mensure: data.unitMensure
     }
 
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
         method:'POST',
         uri:'/product',
         headers:{
@@ -32,7 +29,7 @@ export async function createProduct(data:any) {
 
 
 export async function findProdutcs() {
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
         method:'GET',
         uri:'/products',
         headers:{
@@ -54,7 +51,7 @@ export async function findProdutcs() {
 
 
 export async function findSpecificProduct(id:number|string):Promise<any>{
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
         method:'GET',
         uri:'/product/'+id,
         headers:{
@@ -85,7 +82,7 @@ export async function updateProduct(data:any) {
         unit_mensure: data.unitMensure
     }
 
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
         method:'PUT',
         uri:'/product/'+requestBody.id,
         headers:{
@@ -104,7 +101,7 @@ export async function updateProduct(data:any) {
 
 
 export async function deleteProduct(id:any) {
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
         method:'DELETE',
         uri:'/product/'+id,
         headers:{
@@ -128,6 +125,13 @@ export async function handleSetSearchResultState(setSearchResult:Function){
     }
     setSearchResult(findedProducts.body);
 }
+
+
+export async function handleSetSpecificProduct(setSearchResult:Function, id:string) {
+  const findedProducts:Product[] = await findSpecificProduct(id);
+  setSearchResult(findedProducts[0]);
+}
+
 
 
 
