@@ -7,26 +7,34 @@ import { z } from 'zod';
 import { Title } from '../../ui-resources/components/SubComponents/Title';
 import Form from '../../ui-resources/components/Resources/Form/Form';
 import Input from '../../ui-resources/components/Resources/Form/Input/Input';
-
-const handlerCreateAccount:any = async (data:any) => {
-  //Redirecionar para home com ususário já logado.
-    const resultCreate = await createAccount(data);
-
-    if(resultCreate === false){
-        return alert('Error');
-    }
-    return alert('Conta criada');
-}
+import { useNavigate } from 'react-router-dom';
 
 const zodCreateAccountObject = z.object({
-    name: z.string(),
-    phone: z.string().max(12, "máximo 11 digitos"),
-    email: z.string(),
-    password: z.string()
+  name: z.string(),
+  phone: z.string().max(12, "máximo 11 digitos"),
+  email: z.string(),
+  password: z.string()
 });
 
 
 export const CreareAcccount:React.FC<any> = () => {
+  const navigate = useNavigate()
+  
+  const handlerCreateAccount:any = async (data:any) => {
+    //Redirecionar para home com ususário já logado.
+      const resultCreate = await createAccount(data);
+  
+      if(resultCreate === false){
+        alert("Invalid Data")
+      }else {
+        localStorage.clear()
+        navigate("/login", {
+          replace: true,
+          relative: "path"
+        })
+      }
+  }
+  
   return (
     <>
       <Main>
