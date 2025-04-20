@@ -19,11 +19,13 @@ const Login:React.FC = () => {
   const navigate = useNavigate();
   
   const handlerTyLogin = async (data:any) => {
-
     const response:boolean|undefined = await tryLogin(data);
     
     if(response === true){
-      navigate('/home');
+      navigate('/home', {
+        replace: true,
+        relative: "route"
+      });
     }
   }
 

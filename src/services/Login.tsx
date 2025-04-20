@@ -1,5 +1,5 @@
 import { ApiConection } from './ApiConection';
-import { ApiConectionData } from '../config/Interfaces/ApiConection';
+import { ApiRequest } from '../config/Interfaces/ApiConection';
 
 export async function tryLogin(formData:any) {
 
@@ -8,7 +8,7 @@ export async function tryLogin(formData:any) {
       password: formData.password
     }
 
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
       method:'POST',
       uri:'/login',
       headers:{
