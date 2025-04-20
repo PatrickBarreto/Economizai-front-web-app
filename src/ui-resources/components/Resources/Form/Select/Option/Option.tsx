@@ -12,7 +12,7 @@ const validateAtributes = (atributes:SelectOption) => {
 
 
 export const Option:React.FC<SelectOption> = (selectOption:SelectOption) => {
-    const selectOptionAtributes = validateAtributes(selectOption)
+  const selectOptionAtributes = validateAtributes(selectOption)
 
     return (
         <>
