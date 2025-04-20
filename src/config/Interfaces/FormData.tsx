@@ -47,6 +47,7 @@ export interface SelectOption {
         value?:string
     }
     value?: number, 
+    selected?: string
     disabled?: boolean
     children: string
 }[]
