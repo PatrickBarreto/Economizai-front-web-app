@@ -90,26 +90,26 @@ export const DefaultList:React.FC<DefaultListInterface> = ({ contents, actionEdi
 /**
  * This will return an JSX with item content.
  */
-// const ListEditItem:React.FC<DefaultItem> = ({ content, actionEdit = ()=>{}, actionDelete  = ()=>{} }) => {
-//     return (
-//         <>
-//             <div className="content">
-//                 <p className="idContent">{content.id}</p>
-//                 { content.title && <p className="titleContent">{content.title}</p> }
-//                 { content.description && <p className="descriptionContent">{content.description}</p> }
-//             </div>
+const ListEditItem:React.FC<DefaultItem> = ({ content, actionEdit = ()=>{}, actionDelete  = ()=>{} }) => {
+    return (
+        <>
+            <div className="content">
+                <p className="idContent">{content.id}</p>
+                { content.title && <p className="titleContent">{content.title}</p> }
+                { content.description && <p className="descriptionContent">{content.description}</p> }
+            </div>
 
-//             <div className="actionButtons">
-//                 <a onClick={()=>{actionEdit(content.id ? content.id : 0)}}>
-//                     <TbEdit />
-//                 </a>
-//                 <a onClick={()=>{actionDelete(content.id)}}>
-//                     <RiDeleteBack2Line />
-//                 </a>
-//             </div>
-//         </>
-//     );
-// }
+            <div className="actionButtons">
+                <a onClick={()=>{actionEdit(content.id ? content.id : 0)}}>
+                    <TbEdit />
+                </a>
+                <a onClick={()=>{actionDelete(content.id)}}>
+                    <RiDeleteBack2Line />
+                </a>
+            </div>
+        </>
+    );
+}
 
 
 
