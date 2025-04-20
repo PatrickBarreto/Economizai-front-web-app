@@ -1,6 +1,6 @@
-import { ApiRequest } from '../config/Interfaces/ApiConection';
+import { ApiRequest, ApiResponse } from '../config/Interfaces/ApiConection';
 import { Product } from '../config/Interfaces/SystemEntities';
-import { ApiConection } from './ApiConection';
+import { ApiConection, callApi } from './ApiConection';
 
 export async function createProduct(data:any) {
 
@@ -11,36 +11,15 @@ export async function createProduct(data:any) {
         unit_mensure: data.unitMensure
     }
 
-    const apiData:ApiRequest = {
-        method:'POST',
-        uri:'/product',
-        headers:{
-            "Content-Type":"application/json",
-            "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
-            "Authorization":localStorage.getItem('Authorization') ?? ''
-        },
-        body: JSON.stringify(requestBody)
-    }
-
-    const result:any = await ApiConection(apiData);
+    const result:ApiResponse = await callApi('POST', '/product', requestBody);
 
     return result;
 }
 
 
 export async function findProdutcs() {
-    const apiData:ApiRequest = {
-        method:'GET',
-        uri:'/products',
-        headers:{
-            "Content-Type":"application/json",
-            "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
-            "Authorization":localStorage.getItem('Authorization') ?? ''
-          }
-    }
-    
-    
-    const result:any = await ApiConection(apiData)
+
+    const result:ApiResponse = await callApi('GET', '/product')    
 
     if(result.status === 404){
         return false;
@@ -51,17 +30,8 @@ export async function findProdutcs() {
 
 
 export async function findSpecificProduct(id:number|string):Promise<any>{
-    const apiData:ApiRequest = {
-        method:'GET',
-        uri:'/product/'+id,
-        headers:{
-            "Content-Type":"application/json",
-            "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
-            "Authorization":localStorage.getItem('Authorization') ?? ''
-          }
-    }
 
-    const result:any = await ApiConection(apiData);
+    const result:ApiResponse = await callApi('GET', '/product/'+id)    
     
     if(result.status === 404){
         return false;
@@ -82,18 +52,8 @@ export async function updateProduct(data:any) {
         unit_mensure: data.unitMensure
     }
 
-    const apiData:ApiRequest = {
-        method:'PUT',
-        uri:'/product/'+requestBody.id,
-        headers:{
-            "Content-Type":"application/json",
-            "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
-            "Authorization":localStorage.getItem('Authorization') ?? ''
-        },
-        body:JSON.stringify(requestBody)
-    }
+    const result:ApiResponse = await callApi('PUT', '/product/'+requestBody.id, requestBody);
 
-    const result:any = await ApiConection(apiData);
 
     return result;
 }
@@ -101,19 +61,9 @@ export async function updateProduct(data:any) {
 
 
 export async function deleteProduct(id:any) {
-    const apiData:ApiRequest = {
-        method:'DELETE',
-        uri:'/product/'+id,
-        headers:{
-            "Content-Type":"application/json",
-            "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
-            "Authorization":localStorage.getItem('Authorization') ?? ''
-        }
-    }
-    
-    const result:any = await ApiConection(apiData);
 
-    return result;
+  const result:ApiResponse = await callApi('DELETE', '/product/'+id)    
+  return result;
 }
 
 

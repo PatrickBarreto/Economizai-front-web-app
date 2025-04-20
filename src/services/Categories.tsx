@@ -1,4 +1,4 @@
-import { ApiRetun } from '../config/Interfaces/ApiConection';
+import { ApiResponse } from '../config/Interfaces/ApiConection';
 import { Categories } from '../config/Interfaces/SystemEntities';
 import { callApi } from './ApiConection';
 
@@ -12,7 +12,7 @@ export async function create(data:any){
         brands:data.brands
     }
 
-    const response:ApiRetun = await callApi('POST', '/category', requestBody);
+    const response:ApiResponse = await callApi('POST', '/category', requestBody);
 
     if(response.status != 200){
         return false
@@ -23,7 +23,7 @@ export async function create(data:any){
 
 
 export async function find() {
-    const response:ApiRetun = await callApi('GET', '/categories');
+    const response:ApiResponse = await callApi('GET', '/categories');
     if(response.status === 404){
         return false;
     }
@@ -33,7 +33,7 @@ export async function find() {
 
 
 export async function findSpecific(id:number|string):Promise<any>{
-    const response:ApiRetun = await callApi('GET', '/category/'+id);
+    const response:ApiResponse = await callApi('GET', '/category/'+id);
     
     if(response.status === 404){
         return false;
@@ -49,7 +49,7 @@ export async function update(data:any) {
         brands:data.brands
     }
 
-    const response:ApiRetun = await callApi('PUT', '/category/'+data.id, requestBody);
+    const response:ApiResponse = await callApi('PUT', '/category/'+data.id, requestBody);
 
     return response;
 }
@@ -57,7 +57,7 @@ export async function update(data:any) {
 
 
 export async function remove(id:any) {
-    const response:ApiRetun = await callApi('DELETE', '/category/'+id);
+    const response:ApiResponse = await callApi('DELETE', '/category/'+id);
     return response;
 }
 

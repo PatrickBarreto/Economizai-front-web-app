@@ -1,7 +1,7 @@
-import { ApiConectionData, ApiRetun } from '../config/Interfaces/ApiConection';
+import { ApiRequest, ApiResponse } from '../config/Interfaces/ApiConection';
 
 
-export async function ApiConection(props:ApiConectionData) {
+export async function ApiConection(props:ApiRequest) {
 
     const queryString:string = (props.queryStrings !== undefined) ? '?'+props.queryStrings : '';
 
@@ -15,7 +15,7 @@ export async function ApiConection(props:ApiConectionData) {
         const body = await response.json();
 
 
-        const result:ApiRetun = {
+        const result:ApiResponse = {
                 headers: response.headers,
                 body: body,
                 status: response.status
@@ -28,10 +28,9 @@ export async function ApiConection(props:ApiConectionData) {
     }
 }
 
-
 export async function callApi(method:string, uri:string, requestBody:Object = {}){
 
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
         method: method,
         uri: uri,
         headers:{
@@ -46,13 +45,11 @@ export async function callApi(method:string, uri:string, requestBody:Object = {}
         delete apiData.body;
     }
 
-    const result:ApiRetun = await ApiConection(apiData);
+    const result:ApiResponse = await ApiConection(apiData);
 
 
     return result;
 }
-
-
 
 function validadeHttpErrorStatus(response:Response){
     switch(response.status){

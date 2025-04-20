@@ -1,35 +1,19 @@
-import { ApiConection } from './ApiConection';
-import { ApiRequest } from '../config/Interfaces/ApiConection';
+import { callApi } from './ApiConection';
 
 export async function tryLogin(formData:any) {
 
-    const requestBody = {
+    const requestBody: = {
       email: formData.email,
       password: formData.password
     }
 
-    const apiData:ApiRequest = {
-      method:'POST',
-      uri:'/login',
-      headers:{
-        "Content-Type":"application/json",
-        "Access-Token":import.meta.env.VITE_ACCESS_TOKEN
-      },
-      body:JSON.stringify(requestBody)
-    }
+    const responseApi = await callApi('POST', '/login', requestBody);
 
-    try {
-      const responseApi = await ApiConection(apiData);
-
-      if(responseApi.body.success == true){
-        localStorage.setItem('Authorization',responseApi.headers.get('Authorization') ?? '');
-        return true;
-      }else{
-        console.error('login refused');
-      }
-
-    } catch( error ) {
-      console.error('Error calling ApiConnection:', error);
+    if(responseApi.body.success == true){
+      localStorage.setItem('Authorization',responseApi.headers.get('Authorization') ?? '');
+      return true;
+    }else{
+      alert('login refused')
     }
 
 }
