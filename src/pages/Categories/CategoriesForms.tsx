@@ -8,7 +8,7 @@ import Checkbox from "../../ui-resources/components/Resources/Form/Input/Checkbo
 import { findProdutcs } from "../../services/Products";
 import { findBrands } from "../../services/Brands";
 import { useEffect, useState } from "react";
-import { ApiRetun } from "../../config/Interfaces/ApiConection";
+import { ApiResponse } from "../../config/Interfaces/ApiConection";
 import { z } from "zod";
 
 interface CategoryForm {
@@ -18,7 +18,7 @@ interface CategoryForm {
 }
 
 const handleFind = async (finder:Function) => {
-    const returnApi:ApiRetun = await finder();
+    const returnApi:ApiResponse = await finder();
     if(returnApi.status == 200){
         return returnApi.body;
     }
