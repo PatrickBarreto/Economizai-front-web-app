@@ -1,6 +1,6 @@
-import { ApiRequest, ApiResponse } from '../config/Interfaces/ApiConection';
+import { ApiResponse } from '../config/Interfaces/ApiConection';
 import { Product } from '../config/Interfaces/SystemEntities';
-import { ApiConection, callApi } from './ApiConection';
+import { callApi } from './ApiConection';
 
 export async function createProduct(data:any) {
 
@@ -19,7 +19,7 @@ export async function createProduct(data:any) {
 
 export async function findProdutcs() {
 
-    const result:ApiResponse = await callApi('GET', '/product')    
+    const result:ApiResponse = await callApi('GET', '/products')    
 
     if(result.status === 404){
         return false;

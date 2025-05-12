@@ -2,7 +2,7 @@ import { callApi } from './ApiConection';
 
 export async function tryLogin(formData:any) {
 
-    const requestBody: = {
+    const requestBody: any= {
       email: formData.email,
       password: formData.password
     }

@@ -12,12 +12,9 @@ export async function ApiConection(props:ApiRequest) {
             validadeHttpErrorStatus(response);
         }
 
-        const body = await response.json();
-
-
         const result:ApiResponse = {
                 headers: response.headers,
-                body: body,
+                body: await response.json(),
                 status: response.status
             };
     
@@ -28,7 +25,7 @@ export async function ApiConection(props:ApiRequest) {
     }
 }
 
-export async function callApi(method:string, uri:string, requestBody:Object = {}){
+export async function callApi(method:string, uri:string, requestBody:Object = {}):Promise<ApiResponse>{
 
     const apiData:ApiRequest = {
         method: method,
@@ -38,17 +35,10 @@ export async function callApi(method:string, uri:string, requestBody:Object = {}
             "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
             "Authorization":localStorage.getItem('Authorization') ?? ''
         },
-        body: JSON.stringify(requestBody)
-    }
-        
-    if(method == 'GET' || method == 'HEAD'){
-        delete apiData.body;
+        body: (method != 'GET' && method != 'HEAD') ? JSON.stringify(requestBody) : undefined
     }
 
-    const result:ApiResponse = await ApiConection(apiData);
-
-
-    return result;
+    return ApiConection(apiData);
 }
 
 function validadeHttpErrorStatus(response:Response){
