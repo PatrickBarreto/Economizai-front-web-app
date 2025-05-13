@@ -24,7 +24,7 @@ export const PublicHeader:any = ({ image }:HeaderProp) => {
                         menuLinks.map((item, index)=>{
                             return (
                                 <Item className="itemMenu" key={index}>
-                                    <a href={item.link}>{item.label}</a>
+                                    <a onClick={()=>{navigate(item.link)}}>{item.label}</a>
                                 </Item>
                                 )
                             }
@@ -51,7 +51,7 @@ export const PrivateHeader:any =({ image }:HeaderProp) => {
                   menuLinksLoged.map((item, index)=>{
                     return (
                         <Item className="itemMenu" key={index}>
-                            <a href={item.link}>{item.label}</a>
+                            <a onClick={()=>{navigate(item.link)}}>{item.label}</a>
                         </Item>
                         )
                     }
