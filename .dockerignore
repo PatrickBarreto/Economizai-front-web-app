@@ -1,0 +1,8 @@
+.env
+.env..exemple
+.eslintrc.cjs
+.gitignore
+.github
+README.md
+node_modules
+package-lock.json
