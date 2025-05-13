@@ -25,5 +25,5 @@ jobs:
         context: .
         push: true
         tags: |
-          ghcr.io/patrickbarreto/economizai-app:latest
-          ghcr.io/patrickbarreto/economizai-app:${{ github.sha }}
+          ghcr.io/patrickbarreto/economizai-front-web-app:latest
+          ghcr.io/patrickbarreto/economizai-front-web-app:${{ github.sha }}
