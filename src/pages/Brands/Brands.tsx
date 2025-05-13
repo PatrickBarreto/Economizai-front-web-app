@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
 import { IoMdAdd } from "react-icons/io";
-import './Brands.css';
 
 import { createBrand, findSpecificBrand, updateBrand, deleteBrand, handleSetSearchResultState} from '../../services/Brands.tsx';
 
-import { SearchInput }              from '../../components/Resources/Search/Search.tsx';
-import { Header, Footer, Main}      from '../../components/Structure/Structure.tsx';
-import { Link }                     from '../../components/SubComponents/Link.tsx';
+import { Link } from '../../ui-resources/components/SubComponents/Link.tsx';
 
-import { BrandCreateForm, BrandEditForm } from './BrandForms.tsx';
-import { PrivateHeader }                  from '../../templates/Headers/Headers.tsx';
-import { PrivateFooter }                  from '../../templates/Footers/Footers.tsx';
-import { BrandList } from './BrandList.tsx';
-import { Title } from '../../components/SubComponents/Title.tsx';
+import { BrandCreateForm, BrandEditForm } from './BrandFormsModal.tsx';
+
+import { PrivateHeader } from '../../ui-resources/templates/Structure/Headers/Headers.tsx';
+import { SearchInput } from '../../ui-resources/templates/Search/Search-1';
+import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
+
+import { BrandList } from '../../ui-resources/templates/List/BrandsList/BrandsList.tsx';
 
 
 const Brands:React.FC = () => {
@@ -28,21 +27,22 @@ const Brands:React.FC = () => {
             handleSetSearchResultState(setSearchResult);
         }
         fetchData()
-    },[createdBrand]);
+    },[]);
 
     const handlerFindSpecific = async (data:any) => {
-        if(data.searchProducts == ''){
-            await handleSetSearchResultState(setSearchResult);
-            return;
-        }
 
-        let response:any = await findSpecificBrand(data.searchProducts)
+      if(data.searchBrands == ''){
+          await handleSetSearchResultState(setSearchResult);
+          return;
+      }
 
-        if(response){
-            setSearchResult(response)
-        }else{
-            return alert('Ops, not found')
-        }
+      let response:any = await findSpecificBrand(data.searchBrands)
+
+      if(response){
+          setSearchResult(response)
+      }else{
+          return alert('Ops, not found')
+      }
     }
 
     const showCreateBrandForm = () => {
@@ -96,22 +96,17 @@ const Brands:React.FC = () => {
     const toRender = searchResult;
 
     return (
-        
         <>
-            { showCreateForm && <BrandCreateForm action={handleCreate}/> }
-            { showEditForm && <BrandEditForm action={handlerUpdate} brand={brandInputFormEdit}/> }
-            <Header>
-                <PrivateHeader/>
-            </Header>
-            <Main>
-                <Title content='Marcas'/>
-                <SearchInput submitCallback={handlerFindSpecific}/>
-                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Adicionar uma nova marca"/>
-                <BrandList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
-            </Main>
-            <Footer>
-                <PrivateFooter/>
-            </Footer>
+          { showCreateForm && <BrandCreateForm action={handleCreate}/> }
+          { showEditForm && <BrandEditForm action={handlerUpdate} brand={brandInputFormEdit}/> }
+          <PrivateHeader/>
+          <Main>
+            <div className="inline-div">
+              <SearchInput submitCallback={handlerFindSpecific} toFind='brands'/>
+              <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova marca"/>
+            </div>
+            <BrandList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
+          </Main>
         </>
     );
 }

@@ -1,19 +1,14 @@
-
-import './Login.css'
 import { useNavigate } from 'react-router-dom';
 import { tryLogin } from '../../services/Login.tsx';
 
-import Form from '../../components/Resources/Form/Form.tsx';
-import Input from '../../components/Resources/Form/Input/Input.tsx';
+import Form from '../../ui-resources/components/Resources/Form/Form.tsx';
+import Input from '../../ui-resources/components/Resources/Form/Input/Input.tsx';
 
-import { Title } from '../../components/SubComponents/Title.tsx';
+import { Title } from '../../ui-resources/components/SubComponents/Title.tsx';
 
-import { Header, Main, Footer } from '../../components/Structure/Structure.tsx';
+import { Main3 as Main } from '../../ui-resources/templates/Structure/Main/Main';
 
-import { PublicHeader } from '../../templates/Headers/Headers.tsx';
-import { PublicFooter } from '../../templates/Footers/Footers.tsx';
 import { z } from 'zod';
-
 
 const zodLoginObject = z.object({
   email: z.string().email("Informe um email válido"),
@@ -24,59 +19,62 @@ const Login:React.FC = () => {
   const navigate = useNavigate();
   
   const handlerTyLogin = async (data:any) => {
-
-    const response:any = await tryLogin(data);
+    const response:boolean|undefined = await tryLogin(data);
+    
     if(response === true){
-      navigate('/home');
+      navigate('/home', {
+        replace: true,
+        relative: "route"
+      });
     }
   }
 
   return (
     <>
-      <Header>
-          <PublicHeader />
-      </Header>
       <Main>
-        <div className="loginPage">
-          <Title content="Olá, seja bem vindo"/>
-          <Form 
-            className={"loginForm"}
-            submitCallback={handlerTyLogin}
-            zodObject={zodLoginObject}
-          >
-            <Input 
-              label={ {
-                className:"email",
-                value:"Email"
-              }}
-              type={ "text"}
-              name={ "email"}
-              placeholder={ "xxx@xxx.xx"}
-              readonly={ false}
-              required={ true}
-            />
-            <Input
+        <div className="main-3-cotent">
+          <div className="main-3-cotent-title">
+            <Title content="Olha quem voltou... Bora economizar mais uma vez?"/>
+          </div>
+          <div className="main-3-cotent-body">
+            <Form 
+              className={"main-3-cotent-body-form"}
+              submitCallback={handlerTyLogin}
+              zodObject={zodLoginObject}
+            >
+              <Input 
+                label={ {
+                  className:"email",
+                }}
+                type={ "text"}
+                name={ "email"}
+                placeholder={ "Digite seu email"}
+                readonly={ false}
+                required={ true}
+              />
+              <Input
+                label={{
+                  className:"password",
+                }}
+                type={ "password"}
+                name={ "password"}
+                placeholder={ "*******"}
+                autocomplete={ false }
+                readonly={ false}
+                required={ true}
+              />
+              <Input
               label={{
-                className:"password",
-                value:"Senha"
+                className:"submit",
               }}
-              type={ "password"}
-              name={ "password"}
-              autocomplete={ false }
-              readonly={ false}
-              required={ true}
-            />
-            <Input
-              type={ "submit"}
-              value={"Login"}
-              name={ "submit"}
-            />
-          </Form>
+                type={ "submit"}
+                value={"Login"}
+                name={ "submit"}
+              />
+            </Form>
+          </div>
         </div>
       </Main>
-      <Footer>
-          <PublicFooter />
-      </Footer>
     </>
   );
 };

@@ -2,20 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 import { IoMdAdd } from "react-icons/io";
 
-
 import { create, findSpecific, update, remove, handleSetSearchResultState} from '../../services/Categories.tsx';
 
-import { SearchInput } from '../../components/Resources/Search/Search.tsx';
-import { Header, Footer, Main} from '../../components/Structure/Structure.tsx';
-import { Link } from '../../components/SubComponents/Link.tsx';
+import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
+import { Link } from '../../ui-resources/components/SubComponents/Link.tsx';
 
 import { CategoriesCreateForm, CategoriesEditForm } from './CategoriesForms.tsx';
-import { PrivateHeader } from '../../templates/Headers/Headers.tsx';
-import { PrivateFooter } from '../../templates/Footers/Footers.tsx';
-import { Title } from '../../components/SubComponents/Title.tsx';
 
-import { CategoriesList } from './CategoriesList.tsx';
-import './Categories.css';
+import { PrivateHeader } from '../../ui-resources/templates/Structure/Headers/Headers.tsx';
+import { SearchInput } from '../../ui-resources/templates/Search/Search-1';
+
+import { CategoriesList } from '../../ui-resources/templates/List/CategoryList/CategoriesList';
 
 
 const Categories:React.FC = () => {
@@ -110,22 +107,20 @@ const Categories:React.FC = () => {
 
     const listContent = searchResult;
 
+    console.log(listContent)
     return (    
         <>
             { showCreateForm && <CategoriesCreateForm action={handleCreate}/> }
             { showEditForm && <CategoriesEditForm action={handlerUpdate} category={categoryInputFormEdit}/> }
-            <Header>
-                <PrivateHeader/>
-            </Header>
+
+            <PrivateHeader/>
             <Main>
-                <Title content='Categorias'/>
-                <SearchInput submitCallback={handlerFindSpecific}/>
-                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Adicionar uma nova categoria"/>
-                <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete} />
+              <div className="inline-div">
+                <SearchInput submitCallback={handlerFindSpecific} toFind='categories'/>
+                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova categoria"/>
+              </div>
+              <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete} />
             </Main>
-            <Footer>
-                <PrivateFooter/>
-            </Footer>
         </>
     );
 }

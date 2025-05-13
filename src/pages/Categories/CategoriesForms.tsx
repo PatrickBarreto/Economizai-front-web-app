@@ -1,14 +1,14 @@
-import { Modal } from "../../components/Modal/Modal";
-import Form from "../../components/Resources/Form/Form";
-import Input from "../../components/Resources/Form/Input/Input";
-import { Title } from "../../components/SubComponents/Title";
-import { SubTitle } from "../../components/SubComponents/SubTitle";
+import { Modal } from "../../ui-resources/components/Modal/Modal";
+import Form from "../../ui-resources/components/Resources/Form/Form";
+import Input from "../../ui-resources/components/Resources/Form/Input/Input";
+import { Title } from "../../ui-resources/components/SubComponents/Title";
+import { SubTitle } from "../../ui-resources/components/SubComponents/SubTitle";
 import { Categories } from "../../config/Interfaces/SystemEntities";
-import Checkbox from "../../components/Resources/Form/Input/Checkbox";
+import Checkbox from "../../ui-resources/components/Resources/Form/Input/Checkbox";
 import { findProdutcs } from "../../services/Products";
 import { findBrands } from "../../services/Brands";
 import { useEffect, useState } from "react";
-import { ApiRetun } from "../../config/Interfaces/ApiConection";
+import { ApiResponse } from "../../config/Interfaces/ApiConection";
 import { z } from "zod";
 
 interface CategoryForm {
@@ -18,7 +18,7 @@ interface CategoryForm {
 }
 
 const handleFind = async (finder:Function) => {
-    const returnApi:ApiRetun = await finder();
+    const returnApi:ApiResponse = await finder();
     if(returnApi.status == 200){
         return returnApi.body;
     }

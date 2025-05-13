@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
 import { IoMdAdd } from "react-icons/io";
-import './ShoppingLists.css';
 
 import { create, findSpecific, update, remove, handleSetSearchResultState} from '../../services/ShoppingLists.tsx';
 
-import { SearchInput } from '../../components/Resources/Search/Search.tsx';
-import { Header, Footer, Main} from '../../components/Structure/Structure.tsx';
-import { Link } from '../../components/SubComponents/Link.tsx';
+import { Link } from '../../ui-resources/components/SubComponents/Link.tsx';
 
 import { ShoppingListsCreateForm, ShoppingListsEditForm } from './ShoppingListsForms.tsx';
-import { PrivateHeader } from '../../templates/Headers/Headers.tsx';
-import { PublicFooter } from '../../templates/Footers/Footers.tsx';
+import { PrivateHeader } from '../../ui-resources/templates/Structure/Headers/Headers.tsx';
 import { ShoppingListsList } from './ShoppingListsList.tsx';
-import { Title } from '../../components/SubComponents/Title.tsx';
+import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
+import { SearchInput } from '../../ui-resources/templates/Search/Search-1.tsx';
 
 
 const ShoppingLists:React.FC = () => {
@@ -98,20 +95,16 @@ const ShoppingLists:React.FC = () => {
 
     return (    
         <>
-            { showCreateForm && <ShoppingListsCreateForm action={handleCreate} shoppingList={InputFormData}/> }
-            { showEditForm && <ShoppingListsEditForm action={handlerUpdate} shoppingList={InputFormData}/> }
-            <Header>
-                <PrivateHeader/>
-            </Header>
-            <Main>
-                <Title content='Listas de Compras'/>
-                <SearchInput submitCallback={handlerFindSpecific}/>
-                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Adicionar uma lista de compras"/>
-                <ShoppingListsList contents={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
-            </Main>
-            <Footer>
-                <PublicFooter/>
-            </Footer>
+          { showCreateForm && <ShoppingListsCreateForm action={handleCreate} shoppingList={InputFormData}/> }
+          { showEditForm && <ShoppingListsEditForm action={handlerUpdate} shoppingList={InputFormData}/> }
+          <PrivateHeader/>
+          <Main>
+            <div className="inline-div">
+              <SearchInput submitCallback={handlerFindSpecific}/>
+              <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova lista"/>
+            </div>
+            <ShoppingListsList contents={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
+          </Main>
         </>
     );
 }

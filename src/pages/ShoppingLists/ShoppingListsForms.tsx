@@ -1,8 +1,8 @@
-import { Modal } from "../../components/Modal/Modal";
-import Form from "../../components/Resources/Form/Form";
-import Input from "../../components/Resources/Form/Input/Input";
-import { Title } from "../../components/SubComponents/Title";
-import { SubTitle } from "../../components/SubComponents/SubTitle";
+import { Modal } from "../../ui-resources/components/Modal/Modal";
+import Form from "../../ui-resources/components/Resources/Form/Form";
+import Input from "../../ui-resources/components/Resources/Form/Input/Input";
+import { Title } from "../../ui-resources/components/SubComponents/Title";
+import { SubTitle } from "../../ui-resources/components/SubComponents/SubTitle";
 import { ShoppingList } from "../../config/Interfaces/SystemEntities";
 import { ShoppingListsListExecutions } from "./ShoppingListsListExecutions";
 import { z } from "zod";

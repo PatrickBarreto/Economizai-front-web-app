@@ -1,7 +1,7 @@
-import { ApiConectionData, ApiRetun } from '../config/Interfaces/ApiConection';
+import { ApiRequest, ApiResponse } from '../config/Interfaces/ApiConection';
 
 
-export async function ApiConection(props:ApiConectionData) {
+export async function ApiConection(props:ApiRequest) {
 
     const queryString:string = (props.queryStrings !== undefined) ? '?'+props.queryStrings : '';
 
@@ -12,12 +12,9 @@ export async function ApiConection(props:ApiConectionData) {
             validadeHttpErrorStatus(response);
         }
 
-        const body = await response.json();
-
-
-        const result:ApiRetun = {
+        const result:ApiResponse = {
                 headers: response.headers,
-                body: body,
+                body: await response.json(),
                 status: response.status
             };
     
@@ -28,10 +25,9 @@ export async function ApiConection(props:ApiConectionData) {
     }
 }
 
+export async function callApi(method:string, uri:string, requestBody:Object = {}):Promise<ApiResponse>{
 
-export async function callApi(method:string, uri:string, requestBody:Object = {}){
-
-    const apiData:ApiConectionData = {
+    const apiData:ApiRequest = {
         method: method,
         uri: uri,
         headers:{
@@ -39,20 +35,11 @@ export async function callApi(method:string, uri:string, requestBody:Object = {}
             "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
             "Authorization":localStorage.getItem('Authorization') ?? ''
         },
-        body: JSON.stringify(requestBody)
-    }
-        
-    if(method == 'GET' || method == 'HEAD'){
-        delete apiData.body;
+        body: (method != 'GET' && method != 'HEAD') ? JSON.stringify(requestBody) : undefined
     }
 
-    const result:ApiRetun = await ApiConection(apiData);
-
-
-    return result;
+    return ApiConection(apiData);
 }
-
-
 
 function validadeHttpErrorStatus(response:Response){
     switch(response.status){

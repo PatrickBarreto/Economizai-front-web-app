@@ -1,4 +1,4 @@
-export interface ApiConectionData {
+export interface ApiRequest {
     method:string;
     uri: string;
     headers: HeadersInit;
@@ -6,7 +6,7 @@ export interface ApiConectionData {
     queryStrings?: string;
 }
 
-export interface ApiRetun {
+export interface ApiResponse {
     headers:Headers,
     body:any,
     status:number

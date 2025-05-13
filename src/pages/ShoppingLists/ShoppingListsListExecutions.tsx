@@ -1,4 +1,4 @@
-import { List, ListEdit } from "../../templates/List/DefaultList/DeafaultLits";
+import { List, ListEdit } from "../../ui-resources/templates/List/DefaultList/DeafaultLits";
 import { ShoppingListExecutions } from "../../config/Interfaces/SystemEntities";
 
 interface ShoppingListExecutionItem extends List{
