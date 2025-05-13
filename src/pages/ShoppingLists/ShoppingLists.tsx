@@ -100,7 +100,7 @@ const ShoppingLists:React.FC = () => {
           <PrivateHeader/>
           <Main>
             <div className="inline-div">
-              <SearchInput submitCallback={handlerFindSpecific}/>
+              <SearchInput submitCallback={handlerFindSpecific} toFind={"shopping-list"}/>
               <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova lista"/>
             </div>
             <ShoppingListsList contents={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>

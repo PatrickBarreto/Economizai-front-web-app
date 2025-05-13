@@ -116,8 +116,8 @@ const Categories:React.FC = () => {
             <PrivateHeader/>
             <Main>
               <div className="inline-div">
-                <SearchInput submitCallback={handlerFindSpecific} toFind='categories'/>
-                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova categoria"/>
+                <SearchInput submitCallback={handlerFindSpecific} toFind={'categories'}/>
+                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text={'Nova categoria'}/>
               </div>
               <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete} />
             </Main>
