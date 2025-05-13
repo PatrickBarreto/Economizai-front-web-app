@@ -1,5 +1,5 @@
 
 export interface Search {
     submitCallback:Function,
-    toFind: 'products' | 'brands'
+    toFind: 'products' | 'brands' | 'categories'
 }
