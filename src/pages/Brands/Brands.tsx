@@ -27,21 +27,22 @@ const Brands:React.FC = () => {
             handleSetSearchResultState(setSearchResult);
         }
         fetchData()
-    },[createdBrand]);
+    },[]);
 
     const handlerFindSpecific = async (data:any) => {
-        if(data.searchProducts == ''){
-            await handleSetSearchResultState(setSearchResult);
-            return;
-        }
 
-        let response:any = await findSpecificBrand(data.searchProducts)
+      if(data.searchBrands == ''){
+          await handleSetSearchResultState(setSearchResult);
+          return;
+      }
 
-        if(response){
-            setSearchResult(response)
-        }else{
-            return alert('Ops, not found')
-        }
+      let response:any = await findSpecificBrand(data.searchBrands)
+
+      if(response){
+          setSearchResult(response)
+      }else{
+          return alert('Ops, not found')
+      }
     }
 
     const showCreateBrandForm = () => {
@@ -101,7 +102,7 @@ const Brands:React.FC = () => {
           <PrivateHeader/>
           <Main>
             <div className="inline-div">
-              <SearchInput submitCallback={handlerFindSpecific}/>
+              <SearchInput submitCallback={handlerFindSpecific} toFind='brands'/>
               <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text="Nova marca"/>
             </div>
             <BrandList content={toRender} actionEdit={prepareEditFormData} actionDelete={handlerDelete}/>
