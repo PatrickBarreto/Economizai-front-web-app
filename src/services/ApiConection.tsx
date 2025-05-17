@@ -6,7 +6,7 @@ export async function ApiConection(props:ApiRequest) {
     const queryString:string = (props.queryStrings !== undefined) ? '?'+props.queryStrings : '';
 
     try{
-        const response = await fetch(import.meta.env.VITE_BASE_API+props.uri+queryString, props);
+        const response = await fetch(window.env.VITE_BASE_API+props.uri+queryString, props);
         
         if(!response.ok) {
             validadeHttpErrorStatus(response);
@@ -31,9 +31,9 @@ export async function callApi(method:string, uri:string, requestBody:Object = {}
         method: method,
         uri: uri,
         headers:{
-            "Content-Type":"application/json",
-            "Access-Token":import.meta.env.VITE_ACCESS_TOKEN,
-            "Authorization":localStorage.getItem('Authorization') ?? ''
+            "Content-Type": "application/json",
+            "Access-Token": window.env.VITE_PUBLIC_KEY,
+            "Authorization": localStorage.getItem('Authorization') ?? ''
         },
         body: (method != 'GET' && method != 'HEAD') ? JSON.stringify(requestBody) : undefined
     }
