@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "docker:build": "docker stop c-economizai-app-test && docker rm c-economizai-app-test && docker build -t economizai-app-test . && docker run -d -p 80:80 --name c-economizai-app-test economizai-app-test",
+    "docker:stop": "docker stop c-economizai-app-test",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
