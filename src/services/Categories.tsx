@@ -63,11 +63,29 @@ export async function remove(id:any) {
 
 
 
-export async function handleSetSearchResultState(setSearchResult:Function){
-    const findedBrands:any = await find();
+export async function findSpecificCategory(id:number|string):Promise<any>{
 
-    if(findedBrands.status != 200){
+    const result:ApiResponse = await callApi('GET', '/category/'+id)    
+    
+    if(result.status === 404){
+        return false;
+    }
+    
+    return [result.body];
+}
+
+
+export async function handleSetSearchResultState(setSearchResult:Function){
+    const findedCategories:any = await find();
+
+    if(findedCategories.status != 200){
         return false
     }
-    setSearchResult(findedBrands.body);
+    setSearchResult(findedCategories.body);
 }
+
+export async function handleSetSpecificCategory(setSearchResult:Function, id:string) {
+  const findedCategory:Categories[] = await findSpecificCategory(id);
+  setSearchResult(findedCategory[0]);
+}
+
