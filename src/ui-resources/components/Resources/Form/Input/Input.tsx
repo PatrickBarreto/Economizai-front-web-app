@@ -11,8 +11,8 @@ const validateInputData = (input:Inputs):Inputs => {
     inputsAtributes.type        = (input.type != undefined || input.type != null || input.type != '') ? input.type : null;
     inputsAtributes.placeholder = (input.placeholder != undefined || input.placeholder != null || input.placeholder != '') ? input.placeholder : null;
     inputsAtributes.value       = (input.value != undefined || input.value != null || input.value != '') ? input.value : null;
-    inputsAtributes.readOnly    = (input.readonly === true) ? "true" : null;
-    inputsAtributes.required    = (input.required === true) ? "true" : null;
+    inputsAtributes.readOnly    = (input.readonly === true) ? true : null;
+    inputsAtributes.required    = (input.required === true) ? true : null;
     inputsAtributes.checked     = (input.checked === true) ? "checked" : null;
     inputsAtributes.autoComplete = (input.autocomplete === false) ? 'off' : null
 
