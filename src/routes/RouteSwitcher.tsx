@@ -10,7 +10,8 @@ import { LandingPage }    from '../pages/LandingPage/LadingPage';
 import Categories         from '../pages/Categories/Categories.tsx';
 import ShoppingLists      from '../pages/ShoppingLists/ShoppingLists.tsx';
 import { TemplateFactory }  from '../ui-resources/templates/TemplateFactory.tsx';
-import { CategoriesCreateForm, CategoriesEditForm } from '../pages/Categories/CategoriesForms.tsx';
+import { CategoriesCreateForm } from '../pages/Categories/CategoriesCreateForm.tsx';
+import { CategoriesEditForm } from '../pages/Categories/CategoriesUpdateForm.tsx';
 
 const RouteSwitcher:React.FC = () => {
     
