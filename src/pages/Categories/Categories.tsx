@@ -2,36 +2,29 @@ import React, { useEffect, useState } from 'react';
 
 import { IoMdAdd } from "react-icons/io";
 
-import { create, findSpecific, update, remove, handleSetSearchResultState} from '../../services/Categories.tsx';
-
 import { Main } from '../../ui-resources/templates/Structure/Main/Main.tsx';
 import { Link } from '../../ui-resources/components/SubComponents/Link.tsx';
 
-import { CategoriesCreateForm, CategoriesEditForm } from './CategoriesForms.tsx';
+import { findSpecific, remove, handleSetSearchResultState } from '../../services/Categories.tsx';
 
 import { PrivateHeader } from '../../ui-resources/templates/Structure/Headers/Headers.tsx';
 import { SearchInput } from '../../ui-resources/templates/Search/Search-1';
 
 import { CategoriesList } from '../../ui-resources/templates/List/CategoryList/CategoriesList';
+import { useNavigate } from 'react-router-dom';
 
 
 const Categories:React.FC = () => {
     const [ searchResult, setSearchResult ] = useState([]);
-    const [ showCreateForm, setShowCreateForm ] = useState(false);
-    const [ showEditForm, setShowEditForm ] = useState(false);
-    const [ createdCategory, setCreatedCategory ] = useState(0);
-    const [ categoryInputFormEdit, setCategoryInputFormEdit ] = useState({id:'',name:''});
-
-
+    const navigate = useNavigate()
+    
 
     useEffect(()=>{
         const fetchData = async () => {
             handleSetSearchResultState(setSearchResult);
         }
         fetchData()
-    },[createdCategory]);
-
-
+    },[]);
 
 
     const handlerFindSpecific = async (data:any) => {
@@ -49,46 +42,17 @@ const Categories:React.FC = () => {
         }
     }
 
-
-
-    const showCreateBrandForm = () => {
-        setShowEditForm(false);
-        setShowCreateForm(true);
+    const handlerEditCategory = (id:any) => {
+      navigate(`${id}/edit`, {
+        relative: "path"
+      })
     }
 
-
-
-    const handleCreate = async (data:any) => {
-        const returnApi = await create(data)
-        if(returnApi != false){
-            if(returnApi.status == 200){
-                setCreatedCategory(createdCategory + 1);
-            }
-        }
-        await handleSetSearchResultState(setSearchResult)       
-        setShowCreateForm(false)
+    const handlerCreateCategory = () => {
+      navigate(`create`, {
+        relative: "path"
+      })
     }
-
-
-
-    const handlerUpdate = async (data:any) => {
-        const result = await update(data);
-        if(result.status == 404){
-            return alert("Not found");
-        }
-        await handleSetSearchResultState(setSearchResult);
-        setShowEditForm(false);
-    }
-
-
-    
-    const prepareEditFormData = async (id:number|string) => {
-        const category = await findSpecific(id);
-        setCategoryInputFormEdit(category[0]);
-        setShowCreateForm(false)
-        setShowEditForm(true);
-    }
-
 
     const handlerDelete = async (id:any) => {
         const result = await remove(id);
@@ -107,21 +71,17 @@ const Categories:React.FC = () => {
 
     const listContent = searchResult;
 
-    console.log(listContent)
     return (    
-        <>
-            { showCreateForm && <CategoriesCreateForm action={handleCreate}/> }
-            { showEditForm && <CategoriesEditForm action={handlerUpdate} category={categoryInputFormEdit}/> }
-
-            <PrivateHeader/>
-            <Main>
-              <div className="inline-div">
-                <SearchInput submitCallback={handlerFindSpecific} toFind={'categories'}/>
-                <Link action={showCreateBrandForm} icon={<IoMdAdd/>} text={'Nova categoria'}/>
-              </div>
-              <CategoriesList contents={listContent} actionEdit={prepareEditFormData} actionDelete={handlerDelete} />
-            </Main>
-        </>
+      <>
+        <PrivateHeader/>
+        <Main>
+          <div className="inline-div">
+            <SearchInput submitCallback={handlerFindSpecific} toFind={'categories'}/>
+            <Link action={handlerCreateCategory} icon={<IoMdAdd/>} text={'Nova categoria'}/>
+          </div>
+          <CategoriesList contents={listContent} actionEdit={handlerEditCategory} actionDelete={handlerDelete} />
+        </Main>
+      </>
     );
 }
 
