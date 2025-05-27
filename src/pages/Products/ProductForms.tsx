@@ -27,7 +27,6 @@ export const ProductEditForm:React.FC = () => {
   },[]);
 
   const handlerUpdateProduct = async (data:any) => {
-    debugger
     const result = await updateProduct(data);
     if(result.status == 404){
         return alert("Not found");
