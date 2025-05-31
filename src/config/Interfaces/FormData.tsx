@@ -20,6 +20,7 @@ export interface Inputs {
     id?: string,
     className?: string,
     value?: any,
+    defaultValue?: any,
     placeholder?: string,
     readonly?: boolean,
     required?: boolean,

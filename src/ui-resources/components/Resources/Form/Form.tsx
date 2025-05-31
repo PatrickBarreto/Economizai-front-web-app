@@ -10,7 +10,7 @@ const Form:React.FC<FormInterface> = ({ children, className, submitCallback, id 
 
     type zodSchema = z.infer<typeof zodObject>;
 
-    const {register, handleSubmit} = useForm<zodSchema>({
+    const {register, handleSubmit, watch} = useForm<zodSchema>({
         resolver: zodResolver(zodObject)
     });
 
@@ -19,8 +19,8 @@ const Form:React.FC<FormInterface> = ({ children, className, submitCallback, id 
     }
     
     return (
-        <form className={className} id={id} onSubmit={handleSubmit(executeSubmitCallback)}>
-            <FormContext.Provider value={register}>
+      <form className={className} id={id} onSubmit={handleSubmit(executeSubmitCallback)}>
+          <FormContext.Provider value={{register, watch}}>
                 {children}
             </FormContext.Provider>
         </form>
