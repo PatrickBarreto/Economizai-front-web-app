@@ -19,7 +19,7 @@ export interface Brand {
     id?:number|string,
     name:string,
     type?:string,
-    brandsCategory?:number
+    categories?:Categories[]
 }
 
 export interface Categories {

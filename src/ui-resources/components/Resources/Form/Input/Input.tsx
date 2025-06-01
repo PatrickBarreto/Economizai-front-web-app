@@ -23,14 +23,14 @@ const validateInputData = (input:Inputs):Inputs => {
 const Input: React.FC<Inputs> = (input:Inputs) => {
 
     const inputsAtributes = validateInputData(input);
-    const register = useContext(FormContext)
+    const {register} = useContext(FormContext)
     
     return (
         <>
           {input.label && <label className={input.label?.className} htmlFor={input.name}>{input.label?.value}</label>}
           <input 
               {...inputsAtributes}
-              {...register(input.name)}
+              {...(input.type !== 'submit' && input.type !== 'button' ? register(input.name) : {})}
           />
         </>
     )

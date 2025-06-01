@@ -34,7 +34,7 @@ const validateSelectData = (select:SelectInterface) => {
 export const Select: React.FC<SelectInterface> = (select:SelectInterface) => {
 
     const selectAtributes = validateSelectData(select)
-    const register = useContext(FormContext)
+    const {register} = useContext(FormContext)
     
     return (
         <>

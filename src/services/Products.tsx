@@ -7,8 +7,7 @@ export async function createProduct(data:any) {
     const requestBody = {
         name: data.name,
         type: data.type,
-        volume: data.volume,
-        unit_mensure: data.unitMensure
+        categories: data.categories
     }
 
     const result:ApiResponse = await callApi('POST', '/product', requestBody);

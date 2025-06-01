@@ -1,40 +1,27 @@
 import Form from "../../../components/Resources/Form/Form";
 import Input from "../../../components/Resources/Form/Input/Input";
-import { Product } from "../../../../config/Interfaces/SystemEntities";
+import { Categories, Product } from "../../../../config/Interfaces/SystemEntities";
 import { z } from "zod";
 import { Select } from "../../../components/Resources/Form/Select/Select";
 import { Option } from "../../../components/Resources/Form/Select/Option/Option";
 import './ProductForm.css'
+import Checkbox from "../../../components/Resources/Form/Input/Checkbox";
+import {find as categoriesFind} from "../../../../services/Categories"
+import { useEffect, useState } from "react";
+import { ApiResponse } from "../../../../config/Interfaces/ApiConection";
 
 interface ProductForm {
   action: Function,
   product?:Product,
   formClassName?:string,
 }
+
 const productZodForm = z.object({
   id:z.string().optional(),
   name:z.string(),
   type:z.string(),
-  volume:z.string(),
-  unitMensure:z.string(),
+  categories:z.array(z.string()).default([''])
 });
-
-const tempEnumUnitMensure = [
-  {id: 1,name: 'mcg'},
-  {id: 2,name: 'mg'},
-  {id: 3,name: 'g'},
-  {id: 4,name: 'kg'},
-  {id: 5,name: 'mm'},
-  {id: 6,name: 'cm'},
-  {id: 7,name: 'm'},
-  {id: 8,name: 'mm2'},
-  {id: 9,name: 'cm2'},
-  {id: 10,name: 'm2'},
-  {id: 11,name: 'ml'},
-  {id: 12,name: 'l'},
-  {id: 13,name: 'c3'},
-  {id: 14,name: 'm3'}
-]
 
 const descriptionItemType  = {
   food: "Alimentação",
@@ -48,18 +35,43 @@ const tempItemType:{id:number, name:customType}[] = [
   {id: 2, name: 'medicine'},
 ]
 
+const handleFind = async (finder:Function) => {
+  const returnApi:ApiResponse = await finder();
+  if(returnApi.status == 200){
+      return returnApi.body;
+  }
+}
 
 export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassName="productsForm" }) => {
   const buttonText = product ? "Editar Produto" : "Criar Produto"
+  const [categories, setCategories] = useState<Categories[] | []>([])
+  const [defaultValues, setDefaultValues] = useState()
+  
+  useEffect(() => {
+    const categoriesFinder = async () => {
+      setCategories(await handleFind(categoriesFind))
+    }
+    categoriesFinder()
+  },[])
+  
+  
+  useEffect(() => {
+      setDefaultValues({
+        id: product?.id?.toString(),
+        name: product?.name,
+        type: product?.type,
+        categories: product?.categories
+      })
 
+  },[product])
+  
   return (
     <>
-      <Form className={formClassName} submitCallback={action} zodObject={productZodForm}>
+      <Form className={formClassName} submitCallback={action} zodObject={productZodForm} defaultValues={defaultValues}>
         { product && product.id && <Input 
             className={"hiddenElement"}
             name={ "id"}
             type={ "text"}
-            value={product.id}
         />}
 
         <Input 
@@ -70,8 +82,8 @@ export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassN
             className={"inputNameProduct"}
             name={ "name"}
             type={ "text"}
-            placeholder={product?.name}
         />
+
         <div id="typeDiv">
           <Select 
             label={{
@@ -95,31 +107,27 @@ export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassN
           </Select>
         </div>
 
-        <p>Volume</p>
-        <div id="volumeDiv">
-          <Input 
-            className={"selectProductVolume"}
-            name={"volume"}
-            placeholder={product?.volume}
-          />
-
-          <Select 
-            className={"selectProductUnitMensure"}
-            name={"unitMensure"}
-            required={true}
-          >
-          {tempEnumUnitMensure.map((u)=>{
+        <p>Categoria</p>
+        <div className={"categoryDiv"}>
+        { categories && categories.map((category, index:any)=>{
             return (
-              <Option
-              value={u.id} 
-              disabled= {false}
-              >
-                {u.name}
-              </Option>
-              )
-            })}
-          </Select>
-        </div>
+              <div>
+                <Checkbox 
+                    key={index}
+                    label={{
+                        className: "labelName",
+                        value: category.name
+                        }
+                    }
+                    className= {"categoryCheckbox"}
+                    name={"categories"}
+                    value={category.id}
+                />
+              </div>
+            )
+          })
+        } 
+        </div>      
 
         <div id="divButton">
           <Input
