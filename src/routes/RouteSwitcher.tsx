@@ -12,6 +12,8 @@ import ShoppingLists      from '../pages/ShoppingLists/ShoppingLists.tsx';
 import { TemplateFactory }  from '../ui-resources/templates/TemplateFactory.tsx';
 import { CategoriesCreateForm } from '../pages/Categories/CategoriesCreateForm.tsx';
 import { CategoriesEditForm } from '../pages/Categories/CategoriesUpdateForm.tsx';
+import { BrandCreateForm } from '../pages/Brands/BrandCreateForm.tsx';
+import { BrandUpdateForm } from '../pages/Brands/BrandUpdateForm.tsx';
 
 const RouteSwitcher:React.FC = () => {
     
@@ -28,6 +30,8 @@ const RouteSwitcher:React.FC = () => {
                 <Route  path="/products/:id/edit" element={<ProductEditForm/>}/>
                 
                 <Route  path="/brands" element={<Brands/>}/>
+                <Route  path="/brands/create" element={<BrandCreateForm/>}/>
+                <Route  path="/brands/:id/edit" element={<BrandUpdateForm/>}/>
 
                 <Route  path="/categories" element={<Categories/>}/>
                 <Route  path="/categories/create" element={<CategoriesCreateForm/>}/>
