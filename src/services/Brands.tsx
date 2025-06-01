@@ -70,4 +70,10 @@ export async function handleSetSearchResultState(setSearchResult:Function){
 }
 
 
+export async function handleSetSpecificBrand(setSearchResult:Function, id:string) {
+  const findedCategory:Brand[] = await findSpecificBrand(id);
+  setSearchResult(findedCategory[0]);
+}
+
+
 
