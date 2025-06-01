@@ -6,7 +6,8 @@ export interface Form {
     submitCallback: Function
     id?: string,
     children: ReactNode,
-    zodObject: ZodType
+    zodObject: ZodType,
+    defaultValues?: object
 }
 
 export interface Inputs { 
