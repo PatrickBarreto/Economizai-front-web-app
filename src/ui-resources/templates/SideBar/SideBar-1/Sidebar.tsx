@@ -9,7 +9,7 @@ export const SideBar = () => {
       <div id="sidebar-1-div">
         <div id="sidebar-1-div-list-options">
           {menu.map((m, index) => {
-            const className = useLocation().pathname == m.link ? 'selected' : 'not-selected';
+            const className = useLocation().pathname.split('/')[1] === m.id ? 'selected' : 'not-selected';
             return <p key={index}>
                 <a className={className} href={m.link}>{m.label}</a>
             </p>

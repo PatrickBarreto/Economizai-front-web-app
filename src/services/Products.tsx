@@ -47,8 +47,7 @@ export async function updateProduct(data:any) {
         id: data.id,
         name: data.name,
         type: data.type,
-        volume: data.volume,
-        unit_mensure: data.unitMensure
+        categories: data.categories
     }
 
     const result:ApiResponse = await callApi('PUT', '/product/'+requestBody.id, requestBody);

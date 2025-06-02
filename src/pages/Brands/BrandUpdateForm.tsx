@@ -1,4 +1,3 @@
-import { Modal } from "../../ui-resources/templates/Modal/Modal";
 import { Title } from "../../ui-resources/components/SubComponents/Title";
 import { SubTitle } from "../../ui-resources/components/SubComponents/SubTitle";
 import { BrandsForm as BrandFormTemplate} from "../../ui-resources/templates/Form/Brand/BrandsForm";
@@ -6,7 +5,6 @@ import { useEffect, useState } from "react";
 import { Brand } from "../../config/Interfaces/SystemEntities";
 import { handleSetSpecificBrand, updateBrand } from "../../services/Brands";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Loading } from "../../ui-resources/templates/Loading/Loading";
 import { Main } from "../../ui-resources/templates/Structure/Main/Main";
 import { PrivateHeader } from "../../ui-resources/templates/Structure/Headers/Headers";
 
