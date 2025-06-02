@@ -4,16 +4,22 @@ import Login              from '../pages/Login/Login';
 import Home               from '../pages/Home/Home';
 import Products           from '../pages/Products/Products';
 import {ProductCreateForm, ProductEditForm} from '../pages/Products/ProductForms.tsx';
-import Brands             from '../pages/Brands/Brands.tsx';
 import { CreareAcccount } from '../pages/CreateAccount/CreateAccount';
 import { LandingPage }    from '../pages/LandingPage/LadingPage';
-import Categories         from '../pages/Categories/Categories.tsx';
-import ShoppingLists      from '../pages/ShoppingLists/ShoppingLists.tsx';
 import { TemplateFactory }  from '../ui-resources/templates/TemplateFactory.tsx';
+
+import Categories         from '../pages/Categories/Categories.tsx';
 import { CategoriesCreateForm } from '../pages/Categories/CategoriesCreateForm.tsx';
 import { CategoriesEditForm } from '../pages/Categories/CategoriesUpdateForm.tsx';
+
+import Brands             from '../pages/Brands/Brands.tsx';
 import { BrandCreateForm } from '../pages/Brands/BrandCreateForm.tsx';
 import { BrandUpdateForm } from '../pages/Brands/BrandUpdateForm.tsx';
+
+import ShoppingLists      from '../pages/ShoppingLists/ShoppingLists.tsx';
+import { ShoppingListsCreateForm } from '../pages/ShoppingLists/Forms/ShoppingListsCreateForm.tsx';
+import { ShoppingListsUpdateForm } from '../pages/ShoppingLists/Forms/ShoppingListsUpdateForm.tsx';
+
 
 const RouteSwitcher:React.FC = () => {
     
@@ -38,6 +44,8 @@ const RouteSwitcher:React.FC = () => {
                 <Route  path="/categories/:id/edit" element={<CategoriesEditForm/>}/>
                 
                 <Route  path="/shopping-list" element={<ShoppingLists/>}/>
+                <Route  path="/shopping-list/create" element={<ShoppingListsCreateForm/>}/>
+                <Route  path="/shopping-list/:id/edit" element={<ShoppingListsUpdateForm/>}/>
                 <Route  path="/templateFactory" element={<TemplateFactory/>}/>
             </Routes>
         </Router>

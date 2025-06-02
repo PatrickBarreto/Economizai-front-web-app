@@ -1,5 +1,5 @@
-import { DefaultList, List, contentDefaultItem } from "../../ui-resources/templates/List/DefaultList/DeafaultLits";
-import { ShoppingList } from "../../config/Interfaces/SystemEntities";
+import { DefaultList, List, contentDefaultItem } from "../DefaultList/DeafaultLits";
+import { ShoppingList } from "../../../../config/Interfaces/SystemEntities";
 
 interface ShoppingListList extends List{
     contents: ShoppingList[]

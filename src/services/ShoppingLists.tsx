@@ -74,3 +74,10 @@ export async function handleSetSearchResultState(setSearchResult:Function){
     }
     setSearchResult(findedBrands.body);
 }
+
+
+export async function handleSetSpecificShoppingList(setSearchResult:Function, id:string) {
+  const findedShoppingList:ShoppingList[] = await findSpecific(id);
+  setSearchResult(findedShoppingList[0]);
+}
+
