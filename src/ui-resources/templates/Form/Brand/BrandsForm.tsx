@@ -7,8 +7,8 @@ import Input from "../../../components/Resources/Form/Input/Input";
 import Checkbox from "../../../components/Resources/Form/Input/Checkbox";
 import { Select } from "../../../components/Resources/Form/Select/Select";
 import { Option } from "../../../components/Resources/Form/Select/Option/Option";
-import { find } from "../../../../services/Categories";
 import { Categories } from "../../../../config/Interfaces/SystemEntities";
+import { handleSetSearchResultState } from "../../../../services/Brands";
 
 const bandZodForm = z.object({
     id:z.string().optional(),
@@ -30,14 +30,6 @@ const tempItemType:{id:number, name:customType}[] = [
 ]
 
 
-const handleFind = async (finder:Function) => {
-  const returnApi:ApiResponse = await finder();
-  if(returnApi.status == 200){
-      return returnApi.body;
-  }
-}
-
-
 export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) => {
   
     const [defaultValues, setDefaultValues] = useState({})
@@ -45,7 +37,7 @@ export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) =
 
     useEffect(()=>{
       const execAsync = async () => {
-        setCategories(await handleFind(find))
+        await handleSetSearchResultState(setCategories)
       }
       execAsync()
     },[])

@@ -11,13 +11,7 @@ import { PrivateHeader } from "../../ui-resources/templates/Structure/Headers/He
 export const ProductEditForm:React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation().pathname.split('/')
-  const [ searchProduct, setSearchProduct ] = useState<Product>({
-    id:'',
-    name:'',
-    type:'',
-    volume:'',
-    unit_mensure:'',
-  }); 
+  const [ searchProduct, setSearchProduct ] = useState<Product>(); 
 
   useEffect(()=>{
     const fetchData = async () =>{

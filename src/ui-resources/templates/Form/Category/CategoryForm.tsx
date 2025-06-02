@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { Brand, Categories, Product } from "../../../../config/Interfaces/SystemEntities"
+import { Categories, Product } from "../../../../config/Interfaces/SystemEntities"
 import Form from "../../../components/Resources/Form/Form"
 import Checkbox from "../../../components/Resources/Form/Input/Checkbox"
 import Input from "../../../components/Resources/Form/Input/Input"
