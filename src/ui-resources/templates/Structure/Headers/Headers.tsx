@@ -5,7 +5,7 @@ import './Headers.css';
 
 
 export const PublicHeader:any = () => {
-    const image = {path:"/src/ui-resources/assets/logo.png", alt:"logo"};
+    const image = {path:"./src/ui-resources/assets/logo.png", alt:"logo"};
 
     return (
         <Header>
@@ -16,7 +16,7 @@ export const PublicHeader:any = () => {
 
 
 export const PrivateHeader:any = () => {
-    const image= {path:"/src/ui-resources/assets/logo.png", alt:"logo"};
+    const image= {path:"./src/ui-resources/assets/logo.png", alt:"logo"};
 
     return (
        <Header>
