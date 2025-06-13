@@ -25,7 +25,6 @@ export const ProductEditForm:React.FC = () => {
     if(result.status == 404){
         return alert("Not found");
     }
-    navigate("/products")
   }
 
   if(!searchProduct){
@@ -40,6 +39,7 @@ export const ProductEditForm:React.FC = () => {
         <Title content={"Produtos"}/>
         <SubTitle content={"Edite o produto Id:"+searchProduct.id}/>
         <ProductsForm action={handlerUpdateProduct} product={searchProduct}/>
+        <a href={"/products"}>Voltar</a>
       </Main>
     </>
   );
@@ -62,6 +62,7 @@ export const ProductCreateForm:React.FC = () => {
         <Title content={"Produto"}/>
         <SubTitle content={"Crie um novo produto"}/>
         <ProductsForm action={handleCreateProduct}/>
+        <a href={"/products"}>Voltar</a>
       </Main>
     </>
   );

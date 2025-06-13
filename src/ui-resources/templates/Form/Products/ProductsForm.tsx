@@ -45,7 +45,7 @@ const handleFind = async (finder:Function) => {
 export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassName="productsForm" }) => {
   const buttonText = product ? "Editar Produto" : "Criar Produto"
   const [categories, setCategories] = useState<Categories[] | []>([])
-  const [defaultValues, setDefaultValues] = useState<Product | undefined>(undefined)
+  const [defaultValues, setDefaultValues] = useState<Product | {}>({})
   
   useEffect(() => {
     const categoriesFinder = async () => {
@@ -57,14 +57,14 @@ export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassN
   
   useEffect(() => {
     if(product){
+      console.log( product.categories)
       setDefaultValues({
-        id: product?.id?.toString(),
-        name: product?.name,
-        type: product?.type,
-        categories: product?.categories
+        id: product.id?.toString(),
+        name: product.name,
+        type: product.type,
+        categories: product.categories ? product.categories.map(c => c.id.toString()) : []
       })
     }
-
   },[product])
   
   return (
@@ -101,6 +101,7 @@ export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassN
                 <Option
                 value={u.id} 
                 disabled= {false}
+                selected="u.id"
                 >
                   {descriptionItemType[type]}
                 </Option>
@@ -141,6 +142,5 @@ export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassN
         </div>
       </Form>
     </>
-
   );
 }

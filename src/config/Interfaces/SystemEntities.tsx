@@ -10,14 +10,14 @@ export interface Product {
     id?:number|string,
     name:string,
     type?:string,
-    categories?:number[]
+    categories?:ProductCategories[]|[]
 }
 
 export interface Brand {
     id?:number|string,
     name:string,
     type?:string,
-    categories?:Categories[]
+    categories?:BrandCategories[] | []
 }
 
 export interface Categories {
@@ -25,6 +25,20 @@ export interface Categories {
     name:string,
     products?:Product[],
     brands?:Brand[]
+}
+
+export interface ProductCategories {
+  bondId: number,
+  id: number,
+  name: string
+
+}
+
+export interface BrandCategories {
+  bondId: number,
+  id: number,
+  name: string
+
 }
 
 export interface CategoriesProducts {
