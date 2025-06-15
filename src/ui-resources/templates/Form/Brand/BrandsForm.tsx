@@ -7,7 +7,7 @@ import Input from "../../../components/Resources/Form/Input/Input";
 import Checkbox from "../../../components/Resources/Form/Input/Checkbox";
 import { Select } from "../../../components/Resources/Form/Select/Select";
 import { Option } from "../../../components/Resources/Form/Select/Option/Option";
-import { Categories } from "../../../../config/Interfaces/SystemEntities";
+import { Brand, Categories } from "../../../../config/Interfaces/SystemEntities";
 import { handleSetSearchResultState } from "../../../../services/Categories";
 
 const bandZodForm = z.object({
@@ -31,7 +31,7 @@ const tempItemType:{id:number, name:customType}[] = [
 
 
 export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) => {
-    const [defaultValues, setDefaultValues] = useState({})
+    const [defaultValues, setDefaultValues] = useState<Brand | {}>({})
     const [categories, setCategories] = useState<Categories[] | []>([])
 
     useEffect(()=>{
