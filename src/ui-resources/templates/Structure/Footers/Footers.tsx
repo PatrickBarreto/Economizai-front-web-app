@@ -4,7 +4,7 @@ import './Footers.css'
 
 
 export const PublicFooter = () => {
-    const image= {path:"assets/logo.png", alt:"logo"};
+    const image= {path:"/assets/logo.png", alt:"logo"};
     return (
         <div className='publicFooter'>
             <div id="footerImage">
@@ -30,7 +30,7 @@ export const PublicFooter = () => {
 
 
 export const PrivateFooter = () => {
-    const image= {path:"assets/logo.png", alt:"logo"};
+    const image= {path:"/assets/logo.png", alt:"logo"};
 
     return (
         <div className='privateFooter'>
