@@ -10,8 +10,19 @@ const Form:React.FC<FormInterface> = ({ children, className, submitCallback, id 
 
   type zodSchema = z.infer<typeof zodObject>;
 
+//RESOLVER ISSO DE FORMA MELHOR, SEM ATIRBUIR ESSA DEPENDÊNCIA
+const validateZodResolverData = (data: any, context: any, options: any) => {
+  if(typeof data.categories == "boolean"){
+    data.categories = []
+  }
+  if(typeof data.products == "boolean"){
+    data.categories = []
+  }
+  return zodResolver(zodObject)(data, context, options);
+}
+
   const {register, handleSubmit, formState: { errors }, reset} = useForm<zodSchema>({
-      resolver: zodResolver(zodObject),
+    resolver: validateZodResolverData,
   });
 
   const executeSubmitCallback = (data:zodSchema) =>{
