@@ -57,7 +57,6 @@ export const ProductsForm:React.FC<ProductForm> = ({ action, product, formClassN
   
   useEffect(() => {
     if(product){
-      console.log( product.categories)
       setDefaultValues({
         id: product.id?.toString(),
         name: product.name,

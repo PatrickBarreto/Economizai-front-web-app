@@ -8,12 +8,13 @@ import Checkbox from "../../../components/Resources/Form/Input/Checkbox";
 import { Select } from "../../../components/Resources/Form/Select/Select";
 import { Option } from "../../../components/Resources/Form/Select/Option/Option";
 import { Categories } from "../../../../config/Interfaces/SystemEntities";
-import { handleSetSearchResultState } from "../../../../services/Brands";
+import { handleSetSearchResultState } from "../../../../services/Categories";
 
 const bandZodForm = z.object({
     id:z.string().optional(),
     name:z.string(),
-    type:z.string()
+    type:z.string(),
+    categories:z.array(z.string()).default([''])
 });
 
 const descriptionItemType  = {
@@ -23,7 +24,6 @@ const descriptionItemType  = {
 
 type customType = keyof typeof descriptionItemType
 
-
 const tempItemType:{id:number, name:customType}[] = [
   {id: 1, name: 'food'},
   {id: 2, name: 'medicine'},
@@ -31,7 +31,6 @@ const tempItemType:{id:number, name:customType}[] = [
 
 
 export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) => {
-  
     const [defaultValues, setDefaultValues] = useState({})
     const [categories, setCategories] = useState<Categories[] | []>([])
 
@@ -43,13 +42,14 @@ export const BrandsForm:React.FC<BrandFormInterfaceProp> = ({ action, brand }) =
     },[])
 
    useEffect(()=>{
-    setDefaultValues({
-        id: brand?.id?.toString(),
-        name: brand?.name,
-        type: brand?.type,
-        categories: []
+    if(brand) {
+      setDefaultValues({
+        id: brand.id?.toString(),
+        name: brand.name,
+        type: brand.type,
+        categories: brand.categories ? brand.categories.map(c => c.id.toString()) : []
       })
-
+    }
    },[brand])
     
     return (

@@ -6,7 +6,8 @@ import { callApi } from './ApiConection';
 export async function createBrand(data:any) {
     const requestBody = {
         name: data.name,
-        type: data.type
+        type: data.type,
+        categories: data.categories
     }
 
     const response:ApiResponse = await callApi('POST', '/brands/create', requestBody);
@@ -43,7 +44,8 @@ export async function updateBrand(data:any) {
     const requestBody:Brand = {
         id: data.id,
         name: data.name,
-        type: data.type
+        type: data.type,
+        categories: data.categories
     }
 
     const response:ApiResponse = await callApi('PUT', '/brands/'+data.id, requestBody);
