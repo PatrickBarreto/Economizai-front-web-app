@@ -12,7 +12,7 @@ export const BrandCreateForm:React.FC = () => {
   const handlerCreate = async (data:any) => {
     const returnApi = await createBrand(data)
     if(returnApi.status == 200){
-      navigate('/brands')
+      return navigate('/brands')
     } 
     alert('Ops..')
   }
