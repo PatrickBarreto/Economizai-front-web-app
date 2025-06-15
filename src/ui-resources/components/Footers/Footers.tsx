@@ -2,7 +2,7 @@ import { menuLinks, menuLinksLoged } from "../../../config/Links";
 import { Item, List } from "../Resources/List/List";
 
 export const PublicFooter = () => {
-    const image= {path:"assets/logo.png", alt:"logo"};
+    const image= {path:"/assets/logo.png", alt:"logo"};
     return (
         <div className='publicFooter'>
             <div id="footerImage">
@@ -28,7 +28,7 @@ export const PublicFooter = () => {
 
 
 export const PrivateFooter = () => {
-    const image= {path:"src/ui-resources/assets/logo.png", alt:"logo"};
+    const image= {path:"src/ui-resources//assets/logo.png", alt:"logo"};
     return (
         <div className='privateFooter'>
             <div id="footerImage">
