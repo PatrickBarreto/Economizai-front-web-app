@@ -1,4 +1,4 @@
-import { productLink } from "../../../../config/Interfaces/Links"
+import { productLink } from "../../../config/Interfaces/Links"
 
 const menu:productLink[] = [
   {
