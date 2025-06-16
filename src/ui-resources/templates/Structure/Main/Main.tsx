@@ -1,5 +1,5 @@
 import React from "react"
-import { SideBar } from "../../SideBar/SideBar-1/Sidebar"
+import { SideBar } from "../../SideBar/SideBarResizing/SideBar"
 import { Main as MainComponent } from "../../../components/Structure/Structure"
 import { Main as MainInterface} from "../../../../config/Interfaces/Structure"
 import './Main-1.css'
