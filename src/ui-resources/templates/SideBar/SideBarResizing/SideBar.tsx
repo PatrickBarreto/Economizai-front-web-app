@@ -35,12 +35,36 @@ export const SideBar = () => {
       isResizing.current = false;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+       if (isResizing.current) {
+        const newWidth = e.touches[0].clientX;
+        if (newWidth > 50 && newWidth < 600) {
+          setWidth(newWidth);
+        }
+        if(newWidth <= 100){
+          setMenuOpen(true)
+          setMenuClose(false)
+        }else{
+          setMenuOpen(false)
+          setMenuClose(true)
+        }
+      }
+    }
+    const handleTouchUp = () => {
+      isResizing.current = false;
+    }
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
 
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchUp);
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
+
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchUp);
     };
   }, []);
 
