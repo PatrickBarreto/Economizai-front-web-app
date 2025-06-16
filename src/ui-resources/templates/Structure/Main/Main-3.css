@@ -62,3 +62,44 @@
   text-align: center;
   font-size: 1em;
 }
+
+
+@media (max-width: 600px) {
+  .main-3-content-section {
+    left: 0px;
+  }
+
+  .main-3-cotent {
+    flex-direction: column;
+    width: 100vw;
+  }
+  .main-3-cotent-body-form{
+    width: 100%;
+  }
+
+  .main-3-cotent{
+    flex-direction: column;
+    width: 100vw
+  }
+
+  .main-3-cotent-title{
+     width: 100%;
+  }
+
+  .main-3-cotent-body{
+     width: 100%;
+  }
+
+  .main-3-cotent-body-form{
+     width: 100%;
+  }
+
+  .main-3-cotent-body-form input {
+     width: 100%;
+  }
+
+  .main-3-cotent-body-form label[for='submit'] + input {
+     width: 100%;
+  }
+
+}
