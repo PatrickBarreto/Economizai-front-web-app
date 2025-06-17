@@ -106,8 +106,9 @@ export const SideBar = () => {
       
       <div
         onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
         style={{
-          width: "5px",
+          width: "15px",
           cursor: "col-resize",
           background: "#aaa",
         }}
