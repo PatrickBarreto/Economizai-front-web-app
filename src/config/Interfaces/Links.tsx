@@ -1,4 +1,7 @@
+import { ReactElement } from "react";
+
 interface Link {
+    icon?: ReactElement
     label: string;
     link: string;
     id: string;
