@@ -2,16 +2,16 @@
   display: flex;
   height: calc(100vh - 60px);
   flex-direction: row;
-  position: relative;
-  left: -20px;
+  position: absolute;
+  left: 0px;
   overflow: auto;
+  z-index: 999;
 }
 
 #sidebar-div{
   background: #ddd;
   padding: "10px";
   height: 100%;
-  width: 100%;
   user-select: "none";
   overflow: auto;
 }
@@ -31,7 +31,6 @@
   margin-left: 20px;
   position: relative;
   height: 75vh;
-  width: max-content;
   gap: 20px
 }
 

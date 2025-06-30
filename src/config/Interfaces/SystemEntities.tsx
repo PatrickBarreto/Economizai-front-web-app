@@ -23,8 +23,8 @@ export interface Brand {
 export interface Categories {
     id?:number|string,
     name:string,
-    products?:Product[],
-    brands?:Brand[]
+    products?:CategoriesProducts[],
+    brands?:CategoriesBrands[]
 }
 
 export interface ProductCategories {

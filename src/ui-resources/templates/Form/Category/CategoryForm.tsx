@@ -96,13 +96,13 @@ export const CategoryUpdateForm:React.FC<Category> = ({ action, category, formCl
 
       if(category){
         const categoryId = category.id?.toString();
-        const productIds = category.products?.map((p) => p.id?.toString()) || [];
-        const brandIds = category.brands?.map((b) => b.id?.toString()) || [];
+        const productIds = category.products?.map((p) => p.products_id?.toString()) || [];
+        const brandIds = category.brands?.map((b) => b.brands_id?.toString()) || [];
         setDefaultValues({
           id: categoryId,
           name: category.name ?? '',
-          products: productIds.map(String),
-          brands: brandIds.map(String),
+          products: productIds.map((String)),
+          brands: brandIds.map(String)
         })
       }
       setLoading(false)
@@ -111,7 +111,6 @@ export const CategoryUpdateForm:React.FC<Category> = ({ action, category, formCl
   },[category])
 
    if(loading) return <Loading/>
-
   if(defaultValues.id) {
     return (
       <>

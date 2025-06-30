@@ -42,7 +42,7 @@ export const PrivateHeader:any =({ image }:HeaderProp) => {
     const navigate = useNavigate();
     return (
         <div className='privateHeader'>
-            <div id="image" onClick={()=>{navigate('/')}}>
+            <div id="image" onClick={()=>{navigate('/home')}}>
               <img src={image.path} alt={image.alt}/>
             </div>
             <div id="menu">

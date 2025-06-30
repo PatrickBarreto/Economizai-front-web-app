@@ -8,6 +8,7 @@ import './Main-3.css'
 
 export const Main:React.FC<MainInterface> = ({children}) => {
   return (
+    <>
     <MainComponent>
       <SideBar/>
       <section id="main-1-content-section">
@@ -16,11 +17,27 @@ export const Main:React.FC<MainInterface> = ({children}) => {
         </div>
       </section>
     </MainComponent>
+        <div style={{
+          display: 'block',
+          position: 'absolute',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 10000
+        }}>
+          <p>
+            Projeto portfólio
+          </p>
+          <p>
+            <a href="https://developer.patrickbarreto.com"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
+          </p>
+        </div>
+    </>
   )
 }
 
 export const Main2:React.FC<MainInterface> = ({children}) => {
   return (
+    <>
     <MainComponent>
       <section id="main-2-content-section">
         <div id="main-2-content-div">
@@ -28,11 +45,27 @@ export const Main2:React.FC<MainInterface> = ({children}) => {
         </div>
       </section>
     </MainComponent>
+      <div style={{
+          display: 'block',
+          position: 'absolute',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 10000
+        }}>
+          <p>
+              Projeto portfólio
+            </p>
+            <p>
+              <a href="https://developer.patrickbarreto.com"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
+            </p>
+        </div>
+    </>
   )
 }
 
 export const Main3:React.FC<MainInterface> = ({children}) => {
   return (
+    <>
     <MainComponent>
       <section className="main-3-content-section">
         <div className="main-3-content-div">
@@ -40,5 +73,20 @@ export const Main3:React.FC<MainInterface> = ({children}) => {
         </div>
       </section>
     </MainComponent>
+     <div style={{
+          display: 'block',
+          position: 'absolute',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 10000
+        }}>
+          <p>
+              Projeto portfólio
+            </p>
+            <p>
+              <a href="https://developer.patrickbarreto.com"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
+            </p>
+        </div>
+    </>
   )
 }
