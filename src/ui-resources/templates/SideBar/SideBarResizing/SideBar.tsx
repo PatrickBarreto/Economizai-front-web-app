@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext, SyntheticEvent } from "react";
+import { useState, useRef, useEffect, SyntheticEvent } from "react";
 import menu from '../SidebarLinks.tsx'
 import { useLocation } from "react-router-dom";
 import { TiThMenuOutline } from "react-icons/ti";
