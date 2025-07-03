@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet} from 'react-router-dom';
 
 import Login              from '../pages/Login/Login';
 import Home               from '../pages/Home/Home';
@@ -21,6 +21,10 @@ import { ShoppingListsCreateForm } from '../pages/ShoppingLists/Forms/ShoppingLi
 import { ShoppingListsUpdateForm } from '../pages/ShoppingLists/Forms/ShoppingListsUpdateForm.tsx';
 
 
+export const PrivateRoutes:React.FC<{redirectTo?:string}> = ({ redirectTo= "/" }) => {
+  return !!localStorage.getItem('Authorization') ? <Outlet/> : <Navigate to={redirectTo} replace />
+}
+
 const RouteSwitcher:React.FC = () => {
     
     return (
@@ -29,24 +33,29 @@ const RouteSwitcher:React.FC = () => {
                 <Route  path="/" element={<LandingPage/> }/>
                 <Route  path="/login" element={<Login/> }/>
                 <Route  path="/createAccount" element={<CreareAcccount/>}/>
-                <Route  path="/home" element={<Home/>}/>
-
-                <Route  path="/products" element={<Products/>}/>
-                <Route  path="/products/create" element={<ProductCreateForm/>}/>
-                <Route  path="/products/:id/edit" element={<ProductEditForm/>}/>
                 
-                <Route  path="/brands" element={<Brands/>}/>
-                <Route  path="/brands/create" element={<BrandCreateForm/>}/>
-                <Route  path="/brands/:id/edit" element={<BrandUpdateForm/>}/>
+                <Route element={<PrivateRoutes redirectTo='login'/>}>
+                  <Route  path="/home" element={<Home/>}/>
 
-                <Route  path="/categories" element={<Categories/>}/>
-                <Route  path="/categories/create" element={<CategoriesCreateForm/>}/>
-                <Route  path="/categories/:id/edit" element={<CategoriesEditForm/>}/>
+                  <Route  path="/products" element={<Products/>}/>
+                  <Route  path="/products/create" element={<ProductCreateForm/>}/>
+                  <Route  path="/products/:id/edit" element={<ProductEditForm/>}/>
+                  
+                  <Route  path="/brands" element={<Brands/>}/>
+                  <Route  path="/brands/create" element={<BrandCreateForm/>}/>
+                  <Route  path="/brands/:id/edit" element={<BrandUpdateForm/>}/>
+
+                  <Route  path="/categories" element={<Categories/>}/>
+                  <Route  path="/categories/create" element={<CategoriesCreateForm/>}/>
+                  <Route  path="/categories/:id/edit" element={<CategoriesEditForm/>}/>
+                  
+                  <Route  path="/shopping-list" element={<ShoppingLists/>}/>
+                  <Route  path="/shopping-list/create" element={<ShoppingListsCreateForm/>}/>
+                  <Route  path="/shopping-list/:id/edit" element={<ShoppingListsUpdateForm/>}/>
+                  <Route  path="/templateFactory" element={<TemplateFactory/>}/>
+                </Route>
                 
-                <Route  path="/shopping-list" element={<ShoppingLists/>}/>
-                <Route  path="/shopping-list/create" element={<ShoppingListsCreateForm/>}/>
-                <Route  path="/shopping-list/:id/edit" element={<ShoppingListsUpdateForm/>}/>
-                <Route  path="/templateFactory" element={<TemplateFactory/>}/>
+                <Route  path="*" element={<Navigate to="home" replace/>}/>
             </Routes>
         </Router>
     );
