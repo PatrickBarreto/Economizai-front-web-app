@@ -28,7 +28,7 @@ export const Main:React.FC<MainInterface> = ({children}) => {
             Projeto portfólio
           </p>
           <p>
-            <a href="https://developer.patrickbarreto.com"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
+            <a href="https://developer.patrickbarreto.com/projetos-economizai-ficha-tecnica/"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
           </p>
         </div>
     </>
@@ -56,7 +56,7 @@ export const Main2:React.FC<MainInterface> = ({children}) => {
               Projeto portfólio
             </p>
             <p>
-              <a href="https://developer.patrickbarreto.com"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
+              <a href="https://developer.patrickbarreto.com/projetos-economizai-ficha-tecnica/"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
             </p>
         </div>
     </>
@@ -84,7 +84,7 @@ export const Main3:React.FC<MainInterface> = ({children}) => {
               Projeto portfólio
             </p>
             <p>
-              <a href="https://developer.patrickbarreto.com"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
+              <a href="https://developer.patrickbarreto.com/projetos-economizai-ficha-tecnica/"> Saiba mais sobre a estrutura do projeto </a> desde a infra ao frontend.
             </p>
         </div>
     </>
