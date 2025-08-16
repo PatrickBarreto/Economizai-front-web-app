@@ -9,7 +9,7 @@ import '../SideBar-1.css'
 
 export const SideBar = () => {
   const sideBarWidth = localStorage.getItem('sidebarWidth')
-  const [width, setWidth] = useState(sideBarWidth ? sideBarWidth+"px" : "250px");
+  const [width, setWidth] = useState(Number(sideBarWidth) > 0 ? sideBarWidth+"px" : "250px");
   const [menuOpenIcon, setMenuOpen] = useState(false);
   const [menuCloseIcon, setMenuClose] = useState(true);
   const sidebarRef = useRef<HTMLDivElement>(null);
